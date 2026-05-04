@@ -1,0 +1,139 @@
+@use "sass:map";
+
+.wysiwyg {
+  // The reason why we target DIRECT CHILDREN in the wysiwyg is
+  // to better harmonize these styles with independent block styles
+  // coming from the Gutenberg editor while they share the same div
+  // on the front-end and allows us to retain the seamnless
+  // out-of-the-box editor experience that comes from Wordpress
+  // Additionally, we have forced h1 and h2 elements to inherit
+  // smaller styles as to not compete aesthetically with the
+  // actual page header
+  // ~ Greg
+
+  &.page {
+    > h1, > h2, > h3, > h4, > h5, > h6, > p, > ul, > ol, > blockquote {
+      width: 100%;
+      max-width: ($grid-max-width / 12) * 8;
+      padding: 0 calc(map.get($grid-column-gutter, large) / 2);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    > div + h1,
+    > div + h2,
+    > div + h3,
+    > div + h4,
+    > div + h5,
+    > div + h6,
+    > div + p,
+    > div + ul,
+    > div + ol,
+    > div + blockquote {
+      margin-top: 40px;
+    }
+
+    > h1 + div,
+    > h2 + div,
+    > h3 + div,
+    > h4 + div,
+    > h5 + div,
+    > h6 + div,
+    > p + div,
+    > ul + div,
+    > ol + div,
+    > blockquote + div {
+      margin-top: 40px;
+    }
+  }
+
+  > h1 { @extend .heading-style-1; }
+
+  > h2 { @extend .heading-style-2; }
+
+  > h3 { @extend .heading-style-3; }
+
+  // > h4 { @extend .heading-style-5; }
+
+  // > h5 { @extend .heading-style-6; }
+
+  // > h6 { @extend .heading-style-6; }
+
+  > h1,
+  > h2,
+  > h3 {
+    + figure,
+    + .wp-block-image {
+      margin-top: 30px;
+
+      @include breakpoint(medium) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  > h4,
+  > h5,
+  > h6 {
+    + figure,
+    + .wp-block-image {
+      margin-top: 20px;
+    }
+  }
+
+  > p,
+  > ul,
+  > ol {
+    @extend .paragraph-style-2;
+
+    a {
+      color: $black;
+      text-decoration: underline;
+      transition: $transition-default;
+
+      &:hover {
+        color: $cyan;
+        text-decoration: none;
+      }
+    }
+
+    li + li {
+      margin-top: 10px;
+    }
+
+    + figure,
+    + .wp-block-image {
+      margin-top: 30px;
+
+      @include breakpoint(medium) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  > ul {
+    li {
+      margin-left: 28px;
+      padding-left: 10px;
+      list-style-type: disc;
+
+      &::marker {
+        color: $black;
+      }
+    }
+  }
+
+  > ol {
+    li {
+      margin-left: 38px;
+      list-style-type: decimal-leading-zero;
+
+      &::marker {
+        font-family: $font-secondary;
+        color: $black;
+        font-weight: 800;
+      }
+    }
+  }
+
+}

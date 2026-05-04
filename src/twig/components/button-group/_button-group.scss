@@ -1,0 +1,10 @@
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: rem-calc(12px);
+
+  &--centered {
+    justify-content: center;
+  }
+}

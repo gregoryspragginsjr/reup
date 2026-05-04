@@ -1,0 +1,61 @@
+{% import 'macros.twig' as macros %}
+{% import "icons.twig" as icons %}
+
+{% if in_component_library %}
+  {% set context = '@context' %}
+  {% set videoComponent = '@video' %}
+{% else %}
+  {% set context = 'context.twig' %}
+  {% set videoComponent = 'video.twig' %}
+{% endif %}
+
+<div class="media-context{% if reverse %} media-context--reversed{% endif %}">
+  <div class="media-context__inner grid">
+    <div class="media-context__media">
+      {% if video %}
+        <component is="modal-btn">
+          <div class="video__overlay">
+            <div class="video__btn">
+              {{ icons.icon('play', 'video__svg') }}
+            </div>
+          </div>
+          {{ macros.picture(
+            'w-full object-cover',
+            image.srcset,
+            image.src,
+            image.sizes.Rectangle,
+            image.sizes.Rectangle_mobile,
+            image.alt,
+            in_component_library
+          ) }}
+        </component>
+        <component is="modal">
+          {% include videoComponent with video %}
+        </component>
+      {% else %}
+        {% if buttons %}
+          {% set firstBtn = buttons|first %}
+          <a href="{{ firstBtn.button.url }}">
+        {% endif %}
+          {{ macros.picture(
+            'w-full object-cover',
+            image.srcset,
+            image.src,
+            image.sizes.Rectangle,
+            image.sizes.Rectangle_mobile,
+            image.alt,
+            in_component_library
+          ) }}
+        {% if buttons %}</a>{% endif %}
+      {% endif %}
+    </div>
+    <div class="media-context__context">
+      {% include context with {
+        subheading: subheading,
+        heading: heading,
+        paragraphs: paragraphs,
+        buttons: buttons
+      } %}
+    </div>
+  </div>
+</div>

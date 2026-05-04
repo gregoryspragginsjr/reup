@@ -1,0 +1,53 @@
+.context {
+
+  &--large {
+    .context__subheading {
+      @extend .subheading-style-1;
+    }
+
+    .context__heading {
+      @extend .heading-style-1;
+    }
+
+    p {
+      @extend .paragraph-style-1;
+    }
+  }
+
+  &--medium {
+    .context__subheading {
+      @extend .subheading-style-1;
+    }
+
+    .context__heading {
+      @extend .heading-style-2;
+    }
+
+    p {
+      @extend .paragraph-style-2;
+    }
+  }
+
+  &--small {
+    .context__subheading {
+      @extend .subheading-style-1;
+    }
+
+    .context__heading {
+      @extend .heading-style-3;
+    }
+
+    p {
+      @extend .paragraph-style-3;
+    }
+  }
+
+  &--align-center {
+    text-align: center;
+    justify-content: center;
+  }
+
+  &--light {
+    color: $white;
+  }
+}

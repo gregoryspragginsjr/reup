@@ -1,0 +1,42 @@
+@import '../mixins/mixins-foundation';
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,500;1,9..40,500&family=Sora:wght@600&display=swap');
+
+// Colors
+$white: #ffffff;
+$black: #000000;
+$indigo: #1B00A0;
+$magenta: (
+  default: #BE17AC,
+  dark: #840777
+);
+$green: (
+  default: #4AB052,
+  dark: #06660E,
+);
+$aqua: (
+  default: #0CB0F1,
+  dark: #09678C,
+);
+$honey: (
+  default: #FFA621,
+  dark: #AD6C0A,
+);
+$cyan: #66ffff;
+
+// Fonts
+$font-primary: 'Sora', sans-serif;
+$font-secondary: 'DM Sans', sans-serif;
+$font-tertiary: 'DM Mono', monospace;
+
+// Grid
+$grid-max-width: rem-calc(1200px);
+$grid-column-gutter: (
+  small: 20px,
+  large: 40px,
+);
+
+// Easing
+$ease-default: ease-in-out;
+
+// Transitions
+$transition-default: 0.2s $ease-default;

@@ -1,0 +1,24 @@
+{% if in_component_library %}
+  {% set context = '@context' %}
+{% else %}
+  {% set context = 'context.twig' %}
+{% endif %}
+
+<div class="context-section context-section--align-{{ align|default('left') }} context-section--background-{{ background|default('default') }}">
+  <div class="context-section__inner grid">
+    <div class="context-section__main">
+    {% include context with {
+      size: 'large',
+      align: align,
+      heading: heading,
+      subheading: subheading,
+      paragraphs: paragraphs,
+      button: {
+        type: background == 'dark' ? 'inverse' : 'default',
+        title: button.title,
+        url: button.url
+      },
+    } %}
+    </div>
+  </div>
+</div>

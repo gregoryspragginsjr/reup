@@ -1,0 +1,9 @@
+/*
+ * Theme Name: T&C Web Starter Pack
+ * Description: Boilerplate Wordpress theme leveraging our in-house component library, thoughtfully composed around the typical patterns and paradigms our successful client projects share.
+ * Author: Greg @ Truth & Consequences
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

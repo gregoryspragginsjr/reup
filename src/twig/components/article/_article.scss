@@ -1,0 +1,5 @@
+.article {
+  &__image + .context {
+    margin-top: 16px;
+  }
+}

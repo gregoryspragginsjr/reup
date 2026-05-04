@@ -1,0 +1,57 @@
+{% import "macros.twig" as macros %}
+
+{% if in_component_library %}
+  {% set context = '@context' %}
+  {% set videoComponent = '@video' %}
+{% else %}
+  {% set context = 'context.twig' %}
+  {% set videoComponent = 'video.twig' %}
+{% endif %}
+
+<div class="hero hero--{{ type|default('default') }}{% if video %} hero--with-video{% endif %}">
+  <div class="hero__overlay">
+    <div class="hero__inner grid">
+      <div class="hero__main">
+        {% include context with {
+          size: 'large',
+          align: 'left',
+          type: (video) or (loop) ? 'light' : 'default',
+          heading: heading,
+          subheading: subheading,
+          paragraphs: paragraphs,
+          button: {
+            type: (video) or (loop) ? 'inverse' : 'default',
+            title: button.title,
+            url: button.url
+          },
+        } %}
+      </div>
+    </div>
+  </div>
+  {% if loop %}
+    <video class="hero__loop object-cover" autoplay muted loop>
+      <source src="{{ loop }}" type="video/mp4">
+    </video>
+    {{ macros.picture(
+      'w-full object-cover',
+      image.srcset,
+      image.src,
+      image.sizes.Hero,
+      image.sizes.Hero_mobile,
+      image.alt,
+      in_component_library
+    ) }}
+  {% elseif video %}
+    {% include videoComponent with video %}
+  {% else %}
+    {{ macros.picture(
+      'w-full object-cover',
+      image.srcset,
+      image.src,
+      image.sizes.Hero,
+      image.sizes.Hero_mobile,
+      image.alt,
+      in_component_library
+    ) }}
+  {% endif %}
+</div>

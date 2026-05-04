@@ -1,0 +1,80 @@
+@mixin heading-style-1() {
+  font-family: $font-primary;
+  font-size: rem-calc(36px);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 110%;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(48px);
+  }
+}
+
+@mixin heading-style-2() {
+  font-family: $font-primary;
+  font-size: rem-calc(32px);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 120%;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(34px);
+  }
+}
+
+@mixin heading-style-3() {
+  font-family: $font-primary;
+  font-size: rem-calc(24px);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 120%;
+}
+
+@mixin subheading-style-1() {
+  font-family: $font-tertiary;
+  font-size: rem-calc(18px);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(16px);
+  }
+}
+
+@mixin paragraph-style-1() {
+  font-family: $font-secondary;
+  font-size: rem-calc(20px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 130%;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(26px);
+  }
+}
+
+@mixin paragraph-style-2() {
+  font-family: $font-secondary;
+  font-size: rem-calc(20px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 130%;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(18px);
+  }
+}
+
+@mixin paragraph-style-3() {
+  font-family: $font-secondary;
+  font-size: rem-calc(20px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 130%;
+
+  @include breakpoint(medium) {
+    font-size: rem-calc(16px);
+  }
+}

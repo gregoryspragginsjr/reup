@@ -1,0 +1,49 @@
+.media-context {
+  &__media,
+  &__context {
+    grid-column: span 12 / span 12;
+  }
+
+  &__media {
+    @include breakpoint(medium) {
+      grid-column: span 6 / span 6;
+    }
+
+    @include breakpoint(large) {
+      grid-column: span 5 / span 5;
+      grid-column-start: 2;
+    }
+
+    .media-context--reversed & {
+      @include breakpoint(large) {
+        grid-column-start: auto;
+      }
+    }
+  }
+
+  &__context {
+    margin-top: 16px;
+
+    @include breakpoint(medium) {
+      grid-column: span 6 / span 6;
+
+      display: flex;
+      align-items: center;
+      margin-top: 0;
+    }
+
+    @include breakpoint(large) {
+      grid-column: span 5 / span 5;
+    }
+
+    .media-context--reversed & {
+      @include breakpoint(medium) {
+        order: -1;
+      }
+
+      @include breakpoint(large) {
+        grid-column-start: 2;
+      }
+    }
+  }
+}

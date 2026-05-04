@@ -1,0 +1,18 @@
+{% if in_component_library %}
+  {% set buttonGroup = '@button-group' %}
+{% else %}
+  {% set buttonGroup = 'button-group.twig' %}
+{% endif %}
+
+<div class="context context--{{ size|default('medium') }} context--align-{{ align|default('left') }} context--{{ type|default('default') }}">
+  {% if subheading %}<div class="context__subheading">{{ subheading }}</div>{% endif %}
+  {% if heading %}<h2 class="context__heading">{{ heading }}</h2>{% endif %}
+  {{ paragraphs|raw }}
+  {% if buttons %}
+    {% include buttonGroup with {
+      size: size,
+      align: align,
+      items: buttons,
+    } %}
+  {% endif %}
+</div>

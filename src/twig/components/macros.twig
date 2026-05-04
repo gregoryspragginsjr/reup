@@ -1,0 +1,21 @@
+{% macro picture(class, srcset, src, sizeDesktop, sizeMobile, alt, in_component_library) %}
+  {% if in_component_library %}
+    <picture>
+      <source media="(min-width:768px)" srcset="{{ srcset }}">
+      <img
+        class="{{ class }}"
+        src="{{ src }}"
+        alt="{{ alt }}"
+      />
+    </picture>
+  {% else %}
+    <picture>
+      <source media="(min-width:768px)" srcset="{{ sizeDesktop }}">
+      <img
+        class="{{ class }}"
+        src="{{ sizeMobile }}"
+        alt="{{ alt }}"
+      />
+    </picture>
+  {% endif %}
+{% endmacro %}

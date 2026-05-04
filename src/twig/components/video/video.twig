@@ -1,0 +1,33 @@
+{% import "macros.twig" as macros %}
+{% import "icons.twig" as icons %}
+
+<component
+  class="video"
+  v-slot="video"
+  id="{{ video.id }}"
+  is="video"
+>
+  <div
+    class="video__overlay"
+    :class="{'video__overlay--active': video.active == true}"
+  >
+    <div class="video__btn">
+      {{ icons.icon('play', 'video__svg') }}
+    </div>
+    {% if video.loop %}
+      <video class="video__loop object-cover" autoplay muted loop>
+        <source src="{{ video.loop }}" type="video/mp4">
+      </video>
+    {% endif %}
+    {{ macros.picture(
+      'video__image object-cover',
+      image.srcset,
+      image.src,
+      image.sizes.Rectangle,
+      image.sizes.Rectangle_mobile,
+      image.alt,
+      in_component_library
+    ) }}
+  </div>
+  <div class="video__iframe"></div>
+</component>
