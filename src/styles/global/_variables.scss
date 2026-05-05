@@ -4,22 +4,34 @@
 // Colors
 $white: #ffffff;
 $black: #000000;
-$indigo: #1B00A0;
+$gray: #909195;
+$indigo: (
+  default: #1B00A0,
+  dark: #0C0147,
+);
+$cream: (
+  default: #F7F3F0,
+  dark: #EFEAE6,
+);
 $magenta: (
   default: #BE17AC,
-  dark: #840777
+  dark: #840777,
+  light: #FCE1F9,
 );
 $green: (
   default: #4AB052,
   dark: #06660E,
+  light: #DEF7E0,
 );
 $aqua: (
   default: #0CB0F1,
   dark: #09678C,
+  light: #E0F6FF
 );
 $honey: (
   default: #FFA621,
   dark: #AD6C0A,
+  light: #FFF5E0
 );
 $cyan: #66ffff;
 

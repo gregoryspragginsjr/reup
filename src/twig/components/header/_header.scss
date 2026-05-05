@@ -1,12 +1,436 @@
-.header {
-  display: flex;
-  padding: 30px 0;
-  align-items: center;
-  justify-content: center;
-  background-color: $black;
+@use "sass:map";
 
+.header {
+  &__inner {
+    width: 100%;
+    max-width: 1280px;
+    padding: 0 40px;
+    margin: 0 auto;
+  }
+  
   &__main {
-    grid-column: span 12 / span 12;
-    text-align: center;
+    display: flex;
+    height: 70px;
+    padding: 0 40px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  &__logo {
+    fill: map.get($magenta, default);
+    width: 90px;
+  }
+
+  &__nav {
+    display: flex;
+    column-gap: 12px;
+
+    > li {
+      position: relative;
+
+      &:hover {
+        > a {
+          color: map.get($magenta, default);
+          background-color: map.get($cream, default);
+        }
+
+        .header__dropdown {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      > a {
+        @include nav-style-1;
+  
+        color: map.get($indigo, default);
+        padding: 8px 16px;
+        border-radius: 4px;
+
+        &:hover {
+          color: map.get($magenta, dark);
+          background-color: map.get($cream, dark);
+
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+
+        svg {
+          width: 13px;
+          fill: map.get($indigo, default);
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  &__special-btn {
+    position: relative;
+    display: flex;
+    height: 37px;
+    font-size: 0;
+
+    > a,
+    > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background-color: map.get($indigo, default);
+      border: 0;
+      appearance: none;
+
+      &:hover {
+        background-color: map.get($indigo, dark);
+      }
+    }
+
+    > a {
+      @include nav-style-1;
+
+      color: $white;
+      padding: 0 20px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    > button {
+      padding: 0 14px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+
+      &:hover {
+        cursor: pointer;
+
+        > svg {
+          transform: rotate(180deg);
+        }
+
+        .header__dropdown {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      > svg {
+        width: 13px;
+        fill: $white;
+      }
+    }
+
+    .header__dropdown {
+      padding: 30px 14px;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    z-index: 20;
+    top: 100%;
+    left: 50%;
+    padding: 16px 14px;
+    margin-top: 40px;
+    background-color: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px 0 rgba(74, 74, 74, 0.1);
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: transparent;
+      transform: translateY(-100%);
+      content: "";
+    }
+
+    h2 {
+      text-align: left;
+      padding-left: 16px;
+    }
+
+    h2 + ul {
+      margin-top: 14px;
+    }
+
+    > ul li a {
+      @include nav-style-1;
+  
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-width: 270px;
+      padding: 14px 16px;
+      white-space: nowrap;
+      border-radius: 4px;
+
+      &:hover {
+        color: map.get($magenta, default);
+        background-color: map.get($cream, default);
+
+        .header__symbol {
+          fill: map.get($magenta, default);
+        }
+
+        .header__arrow {
+          fill: map.get($magenta, default);
+        }
+
+        .tag {
+          background-color: $white;
+        }
+      }
+
+      > span {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        span:nth-child(2) {
+          font-size: rem-calc(14px);
+          color: $gray;
+        }
+      }
+
+      // TAGGED BUTTON OVERRIDES
+      // Tagged buttons meaning anything color
+      // coordinated. Not just buttons with
+      // literal tags in them
+      &.header__tagged-btn {
+        &--institutions {
+          .header__symbol {
+            fill: map.get($aqua, default);
+          }
+
+          &:hover {
+            color: map.get($aqua, dark);
+            background-color: map.get($aqua, light);
+
+            > svg {
+              fill: map.get($aqua, default);
+            }
+
+            > span span:nth-child(2) {
+              color: #6FC2E3;
+            }
+          }
+        }
+
+        &--learners {
+          .header__symbol {
+            fill: map.get($honey, default);
+          }
+
+          &:hover {
+            color: map.get($honey, dark);
+            background-color: map.get($honey, light);
+
+            > svg {
+              fill: map.get($honey, default);
+            }
+
+            > span span:nth-child(2) {
+              color: #DEB16F
+            }
+          }
+        }
+
+        &--states {
+          .header__symbol {
+            fill: map.get($green, default);
+          }
+
+          &:hover {
+            color: map.get($green, dark);
+            background-color: map.get($green, light);
+
+            > svg {
+              fill: map.get($green, default);
+            }
+
+            > span span:nth-child(2) {
+              color: #759E7E;
+            }
+          }
+        }
+
+        &--anybody {
+          .header__symbol {
+            fill: map.get($magenta, default);
+          }
+
+          &:hover {
+            color: map.get($magenta, dark);
+            background-color: map.get($magenta, light);
+
+            > svg {
+              fill: map.get($magenta, default);
+            }
+
+            > span span:nth-child(2) {
+              color: #759E7E;
+            }
+          }
+        }
+      }
+      // End Tag Buttons
+      //////////////////
+    }
+
+    > ul li + li {
+      margin-top: 6px;
+    }
+
+    // TAG
+    .tag {
+      column-gap: 6px;
+      font-size: rem-calc(13px);
+      padding: 5px 10px;
+      border-radius: 100px;
+      margin-right: 8px;
+      background-color: map.get($cream, default);
+
+      svg {
+        width: 10px;
+
+        &.institutions {
+          fill: map.get($aqua, default);
+        }
+
+        &.spaces {
+          fill: map.get($green, default);
+        }
+
+        &.learners {
+          fill: map.get($honey, default);
+        }
+      }
+
+      &--institutions {
+        color: map.get($aqua, dark);
+        background-color: map.get($aqua, light);
+
+        svg {
+          fill: map.get($aqua, default);
+        }
+      }
+
+      &--learners {
+        color: map.get($honey, dark);
+        background-color: map.get($honey, light);
+
+        svg {
+          fill: map.get($honey, default);
+        }
+      }
+
+      &--states {
+        color: map.get($green, dark);
+        background-color: map.get($green, light);
+
+        svg {
+          fill: map.get($green, default);
+        }
+      }
+
+      &--anybody {
+        color: map.get($magenta, dark);
+        background-color: map.get($magenta, light);
+
+        svg {
+          fill: map.get($magenta, default);
+        }
+      }
+    }
+
+    &--collective-solutions {
+      > li a:hover {
+        color: map.get($indigo, default);
+      }
+    }
+
+    &--who-can-benefit {
+      .header__tagged-btn {
+        &--institutions {
+          color: map.get($aqua, dark);
+        }
+
+        &--learners {
+          color: map.get($honey, dark);
+        }
+
+        &--states {
+          color: map.get($green, dark);
+        }
+      }
+    }
+
+    &--collective-solutions,
+    &--who-can-benefit {
+      > ul li a {
+        min-width: 350px;
+      }
+    }
+
+    &--resources {
+      > ul li a {
+        padding: 8px 16px;
+        color: $gray;
+      }
+
+      .tag {
+        display: flex;
+      }
+    }
+
+    hr {
+      border-top: 1px solid map.get($cream, default);
+      margin: 30px 0;
+    }
+  }
+
+  &__symbol {
+    width: 40px;
+    fill: map.get($indigo, default);
+    margin-right: 16px;
+  }
+
+  &__arrow,
+  &__newtab {
+    fill: transparent;
+    width: 14px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  &__newtab {
+    fill: map.get($indigo, default);
+  }
+
+  &__utility-nav {
+    > li a {
+      color: map.get($indigo, default) !important;
+
+      &:hover {
+        color: map.get($magenta, default) !important;
+
+        .header__newtab {
+          fill: map.get($magenta, default);
+        }
+      }
+    }
+
+    span + .tag {
+      margin-left: 8px;
+      margin-right: 0;
+    }
   }
 }
