@@ -9,6 +9,8 @@
   }
   
   &__main {
+    z-index: 1;
+    position: relative;
     display: flex;
     height: 70px;
     padding: 0 40px;
@@ -19,14 +21,97 @@
     border-bottom-right-radius: 12px;
   }
 
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 10px 40px 0 40px;
+    margin-top: -10px;
+    background-color: map.get($magenta, light);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    .header--institutions & {
+      background-color: map.get($aqua, light);
+    }
+
+    .header--learners & {
+      background-color: map.get($honey, light);
+    }
+
+    .header--states & {
+      background-color: map.get($green, light);
+    }
+
+    ul {
+      display: flex;
+      gap: 17px;
+
+      a {
+        @include nav-style-1;
+
+        display: flex;
+        align-items: center;
+        color: map.get($magenta, dark);
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        .header--institutions & {
+          color: map.get($aqua, dark);
+        }
+
+        .header--learners & {
+          color: map.get($honey, dark);
+        }
+
+        .header--states & {
+          color: map.get($green, dark);
+        }
+      }
+    }
+
+    li:first-child .chevron {
+      display: none;
+    }
+
+    li:last-child a {
+      font-weight: 900;
+    }
+
+    .chevron {
+      width: 11px;
+      margin-right: 17px;
+      fill: #E9BBE4;
+      transform: rotate(-90deg);
+
+      .header--institutions & {
+        fill: #9CCEE2;
+      }
+
+      .header--learners & {
+        fill: #FFD270;
+      }
+
+      .header--states & {
+        fill: #ABD5AF;
+      }
+    }
+  }
+
   &__logo {
     fill: map.get($magenta, default);
     width: 90px;
   }
 
   &__nav {
-    display: flex;
+    display: none;
     column-gap: 12px;
+
+    @include breakpoint(large) {
+      display: flex;
+    }
 
     > li {
       position: relative;
@@ -35,6 +120,10 @@
         > a {
           color: map.get($magenta, default);
           background-color: map.get($cream, default);
+
+          svg {
+            transform: rotate(180deg);
+          }
         }
 
         .header__dropdown {
@@ -70,9 +159,13 @@
 
   &__special-btn {
     position: relative;
-    display: flex;
+    display: none;
     height: 37px;
     font-size: 0;
+
+    @include breakpoint(large) {
+      display: flex;
+    }
 
     > a,
     > button {
@@ -305,7 +398,7 @@
           fill: map.get($aqua, default);
         }
 
-        &.spaces {
+        &.states {
           fill: map.get($green, default);
         }
 
@@ -382,7 +475,7 @@
 
     &--resources {
       > ul li a {
-        padding: 8px 16px;
+        padding: 10px 16px;
         color: $gray;
       }
 

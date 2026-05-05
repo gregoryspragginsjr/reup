@@ -1,6 +1,6 @@
 {% import "icons.twig" as icons %}
 
-<header class="header">
+<header class="header header--{{ type|default('default') }}">
   <div class="header__inner">
     <div class="header__main">
       <a href="/">
@@ -75,7 +75,7 @@
                   <span>Dragonfly App</span>
                   <div class="tag">
                     {{ icons.icon('temp', 'institutions') }}
-                    {{ icons.icon('temp', 'spaces') }}
+                    {{ icons.icon('temp', 'states') }}
                   </div>
                   {{ icons.icon('newtab', 'header__newtab') }}
                 </a>
@@ -94,5 +94,17 @@
         </button>
       </div>
     </div>
+    {% if breadcrumbs %}
+      <div class="header__breadcrumbs">
+        <ul>
+          {% for item in breadcrumbs %}
+            <li><a href="{{ item.url }}">
+              {{ icons.icon('chevron', 'chevron') }}
+              {{ item.title }}
+            </a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
   </div>
 </header>

@@ -112,6 +112,40 @@ module.exports = {
         title: "Let's chat",
         tag: 'Anybody',
       },
+    ],
+    breadcrumbs: [
+      {
+        url: '/',
+        title: 'Level 1 Page'
+      },
+      {
+        url: '/',
+        title: 'Level 2 Page'
+      },
+      {
+        url: '/',
+        title: 'Level 3 Page'
+      },
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'Insitutions',
+      context: {
+        type: 'institutions',
+      }
+    },
+    {
+      name: 'Learners',
+      context: {
+        type: 'learners',
+      }
+    },
+    {
+      name: 'States',
+      context: {
+        type: 'states',
+      }
+    },
+  ]
 }
