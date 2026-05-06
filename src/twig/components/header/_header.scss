@@ -1,11 +1,22 @@
 @use "sass:map";
 
 .header {
+  background-color: map.get($cream, default);
+  // padding-bottom: 20px;
+
   &__inner {
     width: 100%;
     max-width: 1280px;
-    padding: 0 40px;
+    padding: 0 20px;
     margin: 0 auto;
+
+    @include breakpoint(medium) {
+      padding: 0 30px;
+    }
+
+    @include breakpoint(large) {
+      padding: 0 40px;
+    }
   }
   
   &__main {
@@ -13,15 +24,20 @@
     position: relative;
     display: flex;
     height: 70px;
-    padding: 0 40px;
+    padding: 0 30px;
     align-items: center;
     justify-content: space-between;
     background-color: $white;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+
+    @include breakpoint(large) {
+      padding: 0 40px;
+    }
   }
 
   &__breadcrumbs {
+    overflow-x: scroll;
     display: flex;
     align-items: center;
     height: 50px;
@@ -30,6 +46,10 @@
     background-color: map.get($magenta, light);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+
+    .header--active & {
+      display: none;
+    }
 
     .header--institutions & {
       background-color: map.get($aqua, light);
@@ -72,6 +92,10 @@
       }
     }
 
+    li {
+      white-space: nowrap;
+    }
+
     li:first-child .chevron {
       display: none;
     }
@@ -101,8 +125,12 @@
   }
 
   &__logo {
-    fill: map.get($magenta, default);
-    width: 90px;
+    font-size: 0;
+
+    svg {
+      fill: map.get($magenta, default);
+      width: 90px;
+    }
   }
 
   &__nav {
@@ -245,13 +273,17 @@
       content: "";
     }
 
-    h2 {
+    h2, h3 {
       text-align: left;
       padding-left: 16px;
     }
 
     h2 + ul {
       margin-top: 14px;
+    }
+
+    h2 + h3 {
+      margin-top: 30px;
     }
 
     > ul li a {
@@ -262,8 +294,11 @@
       width: 100%;
       min-width: 270px;
       padding: 14px 16px;
-      white-space: nowrap;
       border-radius: 4px;
+
+      @include breakpoint(medium) {
+        white-space: nowrap;
+      }
 
       &:hover {
         color: map.get($magenta, default);
@@ -498,14 +533,20 @@
 
   &__arrow,
   &__newtab {
-    fill: transparent;
     width: 14px;
     margin-right: 0;
     margin-left: auto;
+    fill: transparent;
   }
 
   &__newtab {
     fill: map.get($indigo, default);
+  }
+
+  &__symbol,
+  &__arrow,
+  &__newtab {
+    flex-shrink: 0;
   }
 
   &__utility-nav {
@@ -524,6 +565,157 @@
     span + .tag {
       margin-left: 8px;
       margin-right: 0;
+    }
+  }
+
+  &__hamburger {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 24px;
+    padding: 0;
+    margin-left: 24px;
+    appearance: none;
+    border: 0;
+    background-color: transparent;
+
+    @include breakpoint(large) {
+      display: none;
+    }
+
+    &[aria-expanded='true'] {
+      span {
+        background-color: transparent !important;
+
+        &::before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+  
+        &::after {
+          top: 0;
+          width: 100%;
+          transform: rotate(-45deg);
+        }
+
+        &::before,
+        &::after {
+          background-color: map.get($indigo, default);
+        }
+      }
+    }
+
+    span {
+      position: relative;
+      display: block;
+      width: 30px;
+      height: 9px;
+      background-color: transparent;
+
+      &::before,
+      &::after {
+        position: absolute;
+        left: 0;
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        background-color: map.get($indigo, default);
+        transform-origin: center;
+        transition: inherit;
+        content: '';
+        border-radius: 10px;
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        top: 8px;
+      }
+    }
+  }
+
+  &__drawer {
+    overflow: scroll;
+    width: 100%;
+    height: 0;
+    padding-bottom: 20px;
+    visibility: hidden;
+    opacity: 0;
+    scrollbar-width: none;
+
+    @include breakpoint(large) {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::before {
+      z-index: 5;
+      position: absolute;
+      top: 69px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      content: '';
+      background:
+        linear-gradient(
+          to bottom, 
+          rgba(247,243,240,1) 20%,
+          rgba(247,243,240,0) 100%
+        );
+    }
+
+    .header--active & {
+      height: calc(100vh - 70px);
+      padding-top: 60px;
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    .header__dropdown {
+      position: static;
+      padding: 30px 16px;
+      margin-top: 0;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+
+      @include breakpoint(medium) {
+        grid-column: span 6 / span 6;
+      }
+
+      > ul li a {
+        min-width: 0;
+      }
+    }
+
+    h2 {
+      font-family: $font-secondary;
+      font-size: rem-calc(20px);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 110%;
+      text-decoration: underline;
+      
+      a {
+        color: map.get($indigo, default);
+      }
+    }
+  }
+
+  &__dropdown-group {
+    z-index: 1;
+    position: relative;
+    display: grid;
+    gap: 30px;
+
+    @include breakpoint(medium) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
     }
   }
 }
