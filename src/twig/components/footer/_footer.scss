@@ -3,8 +3,16 @@
 .footer {
   position: relative;
   overflow: hidden;
-  padding: 70px 0 40px;
+  padding: 80px 20px 110px;
   background-color: map.get($cream, default);
+
+  @include breakpoint(medium) {
+    padding: 80px 30px 40px;
+  }
+
+  @include breakpoint(large) {
+    padding: 70px 0 40px;
+  }
 
   &__main {
     grid-column: span 12 / span 12;
@@ -16,8 +24,18 @@
 
   &__logo {
     svg {
-      width: 80px;
+      width: 70px;
       fill: map.get($magenta, default);
+
+      @include breakpoint(medium) {
+        width: 80px;
+      }
+    }
+
+    &:hover {
+      svg {
+        fill: map.get($magenta, dark);
+      }
     }
   }
 
@@ -26,10 +44,24 @@
   }
 
   nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: space-between;
-    gap: 40px;
+    row-gap: 40px;
+    column-gap: 40px;
     width: 100%;
+
+    @include breakpoint(medium) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      row-gap: 40px;
+      column-gap: 60px;
+    }
+
+    @include breakpoint(large) {
+      display: flex;
+      row-gap: 40px;
+      column-gap: 40px;
+    }
 
     li + li {
       margin-top: 10px;
@@ -37,6 +69,14 @@
 
     + address {
       margin-top: 50px;
+    }
+  }
+
+  &__group {
+    grid-column: span 1 / span 1;
+
+    @include breakpoint(medium) {
+      grid-column: span 4 / span 4;
     }
   }
 
@@ -49,12 +89,23 @@
   li a,
   address a {
     @include nav-style-1;
+
+    font-size: rem-calc(17px);
     color: map.get($indigo, default);
 
     &:hover {
       color: map.get($magenta, default);
       text-decoration: underline;
     }
+
+    @include breakpoint(large) {
+      font-size: rem-calc(15px);
+    }
+  }
+
+  address a {
+    display: block;
+    text-align: center;
   }
 
   &__heading {
@@ -71,16 +122,31 @@
 
   &__copyright {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    max-width: 460px;
+
+    @include breakpoint(large) {
+      max-width: none;
+    }
 
     li,
     li a {
       font-size: rem-calc(13px);
+      white-space: nowrap;
     }
 
-    li + li {
-      padding-left: 8px;
-      margin-left: 8px;
-      border-left: 2px solid map.get($magenta, default);
+    li {
+      padding-right: 8px;
+      margin-right: 8px;
+      border-right: 2px solid map.get($magenta, default);
+
+      &:last-child {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: 0;
+      }
     }
   }
 
@@ -92,32 +158,48 @@
     &:nth-of-type(1) {
       top: 0;
       left: 0;
-      transform: translate(-20%, -50%);
+      transform: translate(-50%, -60%);
       background-color: map.get($honey, default);
       clip-path: polygon(0 5%, 95% 1%, 100% 95%, 0% 100%);
+
+      @include breakpoint(medium) {
+        transform: translate(-20%, -50%);
+      }
     }
 
     &:nth-of-type(2) {
       top: 0;
       right: 0;
       background-color: map.get($green, default);
-      transform: translate(20%, -50%);
+      transform: translate(50%, -60%);
+
+      @include breakpoint(medium) {
+        transform: translate(20%, -50%);
+      }
     }
 
     &:nth-of-type(3) {
       bottom: 0;
       left: 0;
       background-color: map.get($indigo, default);
-      transform: translate(-10%, 40%);
+      transform: translate(-50%, 60%);
       clip-path: polygon(0 5%, 95% 1%, 100% 95%, 0% 100%);
+
+      @include breakpoint(medium) {
+        transform: translate(-10%, 40%);
+      }
     }
 
     &:nth-of-type(4) {
       right: 0;
       bottom: 0;
       background-color: map.get($aqua, default);
-      transform: translate(10%, 40%);
+      transform: translate(50%, 60%);
       clip-path: polygon(5% 0, 100% 5%, 95% 100%, 0 95%);
+
+      @include breakpoint(medium) {
+        transform: translate(10%, 40%);
+      }
     }
   }
 }
