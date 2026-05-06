@@ -1,7 +1,37 @@
+{% import "icons.twig" as icons %}
+
 <footer class="footer">
   <div class="footer__inner grid">
     <div class="footer__main">
-      <div class="heading-style-1 text-light">FOOTER GOES HERE</div>
+      <a class="footer__logo" href="/">
+        {{ icons.icon('boxlogo', '') }}
+        <span class="sr-only">Link to Home</span>
+      </a>
+      <nav>
+        {% for item in primary %}
+          <div class="footer__group">
+            <h2 class="footer__heading subheading-style-2">{{ item.title }}</h2>
+            <ul>
+              {% for child in item.children %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </nav>
+      {% if address %}
+        <address><a href="{{ address.url }}"target="_blank" />{{ address.title }}</a></address>
+      {% endif %}
+      <ul class="footer__copyright">
+        <li>&copy; ReUp Education 2026</li>
+        {% for item in copyright %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </footer>
