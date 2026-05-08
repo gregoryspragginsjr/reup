@@ -6,13 +6,16 @@
 
 <div class="context context--{{ size|default('medium') }} context--align-{{ align|default('left') }} context--{{ type|default('default') }}">
   {% if subheading %}<div class="context__subheading">{{ subheading }}</div>{% endif %}
+  {% if tags %}
+    <div class="tag-group">
+      <div class="tag tag--institutions">{{ icons.icon('temp', '') }} Institutions</div>
+      <div class="tag tag--learners">{{ icons.icon('temp', '') }} Learners</div>
+      <div class="tag tag--states">{{ icons.icon('temp', '') }} States</div>
+    </div>
+  {% endif %}
   {% if heading %}<h2 class="context__heading">{{ heading }}</h2>{% endif %}
   {{ paragraphs|raw }}
-  {% if buttons %}
-    {% include buttonGroup with {
-      size: size,
-      align: align,
-      items: buttons,
-    } %}
+  {% if buttons.items %}
+    {% include buttonGroup with buttons %}
   {% endif %}
 </div>

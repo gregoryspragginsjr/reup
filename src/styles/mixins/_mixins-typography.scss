@@ -100,3 +100,12 @@
   letter-spacing: 0.5px;
   text-decoration: none;
 }
+
+@mixin button-style-1() {
+  font-family: $font-tertiary;
+  font-size: rem-calc(15px);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

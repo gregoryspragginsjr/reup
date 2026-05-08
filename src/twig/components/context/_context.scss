@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .context {
 
   &--large {
@@ -42,12 +44,17 @@
     }
   }
 
+  &__subheading {
+    color: map.get($magenta, default);
+  }
+
+  &__heading,
+  p {
+    color: map.get($indigo, default);
+  }
+
   &--align-center {
     text-align: center;
     justify-content: center;
-  }
-
-  &--light {
-    color: $white;
   }
 }

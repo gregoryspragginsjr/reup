@@ -294,6 +294,7 @@
       min-width: 270px;
       padding: 14px 16px;
       border-radius: 4px;
+      color: map.get($indigo, default);
 
       @include breakpoint(medium) {
         white-space: nowrap;
@@ -418,64 +419,8 @@
 
     // TAG
     .tag {
-      column-gap: 6px;
-      font-size: rem-calc(13px);
-      padding: 5px 10px;
-      border-radius: 100px;
       margin-right: 8px;
-      background-color: map.get($cream, default);
-
-      svg {
-        width: 10px;
-
-        &.institutions {
-          fill: map.get($aqua, default);
-        }
-
-        &.states {
-          fill: map.get($green, default);
-        }
-
-        &.learners {
-          fill: map.get($honey, default);
-        }
-      }
-
-      &--institutions {
-        color: map.get($aqua, dark);
-        background-color: map.get($aqua, light);
-
-        svg {
-          fill: map.get($aqua, default);
-        }
-      }
-
-      &--learners {
-        color: map.get($honey, dark);
-        background-color: map.get($honey, light);
-
-        svg {
-          fill: map.get($honey, default);
-        }
-      }
-
-      &--states {
-        color: map.get($green, dark);
-        background-color: map.get($green, light);
-
-        svg {
-          fill: map.get($green, default);
-        }
-      }
-
-      &--anybody {
-        color: map.get($magenta, dark);
-        background-color: map.get($magenta, light);
-
-        svg {
-          fill: map.get($magenta, default);
-        }
-      }
+      border: 0;
     }
 
     &--collective-solutions {

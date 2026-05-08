@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .video {
   position: relative;
   padding-bottom: 56.25%;
@@ -15,8 +17,8 @@
     transition: $transition-default;
 
     &:hover {
-      .video__btn {
-        transform: scale(1.2);
+      .video__btn svg {
+        fill: map.get($magenta, default);
       }
     }
 
@@ -27,20 +29,11 @@
   }
 
   &__btn {
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: $cyan;
-    transition: $transition-default;
+    z-index: 1;
 
     svg {
-      width: 16px;
-      fill: $black;
-      transform: translateX(2px);
+      width: 67px;
+      fill: map.get($indigo, default);
     }
   }
 

@@ -2,6 +2,6 @@
   class="button-group{% if align == 'center' %} button-group--centered{% endif %}"
 >
   {% for item in items %}
-    <a class="{% if size %}{{ size }}-{% endif %}btn" href="{{ item.button.url }}" target="{{ item.button.target }}">{{ item.button.title }}</a>
+    <a class="{% if size %}{{ size }}-{% endif %}btn btn--{{ type|default('indigo') }}" href="{{ item.button.url }}" target="{{ item.button.target }}">{{ item.button.title }}</a>
   {% endfor %}
 </div>

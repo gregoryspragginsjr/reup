@@ -3,11 +3,11 @@
 .footer {
   position: relative;
   overflow: hidden;
-  padding: 80px 20px 110px;
+  padding: 80px 0 110px;
   background-color: map.get($cream, default);
 
   @include breakpoint(medium) {
-    padding: 80px 30px 40px;
+    padding: 80px 0 40px;
   }
 
   @include breakpoint(large) {

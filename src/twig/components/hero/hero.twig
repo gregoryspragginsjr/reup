@@ -1,4 +1,5 @@
 {% import "macros.twig" as macros %}
+{% import "icons.twig" as icons %}
 
 {% if in_component_library %}
   {% set context = '@context' %}
@@ -8,8 +9,43 @@
   {% set videoComponent = 'video.twig' %}
 {% endif %}
 
-<div class="hero hero--{{ type|default('default') }}{% if video %} hero--with-video{% endif %}">
-  <div class="hero__overlay">
+<div class="hero hero--{{ type|default('default') }}{% if reverse %} hero--reverse{% endif %}">
+  <div class="hero__inner grid">
+    <div class="hero__main">
+      <div class="hero__context">
+        {% if type == 'parallel' %}
+          {% include context with {
+            type: 'default',
+            size: 'large',
+            align: 'left',
+            subheading: subheading,
+            heading: heading,
+            paragraphs: paragraphs,
+            buttons: {
+              size: 'default',
+              type: btnType,
+              items: buttons,
+            }
+          } %}
+          {{ icons.icon('faux-corner', 'hero__faux-corner') }}
+          {{ icons.icon('faux-corner', 'hero__faux-corner') }}
+        {% else %}
+          <h1 class="hero__heading">{{ heading }}</h1>
+        {% endif %}
+      </div>
+      <div class="hero__media">
+        {% if paragraphs and type != 'parallel' %}
+          <div class="hero__overlay">
+            {{ paragraphs|raw }}
+            {{ icons.icon('faux-corner', 'hero__faux-corner') }}
+            {{ icons.icon('faux-corner', 'hero__faux-corner') }}
+          </div>
+        {% endif %}
+        {% include videoComponent with video %}
+      </div>
+    </div>
+  </div>
+  {# <div class="hero__overlay">
     <div class="hero__inner grid">
       <div class="hero__main">
         {% include context with {
@@ -53,5 +89,5 @@
       image.alt,
       in_component_library
     ) }}
-  {% endif %}
+  {% endif %} #}
 </div>

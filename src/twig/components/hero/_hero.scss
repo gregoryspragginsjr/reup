@@ -1,58 +1,241 @@
+@use "sass:map";
+
 .hero {
   position: relative;
-  height: 400px;
   overflow: hidden;
+  padding: 30px 0 40px;
+  background-color: map.get($cream, default);
 
-  @include breakpoint(medium) {
-    height: 500px;
-  }
+  &--parallel {
+    padding: 40px 0;
 
-  &--with-video {
-    height: auto;
-    padding-bottom: 0;
-  }
+    .video {
+      padding-bottom: 76% !important;
 
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 20;
-    display: flex;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+      @include breakpoint(medium) {
+        padding-bottom: 56.25% !important;
+      }
+    }
   }
 
   &__main {
     grid-column: span 12 / span 12;
-    margin-bottom: 40px;
 
-    @include breakpoint(large) {
-      grid-column: span 6 / span 6;
-      margin-bottom: 80px;
+    .hero--parallel & {
+      @include breakpoint(large) {
+        display: flex;
+        align-items: flex-start;
+      }
+    }
+
+    .hero--reverse & {
+      @include breakpoint(medium) {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 
-  &__loop {
+  &__context {
+    position: relative;
+
+    .hero--parallel & {
+      z-index: 11;
+      background-color: map.get($cream, default);
+
+      @include breakpoint(large) {
+        padding-right: 30px;
+        padding-bottom: 20px;
+        margin-right: -140px;
+        border-bottom-right-radius: 30px;
+      }
+    }
+  }
+
+  &__heading {
+    font-family: $font-primary;
+    font-size: rem-calc(36px);
+    font-weight: 600;
+    font-style: normal;
+    line-height: 110%;
+    color: map.get($indigo, default);
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(50px);
+      font-weight: 700;
+    }
+
+    @include breakpoint(large) {
+      font-size: rem-calc(60px);
+    }
+  }
+
+  &__context + &__media {
+    margin-top: 10px;
+
+    .hero--reverse & {
+      @include breakpoint(medium) {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    .hero--parallel & {
+      margin-top: 40px;
+
+      @include breakpoint(large) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    .hero--parallel & {
+
+      @include breakpoint(medium) {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+      }
+
+      @include breakpoint(large) {
+        width: 640px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+      }
+    }
+
+    .hero--reverse & {
+      @include breakpoint(medium) {
+        order: -1;
+      }
+    }
+
+    @include breakpoint(medium) {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+
+      .hero--reverse & {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    .video {
+      border-radius: 20px;
+
+      @include breakpoint(medium) {
+        border-radius: 0;
+      }
+    }
+  }
+
+  &__overlay {
+    z-index: 11;
+    display: inline-block;
+    width: 100%;
+    background-color: map.get($cream, default);
+
+    @include breakpoint(medium) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 450px;
+      padding: 0 30px 30px 0;
+      border-bottom-right-radius: 40px;
+
+      .hero--reverse & {
+        top: auto;
+        bottom: 0;
+      }
+    }
+
+    .hero--reverse & {
+      @include breakpoint(medium) {
+        padding: 30px 30px 0 0;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    p {
+      @extend .paragraph-style-1;
+
+      font-weight: 400;
+      color: map.get($indigo, default);
+
+      .hero--parallel & {
+        display: none;
+      }
+    }
+  }
+
+  &__overlay + .video {
+    margin-top: 30px;
+
+    @include breakpoint(medium) {
+      margin-top: 0;
+    }
+  }
+
+  .video {
+    padding-bottom: 130%;
+
+    @include breakpoint(medium) {
+      padding-bottom: 56.25%;
+    }
+  }
+
+  &__faux-corner {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    display: hidden;
-    min-width: 100%;
-    min-height: 100%;
-    background-repeat: repeat;
-    background-size: cover;
+    display: none;
+    width: 25px;
+    fill: map.get($cream, default);
 
     @include breakpoint(medium) {
       display: block;
     }
-  }
 
-  .video__btn {
-    display: none;
+    &:nth-of-type(1) {
+      top: 0;
+      right: 0;
+      transform: translateX(100%);
+
+      .hero--reverse & {
+        top: auto;
+        bottom: 0;
+        transform: translateX(100%) rotate(-90deg);
+      }
+    }
+
+    &:nth-of-type(2) {
+      bottom: 0;
+      left: 0;
+      transform: translateY(100%);
+
+      .hero--reverse & {
+        top: 0;
+        bottom: auto;
+        transform: translateY(-100%) rotate(-90deg);
+      }
+
+      .hero--parallel & {
+        left: auto;
+        right: 115px;
+        display: none;
+
+        @include breakpoint(large) {
+          display: block;
+        }
+      }
+    }
   }
 }

@@ -1,15 +1,14 @@
 @mixin btn($color, $background, $hover-color: '', $hover-background: '', $border: '') {
-  @include subheading-style-1();
+  @include button-style-1();
 
   display: inline-flex;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
-  padding: 8px 16px;
+  padding: 12px 24px;
   color: $color;
   background-color: $background;
   border: 1px solid;
-  transition: $transition-default;
+  border-radius: 50px;
 
   @if $border == '' {
     border-color: $background;
