@@ -1,0 +1,80 @@
+@use "sass:map";
+
+.cta-context-section {
+  padding: 80px 0;
+  background-image: url('../images/pattern1.png');
+  background-size: 120px;
+  background-color: map.get($indigo, default);
+
+  &__main {
+    grid-column: span 12 / span 12;
+
+    @include breakpoint(large) {
+      grid-column: span 10 / span 10;
+      grid-column-start: 2;
+    }
+  }
+
+  &__context {
+    position: relative;
+    padding: 50px 30px 60px;
+    background-color: map.get($cream, default);
+    border: 30px solid map.get($magenta, default);
+
+    @include breakpoint(large) {
+      padding: 50px 42px 60px;
+
+      .cta-context-section--medium & {
+        border: 60px solid map.get($magenta, default);
+      }
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-color: $white;
+
+      .cta-context-section--medium & {
+        @include breakpoint(large) {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+
+    &::before {
+      top: -30px;
+      right: -30px;
+
+      .cta-context-section--medium & {
+        @include breakpoint(large) {
+          top: -60px;
+          right: -60px;
+        }
+      }
+    }
+
+    &::after {
+      bottom: -30px;
+      left: -30px;
+
+      .cta-context-section--medium & {
+        @include breakpoint(large) {
+          bottom: -60px;
+          left: -60px;
+        }
+      }
+    }
+  }
+
+  &__headshot {
+    display: block;
+    width: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    border: 1.5px solid map.get($magenta, default);
+  }
+}

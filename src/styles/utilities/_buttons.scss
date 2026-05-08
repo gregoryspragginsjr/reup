@@ -16,6 +16,27 @@
   &--indigo {
     @include btn($white, map.get($indigo, default), $white, map.get($magenta, default), '' );
   }
+
+  &--hollow-indigo,
+  &--text-indigo {
+    @include btn(map.get($indigo, default), $white, map.get($magenta, default), $white, map.get($indigo, default));
+  }
+
+  &--text-indigo,
+  &--text-magetna {
+    padding: 0;
+    text-decoration: underline;
+    background-color: transparent;
+    border: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    + * {
+      margin-left: 20px;
+    }
+  }
 }
 
 // Tag Group

@@ -7,7 +7,7 @@
   padding: 12px 24px;
   color: $color;
   background-color: $background;
-  border: 1px solid;
+  border: 1.5px solid;
   border-radius: 50px;
 
   @if $border == '' {
@@ -21,6 +21,14 @@
   &:hover {
     color: $hover-color;
     background-color: $hover-background;
-    border-color: $hover-background;
+
+    @if $border == '' {
+      border-color: $hover-background;
+      border-color: $hover-color;
+    }
+
+    @else {
+      border-color: $hover-color;
+    }
   }
 }

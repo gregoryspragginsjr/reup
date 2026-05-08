@@ -1,0 +1,40 @@
+{% import "macros.twig" as macros %}
+
+{% if in_component_library %}
+  {% set context = '@context' %}
+{% else %}
+  {% set context = 'context.twig' %}
+{% endif %}
+
+<section class="cta-context-section cta-context-section--{{ size|default('medium') }}">
+  <div class="cta-context-section__inner grid">
+    <div class="cta-context-section__main">
+      <div class="cta-context-section__context">
+        {% if image %}
+          {{ macros.picture(
+            'cta-context-section__headshot w-full object-cover',
+            image.srcset,
+            image.src,
+            image.sizes.Avatar,
+            image.sizes.Avatar_mobile,
+            image.alt,
+            in_component_library
+          ) }}
+        {% endif %}
+        {% include context with {
+          type: 'default',
+          size: size|default('medium'),
+          align: 'center',
+          subheading: subheading,
+          heading: heading,
+          paragraphs: paragraphs,
+          buttons: {
+            size: 'default',
+            type: size == 'small' ? 'text-indigo' : 'hollow-indigo',
+            items: buttons,
+          }
+        } %}
+      </div>
+    </div>
+  </div>
+</section>

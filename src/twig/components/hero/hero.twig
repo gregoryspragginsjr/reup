@@ -33,61 +33,30 @@
           <h1 class="hero__heading">{{ heading }}</h1>
         {% endif %}
       </div>
-      <div class="hero__media">
-        {% if paragraphs and type != 'parallel' %}
-          <div class="hero__overlay">
-            {{ paragraphs|raw }}
-            {{ icons.icon('faux-corner', 'hero__faux-corner') }}
-            {{ icons.icon('faux-corner', 'hero__faux-corner') }}
-          </div>
-        {% endif %}
-        {% include videoComponent with video %}
-      </div>
+      {% if image or video %}
+        <div class="hero__media">
+          {% if paragraphs and type != 'parallel' %}
+            <div class="hero__overlay">
+              {{ paragraphs|raw }}
+              {{ icons.icon('faux-corner', 'hero__faux-corner') }}
+              {{ icons.icon('faux-corner', 'hero__faux-corner') }}
+            </div>
+          {% endif %}
+          {% if video %}
+            {% include videoComponent with video %}
+          {% elseif image %}
+            {{ macros.picture(
+              'w-full object-cover',
+              image.srcset,
+              image.src,
+              image.sizes.Hero,
+              image.sizes.Hero_mobile,
+              image.alt,
+              in_component_library
+            ) }}
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </div>
-  {# <div class="hero__overlay">
-    <div class="hero__inner grid">
-      <div class="hero__main">
-        {% include context with {
-          size: 'large',
-          align: 'left',
-          type: (video) or (loop) ? 'light' : 'default',
-          heading: heading,
-          subheading: subheading,
-          paragraphs: paragraphs,
-          button: {
-            type: (video) or (loop) ? 'inverse' : 'default',
-            title: button.title,
-            url: button.url
-          },
-        } %}
-      </div>
-    </div>
-  </div>
-  {% if loop %}
-    <video class="hero__loop object-cover" autoplay muted loop>
-      <source src="{{ loop }}" type="video/mp4">
-    </video>
-    {{ macros.picture(
-      'w-full object-cover',
-      image.srcset,
-      image.src,
-      image.sizes.Hero,
-      image.sizes.Hero_mobile,
-      image.alt,
-      in_component_library
-    ) }}
-  {% elseif video %}
-    {% include videoComponent with video %}
-  {% else %}
-    {{ macros.picture(
-      'w-full object-cover',
-      image.srcset,
-      image.src,
-      image.sizes.Hero,
-      image.sizes.Hero_mobile,
-      image.alt,
-      in_component_library
-    ) }}
-  {% endif %} #}
 </div>

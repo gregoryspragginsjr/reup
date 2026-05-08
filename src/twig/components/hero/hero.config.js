@@ -45,10 +45,10 @@ module.exports = {
       }
     },
     {
-      name: 'Reverse Parallel',
+      name: 'Parallel Image Only',
       context: {
+        video: null,
         type: 'parallel',
-        reverse: true,
         tags: true,
         subheading: 'Optional Heading',
         heading: 'Headline Lorem Ipsum.',
@@ -68,6 +68,57 @@ module.exports = {
           }
         ]
       }
-    }
+    },
+    {
+      name: 'Parallel No Media',
+      context: {
+        video: null,
+        image: null,
+        type: 'parallel',
+        tags: true,
+        subheading: 'Optional Heading',
+        heading: 'Resources for Learners',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non, hendrerit luctus.</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Button text',
+              url: '/'
+            }
+          },
+          {
+            button: {
+              title: 'Button text',
+              url: '/'
+            }
+          }
+        ]
+      }
+    },
+    // {
+    //   name: 'Reverse Parallel',
+    //   context: {
+    //     type: 'parallel',
+    //     reverse: true,
+    //     tags: true,
+    //     subheading: 'Optional Heading',
+    //     heading: 'Headline Lorem Ipsum.',
+    //     paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec.</p>',
+    //     buttons: [
+    //       {
+    //         button: {
+    //           title: 'Button text',
+    //           url: '/'
+    //         }
+    //       },
+    //       {
+    //         button: {
+    //           title: 'Button text',
+    //           url: '/'
+    //         }
+    //       }
+    //     ]
+    //   }
+    // }
   ],
 }
