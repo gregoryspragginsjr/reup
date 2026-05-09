@@ -30,6 +30,14 @@
   line-height: 120%;
 }
 
+@mixin heading-style-4() {
+  font-family: $font-primary;
+  font-size: rem-calc(20px);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 120%;
+}
+
 @mixin subheading-style-1() {
   font-family: $font-tertiary;
   font-size: rem-calc(18px);

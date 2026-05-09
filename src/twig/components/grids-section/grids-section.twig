@@ -1,0 +1,22 @@
+{% if in_component_library %}
+  {% set contextSection = '@context-section' %}
+  {% set benefitsGrid = '@benefits-grid' %}
+{% else %}
+  {% set contextSection = 'context-section.twig' %}
+  {% set benefitsGrid = 'benefits-grid.twig' %}
+{% endif %}
+
+<section class="grids-section background--{{ background|default('white') }}">
+  {% include contextSection %}
+  {% set subheading = null %}
+  {% set heading = null %}
+  {% set paragraphs = null %}
+  {% set buttons = null %}
+  {% for item in items %}
+    {% if in_component_library %}
+      {% include '@' ~ item.acf_fc_layout with item|merge({ background: background }) %}
+    {% else %}
+      {% include item.acf_fc_layout ~ '.twig' with item|merge({ background: background }) %}
+    {% endif %}
+  {% endfor %}
+</section>

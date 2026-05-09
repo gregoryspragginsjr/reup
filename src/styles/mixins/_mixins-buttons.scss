@@ -24,7 +24,6 @@
 
     @if $border == '' {
       border-color: $hover-background;
-      border-color: $hover-color;
     }
 
     @else {

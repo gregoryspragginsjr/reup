@@ -8,6 +8,8 @@
 
 .heading-style-3 { @include heading-style-3(); }
 
+.heading-style-4 { @include heading-style-4(); }
+
 // Subheadings
 .subheading-style-1 { @include subheading-style-1(); }
 
@@ -35,11 +37,15 @@
 
 .heading-style-3 + .paragraph-style-3 { margin-top: 10px; }
 
+.heading-style-4 + .paragraph-style-3 { margin-top: 10px; }
+
 .subheading-style-1 + .heading-style-1 { margin-top: 16px; }
 
 .subheading-style-1 + .heading-style-2 { margin-top: 16px; }
 
 .subheading-style-1 + .heading-style-3 { margin-top: 14px; }
+
+.subheading-style-1 + .heading-style-4 { margin-top: 14px; }
 
 .subheading-style-1 + .tag-group { margin-top: 24px; }
 
@@ -50,3 +56,5 @@
 .paragraph-style-3 + .button-group { margin-top: 20px; }
 
 .tag-group + .heading-style-1 { margin-top: 24px; } 
+
+.tag-group + .heading-style-2 { margin-top: 16px; } 

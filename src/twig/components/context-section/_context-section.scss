@@ -16,9 +16,13 @@
       }
     }
   }
-
-  &--background-dark {
-    background-color: $black;
-    color: $white;
+  
+  .context__subheading,
+  .context__heading,
+  p {
+    .background--indigo & {
+      color: $white;
+    }
   }
+  
 }

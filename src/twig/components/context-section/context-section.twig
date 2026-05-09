@@ -8,16 +8,16 @@
   <div class="context-section__inner grid">
     <div class="context-section__main">
     {% include context with {
-      size: 'large',
+      size: size|default('large'),
       align: align,
       heading: heading,
       subheading: subheading,
       paragraphs: paragraphs,
-      button: {
-        type: background == 'dark' ? 'inverse' : 'default',
-        title: button.title,
-        url: button.url
-      },
+      buttons: {
+        size: 'default',
+        type: background == 'indigo' ? 'white' : 'indigo',
+        items: buttons,
+      }
     } %}
     </div>
   </div>

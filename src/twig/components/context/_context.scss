@@ -44,6 +44,20 @@
     }
   }
 
+  &--xsmall {
+    .context__subheading {
+      @extend .subheading-style-1;
+    }
+
+    .context__heading {
+      @extend .heading-style-4;
+    }
+
+    p {
+      @extend .paragraph-style-3;
+    }
+  }
+
   &__subheading {
     color: map.get($magenta, default);
   }

@@ -17,6 +17,10 @@
     @include btn($white, map.get($indigo, default), $white, map.get($magenta, default), '' );
   }
 
+  &--white {
+    @include btn(map.get($magenta, default), $white, $white, map.get($magenta, default), '' );
+  }
+
   &--hollow-indigo,
   &--text-indigo {
     @include btn(map.get($indigo, default), $white, map.get($magenta, default), $white, map.get($indigo, default));

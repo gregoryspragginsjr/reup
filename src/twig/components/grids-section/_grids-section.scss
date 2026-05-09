@@ -1,0 +1,15 @@
+@use "sass:map";
+
+.grids-section {
+  padding: 130px 0 140px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+
+  &.background--indigo {
+    background-color: map.get($indigo, default);
+  }
+
+  > .context-section {
+    padding-top: 0;
+  }
+}
