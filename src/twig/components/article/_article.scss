@@ -1,5 +1,31 @@
 .article {
+
+  @include breakpoint(medium) {
+    display: flex;
+    column-gap: 40px;
+  }
+
+  @include breakpoint(large) {
+    display: block;
+  }
+
+  &__image {
+    @include breakpoint(medium) {
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    @include breakpoint(large) {
+      width: auto;
+    }
+  }
+
   &__image + .context {
     margin-top: 16px;
+  }
+
+  .background--indigo & {
+    padding: 30px;
+    background-color: $white;
   }
 }

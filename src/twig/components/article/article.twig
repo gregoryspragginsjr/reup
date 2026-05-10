@@ -26,10 +26,15 @@
     </div>
   {% endif %}
     {% include context with {
-      size: 'small',
+      size: 'xsmall',
+      tags: null,
       heading: heading,
       subheading: subheading,
       paragraphs: paragraphs,
-      buttons: buttons,
+      buttons: {
+        size: 'default',
+        type: 'text-indigo',
+        items: buttons,
+      }
     } %}
 </article>

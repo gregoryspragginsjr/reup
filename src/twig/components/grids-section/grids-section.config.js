@@ -299,6 +299,422 @@ module.exports = {
           }
         ],
       }
+    },
+    {
+      name: 'Section with Article Grid',
+      context: {
+        items: [
+          {
+            acf_fc_layout: 'article-grid',
+            subheading: 'Optional heading',
+            tags: true,
+            heading: 'Optional H2 Lorem Ipsum Dolor',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'Button text',
+                  url: '/'
+                }
+              },
+              {
+                button: {
+                  title: 'Button text',
+                  url: '/'
+                }
+              }
+            ],
+            items: [
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+            ]
+          }
+        ]
+      }
+    },
+    {
+      name: 'Cream Section with Article Grid',
+      context: {
+        background: 'cream',
+        items: [
+          {
+            acf_fc_layout: 'article-grid',
+            subheading: 'Optional heading',
+            tags: true,
+            heading: 'Optional H2 Lorem Ipsum Dolor',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'Button text',
+                  url: '/'
+                }
+              },
+              {
+                button: {
+                  title: 'Button text',
+                  url: '/'
+                }
+              }
+            ],
+            items: [
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+            ]
+          }
+        ]
+      }
+    },
+    {
+      name: 'Indigo Section with Article Grid',
+      context: {
+        background: 'indigo',
+        items: [
+          {
+            acf_fc_layout: 'article-grid',
+            subheading: 'Optional heading',
+            tags: true,
+            heading: 'Optional H2 Lorem Ipsum Dolor',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'Button text',
+                  url: '/'
+                }
+              },
+              {
+                button: {
+                  title: 'Button text',
+                  url: '/'
+                }
+              }
+            ],
+            items: [
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+              {
+                image: {
+                  srcset: 'https://placehold.co/600x450',
+                  src: 'https://placehold.co/600x450',
+                  alt: 'Test alt',
+                },
+                heading: 'Block headline lorem',
+                subheading: 'Optional heading',
+                paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+                buttons: [
+                  {
+                    button: {
+                      title: 'Button Text',
+                      url: 'https://welcometruth.com/'
+                    }
+                  },
+                ]
+              },
+            ]
+          }
+        ]
+      }
     }
   ]
 }

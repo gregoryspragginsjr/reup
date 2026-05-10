@@ -5,92 +5,126 @@ module.exports = {
     items: [
       {
         image: {
-          srcset: 'https://via.placeholder.com/660x470',
-          src: 'https://via.placeholder.com/660x470',
+          srcset: 'https://placehold.co/600x450',
+          src: 'https://placehold.co/600x450',
           alt: 'Test alt',
         },
-        heading: 'This is an article',
-        subheading: 'Articles leverage context components',
-        paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat ultricies consectetur. Duis vel ligula non nisi dignissim commodo vel dignissim nibh.</p>',
+        heading: 'Block headline lorem',
+        subheading: 'Optional heading',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
         buttons: [
           {
             button: {
-              title: 'Active',
+              title: 'Button Text',
               url: 'https://welcometruth.com/'
             }
           },
-          {
-            button: {
-              title: 'Active',
-              url: 'https://welcometruth.com/'
-            }
-          }
         ]
       },
       {
         image: {
-          srcset: 'https://via.placeholder.com/660x470',
-          src: 'https://via.placeholder.com/660x470',
+          srcset: 'https://placehold.co/600x450',
+          src: 'https://placehold.co/600x450',
           alt: 'Test alt',
         },
-        heading: 'This is an article',
-        subheading: 'Articles leverage context components',
-        paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat ultricies consectetur. Duis vel ligula non nisi dignissim commodo vel dignissim nibh.</p>'
+        heading: 'Block headline lorem',
+        subheading: 'Optional heading',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Button Text',
+              url: 'https://welcometruth.com/'
+            }
+          },
+        ]
       },
       {
         image: {
-          srcset: 'https://via.placeholder.com/660x470',
-          src: 'https://via.placeholder.com/660x470',
+          srcset: 'https://placehold.co/600x450',
+          src: 'https://placehold.co/600x450',
           alt: 'Test alt',
         },
-        heading: 'This is an article',
-        subheading: 'Articles leverage context components',
-        paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat ultricies consectetur. Duis vel ligula non nisi dignissim commodo vel dignissim nibh.</p>'
+        heading: 'Block headline lorem',
+        subheading: 'Optional heading',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Button Text',
+              url: 'https://welcometruth.com/'
+            }
+          },
+        ]
       },
       {
         image: {
-          srcset: 'https://via.placeholder.com/660x470',
-          src: 'https://via.placeholder.com/660x470',
+          srcset: 'https://placehold.co/600x450',
+          src: 'https://placehold.co/600x450',
           alt: 'Test alt',
         },
-        heading: 'This is an article',
-        subheading: 'Articles leverage context components',
-        paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat ultricies consectetur. Duis vel ligula non nisi dignissim commodo vel dignissim nibh.</p>'
+        heading: 'Block headline lorem',
+        subheading: 'Optional heading',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Button Text',
+              url: 'https://welcometruth.com/'
+            }
+          },
+        ]
       },
       {
         image: {
-          srcset: 'https://via.placeholder.com/660x470',
-          src: 'https://via.placeholder.com/660x470',
+          srcset: 'https://placehold.co/600x450',
+          src: 'https://placehold.co/600x450',
           alt: 'Test alt',
         },
-        heading: 'This is an article',
-        subheading: 'Articles leverage context components',
-        paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat ultricies consectetur. Duis vel ligula non nisi dignissim commodo vel dignissim nibh.</p>'
+        heading: 'Block headline lorem',
+        subheading: 'Optional heading',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Button Text',
+              url: 'https://welcometruth.com/'
+            }
+          },
+        ]
       },
       {
         image: {
-          srcset: 'https://via.placeholder.com/660x470',
-          src: 'https://via.placeholder.com/660x470',
+          srcset: 'https://placehold.co/600x450',
+          src: 'https://placehold.co/600x450',
           alt: 'Test alt',
         },
-        heading: 'This is an article',
-        subheading: 'Articles leverage context components',
-        paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi volutpat ultricies consectetur. Duis vel ligula non nisi dignissim commodo vel dignissim nibh.</p>'
+        heading: 'Block headline lorem',
+        subheading: 'Optional heading',
+        paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Button Text',
+              url: 'https://welcometruth.com/'
+            }
+          },
+        ]
       },
     ]
   },
-  variants: [
-    {
-      name: '3 Column',
-      context: {
-        columns: 3,
-      }
-    },
-    {
-      name: '2 Column',
-      context: {
-        columns: 2,
-      }
-    },
-  ]
+  // variants: [
+  //   {
+  //     name: '3 Column',
+  //     context: {
+  //       columns: 3,
+  //     }
+  //   },
+  //   {
+  //     name: '2 Column',
+  //     context: {
+  //       columns: 2,
+  //     }
+  //   },
+  // ]
 }

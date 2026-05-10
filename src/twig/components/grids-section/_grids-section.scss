@@ -9,7 +9,48 @@
     background-color: map.get($indigo, default);
   }
 
+  &.background--cream {
+    background-color: map.get($cream, default);
+  }
+
   > .context-section {
     padding-top: 0;
+  }
+
+  .benefits-grid,
+  .article-grid {
+    .context-section {
+      padding: 0;
+
+      &__inner {
+        position: relative;
+
+        &::before {
+          content: '';
+          grid-column: span 12 / span 12;
+          padding-bottom: 80px;
+          border-top: 2px solid map.get($cream, default);
+        }
+      }
+
+      &__main {
+        @include breakpoint(large) {
+          grid-column: span 8 / span 8;
+        }
+      }
+
+      .button-group {
+        @include breakpoint(large) {
+          position: absolute;
+          top: 80px;
+          right: 50px;
+          margin-top: 0;
+        }
+      }
+    }
+
+    .context-section + .grid {
+      margin-top: 40px;
+    }
   }
 }
