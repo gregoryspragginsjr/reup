@@ -1,0 +1,81 @@
+@use "sass:map";
+
+.testimonials-carousel {
+  position: relative;
+  padding: 14px 24px;
+  background-color: $white;
+  border-radius: 12px;
+
+  &__window {
+    position: relative;
+    transition: $transition-default;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition-default;
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  picture {
+    flex-shrink: 0;
+  }
+
+  &__image {
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1.5px solid map.get($magenta, default);
+  }
+
+  p,
+  &__name {
+    font-family: $font-secondary;
+    font-size: rem-calc(12px);
+    font-weight: 500;
+    font-style: normal;
+    line-height: 130%;
+    color: map.get($indigo, default);
+  }
+
+  &__name {
+    max-width: 75%;
+    margin-top: 6px;
+  }
+
+  &__controls {
+    position: absolute;
+    right: 24px;
+    bottom: 14px;
+    display: flex;
+    gap: 4px;
+
+    li {
+      font-size: 0;
+    }
+
+    button {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      background-color: map.get($magenta, light);
+      border: 0;
+      appearance: none;
+      cursor: pointer;
+
+      &.active {
+        background-color: map.get($magenta, default);
+      }
+    }
+  }
+}

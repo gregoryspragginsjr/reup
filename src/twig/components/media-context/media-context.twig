@@ -4,12 +4,14 @@
 {% if in_component_library %}
   {% set context = '@context' %}
   {% set videoComponent = '@video' %}
+  {% set testimonialsCarousel = '@testimonials-carousel' %}
 {% else %}
   {% set context = 'context.twig' %}
   {% set videoComponent = 'video.twig' %}
+  {% set testimonialsCarousel = 'testimonials-carousel.twig' %}
 {% endif %}
 
-<div class="media-context{% if reverse %} media-context--reversed{% endif %}">
+<div class="media-context{% if reverse %} media-context--reversed{% endif %}{% if testimonials %} media-context--with-testimonials{% endif %}">
   <div class="media-context__inner grid">
     <div class="media-context__media">
       {% if video %}
@@ -20,7 +22,7 @@
             </div>
           </div>
           {{ macros.picture(
-            'w-full object-cover',
+            'w-full',
             image.srcset,
             image.src,
             image.sizes.Rectangle,
@@ -38,7 +40,7 @@
           <a href="{{ firstBtn.button.url }}">
         {% endif %}
           {{ macros.picture(
-            'w-full object-cover',
+            'w-full',
             image.srcset,
             image.src,
             image.sizes.Rectangle,
@@ -48,14 +50,29 @@
           ) }}
         {% if buttons %}</a>{% endif %}
       {% endif %}
+      {% if testimonials %}
+        {% include testimonialsCarousel with {
+          items: testimonials,
+        } %}
+      {% endif %}
     </div>
     <div class="media-context__context">
       {% include context with {
+        size: 'large',
         subheading: subheading,
         heading: heading,
         paragraphs: paragraphs,
-        buttons: buttons
+        buttons: {
+          size: 'default',
+          type: btnType,
+          items: buttons,
+        }
       } %}
+      {% if testimonials %}
+        {% include testimonialsCarousel with {
+          items: testimonials,
+        } %}
+      {% endif %}
     </div>
   </div>
 </div>

@@ -1,49 +1,103 @@
+@use "sass:map";
+
 .media-context {
+  padding: 80px 0;
+  background-color: map.get($cream, default);
+
   &__media,
   &__context {
     grid-column: span 12 / span 12;
   }
 
   &__media {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 0;
+    margin-top: 40px;
+
     @include breakpoint(medium) {
-      grid-column: span 6 / span 6;
+      grid-column: span 5 / span 5;
+      display: block;
+      margin-top: 0;
     }
 
     @include breakpoint(large) {
-      grid-column: span 5 / span 5;
-      grid-column-start: 2;
+      grid-column: span 6 / span 6;
     }
 
-    .media-context--reversed & {
+    a {
+      position: relative;
+      display: block;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        background-color: map.get($magenta, default);
+
+        .media-context--reversed & {
+          right: 0;
+          left: auto;
+        }
+      }
+    }
+
+    .testimonials-carousel {
+      display: block;
+      order: -1;
+      margin-bottom: 40px;
+
+      @include breakpoint(medium) {
+        order: 0;
+        margin-top: 40px;
+        margin-bottom: 0;
+      }
+
       @include breakpoint(large) {
-        grid-column-start: auto;
+        display: none;
       }
     }
   }
 
   &__context {
-    margin-top: 16px;
+    order: -1;
 
     @include breakpoint(medium) {
-      grid-column: span 6 / span 6;
-
+      grid-column: span 7 / span 7;
+      order: 0;
       display: flex;
-      align-items: center;
-      margin-top: 0;
+      flex-direction: column;
+      justify-content: center;
+
+      .media-context--with-testimonials & {
+        justify-content: space-between;
+      }
     }
 
     @include breakpoint(large) {
-      grid-column: span 5 / span 5;
+      grid-column: span 6 / span 6;
     }
 
     .media-context--reversed & {
       @include breakpoint(medium) {
         order: -1;
       }
+    }
+
+    .testimonials-carousel {
+      display: none;
 
       @include breakpoint(large) {
-        grid-column-start: 2;
+        display: block;
       }
     }
+  }
+
+  .context + .testimonials-carousel {
+    margin-top: 24px;
   }
 }
