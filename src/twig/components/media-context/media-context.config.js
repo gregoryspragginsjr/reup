@@ -154,6 +154,70 @@ module.exports = {
       }
     },
     {
+      name: 'Medium with Cards',
+      context: {
+        size: 'medium',
+        image: {
+          srcset: 'https://placehold.co/400x300',
+          src: 'https://placehold.co/400x300',
+          alt: 'Test alt',
+        },
+        heading: 'Headline Lorem Ipsum Dolor Sit',
+        cards: [
+          {
+            image: {
+              srcset: 'https://placehold.co/400x400',
+              src: 'https://placehold.co/400x400',
+              alt: 'Test alt',
+            },
+            tags: true,
+            subheading: 'Optional heading',
+            heading: 'Block headline lorem',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'Button Text',
+                  url: 'https://welcometruth.com/'
+                }
+              },
+              {
+                button: {
+                  title: 'Button Text',
+                  url: 'https://welcometruth.com/'
+                }
+              }
+            ],
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/400x400',
+              src: 'https://placehold.co/400x400',
+              alt: 'Test alt',
+            },
+            tags: true,
+            subheading: 'Optional heading',
+            heading: 'Block headline lorem',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'Button Text',
+                  url: 'https://welcometruth.com/'
+                }
+              },
+              {
+                button: {
+                  title: 'Button Text',
+                  url: 'https://welcometruth.com/'
+                }
+              }
+            ],
+          }
+        ]
+      }
+    },
+    {
       name: 'Display',
       context: {
         size: 'display',
@@ -245,14 +309,5 @@ module.exports = {
         ]
       }
     },
-    // {
-    //   name: 'With Video',
-    //   context: {
-    //     video: {
-    //       id: '86jwyC1kFDk',
-    //     },
-    //     button: null,
-    //   }
-    // }
   ]
 }

@@ -7,6 +7,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: rem-calc(16px);
+
+  &--text-indigo,
+  &--text-magenta {
+    column-gap: 30px !important;
+    row-gap: 16px;
+  }
 }
 
 // Buttons
@@ -43,7 +49,7 @@
   }
 
   &--text-indigo,
-  &--text-magetna {
+  &--text-magenta {
     padding: 0;
     text-decoration: underline;
     background-color: transparent;
@@ -53,9 +59,9 @@
       background-color: transparent;
     }
 
-    + * {
-      margin-left: 20px;
-    }
+    // + * {
+    //   margin-left: 20px;
+    // }
   }
 }
 

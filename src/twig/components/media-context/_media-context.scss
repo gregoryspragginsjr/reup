@@ -95,6 +95,12 @@
     }
   }
 
+  &__inner + &__inner {
+    z-index: 1;
+    position: relative;
+    margin-top: 60px;
+  }
+
   &__overlay {
     @include breakpoint(large) {
       position: absolute;
@@ -264,5 +270,55 @@
 
   .context + .testimonials-carousel {
     margin-top: 24px;
+  }
+
+  &__item {
+    grid-column: span 12 / span 12;
+
+    @include breakpoint(large) {
+      grid-column: span 6 / span 6;
+    }
+  }
+
+  &__item + &__item {
+    margin-top: 30px;
+
+    @include breakpoint(large) {
+      margin-top: 0;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 30px;
+    background-color: map.get($cream, light);
+    border: 1.5px solid map.get($cream, default);
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+    }
+
+    img {
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .context {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tag-group {
+      order: -1;
+      margin-top: 0 !important;
+      margin-bottom: 20px;
+    }
+
+    .context__subheading {
+      margin-bottom: 20px;
+    }
   }
 }
