@@ -3,7 +3,68 @@
 .media-context {
   position: relative;
   padding: 80px 0;
+  font-size: 0;
   background-color: map.get($cream, default);
+  overflow-x: hidden;
+
+  &--display {
+    padding: 60px 0 0;
+    background-color: map.get($indigo, default);
+
+    @include breakpoint(large) {
+      padding: 0;
+    }
+
+    .context {
+      @include breakpoint(large) {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+      }
+    }
+
+    .context__heading {
+      font-family: $font-primary;
+      font-size: rem-calc(60px);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 110%;
+      letter-spacing: -2%;
+      color: $white;
+
+      @include breakpoint(medium) {
+        font-size: rem-calc(80px);
+      }
+
+      @include breakpoint(large) {
+        font-size: rem-calc(100px);
+        margin-top: 0;
+        margin-bottom: auto;
+      }
+    }
+
+    .context__heading + p {
+      margin-top: 30px;
+
+      @include breakpoint(large) {
+        margin-top: 0;
+      }
+    }
+
+    p {
+      font-family: $font-secondary;
+      font-size: rem-calc(20px);
+      font-weight: 400;
+      font-style: normal;
+      line-height: 125%;
+      color: $white;
+
+      @include breakpoint(large) {
+        font-size: rem-calc(22px);
+      }
+    }
+  }
 
   &--medium {
     background-color: $white;
@@ -34,6 +95,39 @@
     }
   }
 
+  &__overlay {
+    @include breakpoint(large) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .grid {
+      height: 100%;
+
+      @include breakpoint(large) {
+        column-gap: 0;
+      }
+    }
+  }
+
+  &__big-image {
+    margin-top: 60px;
+
+    @include breakpoint(large) {
+      width: 50%;
+      margin-top: 0;
+
+      .media-context--reversed & {
+        display: block;
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+
   &__media,
   &__context {
     grid-column: span 12 / span 12;
@@ -57,6 +151,10 @@
 
       .media-context--medium & {
         grid-column: span 5 / span 5;
+      }
+
+      .media-context--display & {
+        grid-column: span 6 / span 6;
       }
     }
 
@@ -112,6 +210,10 @@
       .media-context--with-testimonials & {
         justify-content: space-between;
       }
+
+      .media-context--display & {
+        grid-column: span 12 / span 12;
+      }
     }
 
     @include breakpoint(large) {
@@ -119,6 +221,17 @@
 
       .media-context--medium & {
         grid-column: span 7 / span 7;
+      }
+
+      .media-context--display & {
+        grid-column: span 6 / span 6;
+        grid-column-start: 7;
+        padding: 60px 0 60px 60px;
+      }
+
+      .media-context--reversed.media-context--display & {
+        grid-column-start: 1;
+        padding: 60px 60px 60px 0;
       }
     }
 
@@ -131,10 +244,22 @@
     .testimonials-carousel {
       display: none;
 
+      .media-context--display & {
+        display: block;
+      }
+
       @include breakpoint(large) {
         display: block;
       }
     }
+  }
+
+  &__special-button-group {
+    margin-top: 30px;
+  }
+
+  &__special-button-group + .testimonials-carousel {
+    margin-top: 40px;
   }
 
   .context + .testimonials-carousel {

@@ -17,6 +17,22 @@
     @include btn($white, map.get($indigo, default), $white, map.get($magenta, default), '' );
   }
 
+  &--magenta {
+    @include btn($white, map.get($magenta, default), $white, map.get($magenta, dark), '' );
+  }
+
+  &--green {
+    @include btn($black, map.get($green, default), $white, map.get($green, dark), '' );
+  }
+
+  &--aqua {
+    @include btn($black, map.get($aqua, default), $white, map.get($aqua, dark), '' );
+  }
+
+  &--honey {
+    @include btn($black, map.get($honey, default), $white, map.get($honey, dark), '' );
+  }
+
   &--white {
     @include btn(map.get($magenta, default), $white, $white, map.get($magenta, default), '' );
   }
