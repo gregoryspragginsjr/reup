@@ -1,8 +1,38 @@
 @use "sass:map";
 
 .media-context {
+  position: relative;
   padding: 80px 0;
   background-color: map.get($cream, default);
+
+  &--medium {
+    background-color: $white;
+
+    &::after {
+      content: '';
+      z-index: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: none;
+      width: 560px;
+      height: 490px;
+      background-color: #FBF9F9;
+      transform: rotate(-172deg);
+
+      @include breakpoint(large) {
+        display: block;
+      }
+    }
+  }
+
+  &--reversed {
+    &::after {
+      right: auto;
+      left: 0;
+      transform: rotate(172deg);
+    }
+  }
 
   &__media,
   &__context {
@@ -24,6 +54,10 @@
 
     @include breakpoint(large) {
       grid-column: span 6 / span 6;
+
+      .media-context--medium & {
+        grid-column: span 5 / span 5;
+      }
     }
 
     a {
@@ -64,6 +98,8 @@
   }
 
   &__context {
+    z-index: 1;
+    position: relative;
     order: -1;
 
     @include breakpoint(medium) {
@@ -80,6 +116,10 @@
 
     @include breakpoint(large) {
       grid-column: span 6 / span 6;
+
+      .media-context--medium & {
+        grid-column: span 7 / span 7;
+      }
     }
 
     .media-context--reversed & {

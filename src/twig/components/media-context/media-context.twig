@@ -11,7 +11,7 @@
   {% set testimonialsCarousel = 'testimonials-carousel.twig' %}
 {% endif %}
 
-<div class="media-context{% if reverse %} media-context--reversed{% endif %}{% if testimonials %} media-context--with-testimonials{% endif %}">
+<div class="media-context media-context--{{ size|default('large') }}{% if reverse %} media-context--reversed{% endif %}{% if testimonials %} media-context--with-testimonials{% endif %}">
   <div class="media-context__inner grid">
     <div class="media-context__media">
       {% if video %}
@@ -58,13 +58,13 @@
     </div>
     <div class="media-context__context">
       {% include context with {
-        size: 'large',
+        size: size|default('large'),
         subheading: subheading,
         heading: heading,
         paragraphs: paragraphs,
         buttons: {
           size: 'default',
-          type: btnType,
+          type: size == 'medium' ? 'hollow-indigo' : 'indigo',
           items: buttons,
         }
       } %}

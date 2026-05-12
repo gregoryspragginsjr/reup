@@ -129,13 +129,38 @@ module.exports = {
       }
     },
     {
-      name: 'With Video',
+      name: 'Medium',
       context: {
-        video: {
-          id: '86jwyC1kFDk',
+        size: 'medium',
+        image: {
+          srcset: 'https://placehold.co/400x300',
+          src: 'https://placehold.co/400x300',
+          alt: 'Test alt',
         },
-        button: null,
+        heading: 'Headline Lorem Ipsum Dolor Sit'
+      }
+    },
+    {
+      name: 'Medium Reverse',
+      context: {
+        size: 'medium',
+        reverse: true,
+        image: {
+          srcset: 'https://placehold.co/400x300',
+          src: 'https://placehold.co/400x300',
+          alt: 'Test alt',
+        },
+        heading: 'Headline Lorem Ipsum Dolor Sit'
       }
     }
+    // {
+    //   name: 'With Video',
+    //   context: {
+    //     video: {
+    //       id: '86jwyC1kFDk',
+    //     },
+    //     button: null,
+    //   }
+    // }
   ]
 }
