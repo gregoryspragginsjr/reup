@@ -1,0 +1,50 @@
+{% import "macros.twig" as macros %}
+
+{% if in_component_library %}
+  {% set context = '@context' %}
+{% else %}
+  {% set context = 'context.twig' %}
+{% endif %}
+
+<section class="list-accordion list-accordion--{{ type|default('default') }}">
+  <div class="list-accordion__inner grid">
+    <div class="list-accordion__left">
+      <div class="list-accordion__image">
+        {{ macros.picture(
+          'w-full object-cover',
+          image.srcset,
+          image.src,
+          image.sizes.Rectangle,
+          image.sizes.Rectangle_mobile,
+          image.alt,
+          in_component_library
+        ) }}
+      </div>
+      <h2 class="list-accordion__heading">{{ display_heading }}</h2>
+      {{ display_paragraphs|raw }}
+    </div>
+    <div class="list-accordion__right">
+      {% include context with {
+        type: 'default',
+        size: 'medium',
+        align: 'left',
+        subheading: subheading,
+        heading: heading,
+        paragraphs: paragraphs,
+        buttons: {
+          size: 'default',
+          type: 'hollow-indigo',
+          items: buttons,
+        }
+      } %}
+      <ul class="list-accordion__timeline">
+        {% for item in panels %}
+          <li>
+            <h4 class="heading-style-3">{{ item.heading }}</h4>
+            {{ item.content }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

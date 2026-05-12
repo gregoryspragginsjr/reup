@@ -1,0 +1,126 @@
+@use "sass:map";
+
+.list-accordion {
+  padding: 60px 0 100px;
+  background-color: map.get($cream, default);
+
+  @include breakpoint(large) {
+    padding: 80px 0 100px;
+  }
+
+  &__inner {
+    @include breakpoint(large) {
+      column-gap: 100px;
+    }
+  }
+
+  &__left,
+  &__right {
+    grid-column: span 12 / span 12;
+
+    @include breakpoint(large) {
+      grid-column: span 6 / span 6;
+    }
+  }
+
+  &__left {
+    color: map.get($indigo, default);
+
+    p {
+      font-family: $font-secondary;
+      font-size: rem-calc(18px);
+      font-weight: 500;
+      font-style: normal;
+      line-height: 130%;
+      padding-left: 30px;
+      border-left: 3px solid map.get($magenta, default);
+    }
+  }
+
+  &__left + &__right {
+    margin-top: 80px;
+
+    @include breakpoint(large) {
+      margin-top: 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+
+    img {
+      display: block;
+    }
+  }
+
+  &__heading {
+    font-family: $font-primary;
+    font-size: rem-calc(40px);
+    font-weight: 600;
+    font-style: normal;
+    line-height: 100%;
+    letter-spacing: -2%;
+    // margin-top: -50px;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(60px);
+    }
+
+    > span {
+      padding-top: 10px;
+      padding-right: 10px;
+      position: relative;
+      background-color: map.get($cream, default);
+
+      span {
+        z-index: 2;
+        position: relative;
+      }
+    }
+  }
+
+  &__heading + p {
+    margin-top: 30px;
+  }
+
+  .context + &__timeline {
+    margin-top: 20px;
+  }
+
+  &__timeline {
+
+    li {
+      position: relative;
+      padding-top: 40px;
+      padding-left: 35px;
+      margin-left: 9px;
+      border-left: 3px solid map.get($indigo, default);
+      color: map.get($indigo, default);
+
+      h4 {
+        position: relative;
+        line-height: 100%;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -46.5px;
+          width: 20px;
+          height: 20px;
+          background-color: map.get($magenta, default);
+        }
+      }
+    }
+
+    li + li {
+      padding-top: 60px;
+    }
+
+    p {
+      @extend .paragraph-style-3;
+    }
+  }
+}
