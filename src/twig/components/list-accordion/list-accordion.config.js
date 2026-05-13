@@ -48,5 +48,13 @@ module.exports = {
         content: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non, hendrerit luctus. Lorem ipsum dolor sit amet, consecte adipiscing elit vestibulum orci est, auctor nec neque non.</p>'
       },
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'Accordion',
+      context: {
+        type: 'accordion',
+      }
+    }
+  ]
 }

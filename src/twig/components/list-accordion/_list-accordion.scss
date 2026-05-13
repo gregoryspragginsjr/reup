@@ -45,6 +45,15 @@
     }
   }
 
+  &__right {
+    .list-accordion--accordion & {
+      @include breakpoint(large) {
+        grid-column: span 10 / span 10;
+        grid-column-start: 2;
+      }
+    }
+  }
+
   &__image {
     width: 100%;
     border-radius: 25px;
@@ -85,13 +94,16 @@
     margin-top: 30px;
   }
 
-  .context + &__timeline {
+  .context + &__timeline,
+  .context + .accordion {
     margin-top: 20px;
   }
 
+  .accordion,
   &__timeline {
 
-    li {
+    .accordion__panel,
+    > li {
       position: relative;
       padding-top: 40px;
       padding-left: 35px;
@@ -99,6 +111,7 @@
       border-left: 3px solid map.get($indigo, default);
       color: map.get($indigo, default);
 
+      h3,
       h4 {
         position: relative;
         line-height: 100%;
@@ -115,8 +128,34 @@
       }
     }
 
-    li + li {
+    > li + li {
       padding-top: 60px;
+    }
+
+    .accordion__panel + .accordion__panel {
+      border-top: 0;
+    }
+
+    .accordion__button {
+      padding-top: 0;
+      padding-bottom: 10px;
+      color: map.get($indigo, default);
+
+      &[aria-expanded='true'] {
+        color: map.get($magenta, default);
+
+        svg {
+          fill: map.get($magenta, default);
+        }
+      }
+    }
+
+    .accordion__arrow-btn {
+      background-color: transparent;
+
+      svg {
+        fill: map.get($indigo, default);
+      }
     }
 
     p {
