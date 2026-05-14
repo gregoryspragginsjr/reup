@@ -10,7 +10,7 @@
     visibility: hidden;
     opacity: 0;
     background-color: map.get($cream, default);
-    transition: $transition-default;
+    transition: 0.4s $ease-default;
 
     @include breakpoint(medium) {
       display: flex;
@@ -19,6 +19,7 @@
     &--active {
       visibility: visible;
       opacity: 1;
+      transition: $transition-default;
     }
   }
 
