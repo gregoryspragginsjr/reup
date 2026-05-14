@@ -5,6 +5,7 @@
   class="video"
   v-slot="video"
   id="{{ video.id }}"
+  player="{{ video.player }}"
   is="video"
 >
   <div
@@ -19,15 +20,26 @@
         <source src="{{ video.loop }}" type="video/mp4">
       </video>
     {% endif %}
-    {{ macros.picture(
-      'video__image object-cover',
-      image.srcset,
-      image.src,
-      image.sizes.Rectangle,
-      image.sizes.Rectangle_mobile,
-      image.alt,
-      in_component_library
-    ) }}
+    {% if image %}
+      {{ macros.picture(
+        'video__image object-cover',
+        image.srcset,
+        image.src,
+        image.sizes.Rectangle,
+        image.sizes.Rectangle_mobile,
+        image.alt,
+        in_component_library
+      ) }}
+    {% endif %}
   </div>
-  <div class="video__iframe"></div>
+  {% if video.player == 'wistia' %}
+    <wistia-player
+      class="video__iframe"
+      media-id="{{ video.id }}"
+      autoplay="false"
+      big-play-button="false"
+    ></wistia-player>
+  {% else %}
+    <div class="video__iframe"></div>
+  {% endif %}
 </component>

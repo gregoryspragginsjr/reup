@@ -55,6 +55,7 @@
         "@frctl/twig": "^1.2.12",
         "@glidejs/glide": "^3.5.2",
         "@vue/compiler-sfc": "^3.5.33",
+        "@wistia/wistia-player": "^0.7.1",
         "axios": "^0.27.2",
         "fuse.js": "^6.6.2",
         "gsap": "^3.10.0",
