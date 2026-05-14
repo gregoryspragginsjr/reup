@@ -35,6 +35,8 @@
 
 .heading-style-2 + .paragraph-style-2 { margin-top: 12px; }
 
+.heading-style-3 + .paragraph-style-2 { margin-top: 10px; }
+
 .heading-style-3 + .paragraph-style-3 { margin-top: 10px; }
 
 .heading-style-4 + .paragraph-style-3 { margin-top: 10px; }
@@ -50,6 +52,12 @@
 .subheading-style-1 + .tag-group { margin-top: 24px; }
 
 .paragraph-style-1 + .button-group { margin-top: 24px; }
+
+.paragraph-style-2 + .heading-style-2 { margin-top: 60px; }
+
+.paragraph-style-2 + .heading-style-3 { margin-top: 60px; }
+
+.paragraph-style-2 + .paragraph-style-2 { margin-top: 24px; }
 
 .paragraph-style-2 + .button-group { margin-top: 24px; }
 

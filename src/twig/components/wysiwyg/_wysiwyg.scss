@@ -11,6 +11,8 @@
   // actual page header
   // ~ Greg
 
+  color: map.get($indigo, default);
+
   &.page {
     > h1, > h2, > h3, > h4, > h5, > h6, > p, > ul, > ol, > blockquote {
       width: 100%;
@@ -53,7 +55,7 @@
 
   > h3 { @extend .heading-style-3; }
 
-  // > h4 { @extend .heading-style-5; }
+  > h4 { @extend .heading-style-4; }
 
   // > h5 { @extend .heading-style-6; }
 
@@ -85,14 +87,18 @@
   > ul,
   > ol {
     @extend .paragraph-style-2;
+    font-weight: 400;
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(20px);
+    }
 
     a {
-      color: $black;
+      color: map.get($indigo, default);
       text-decoration: underline;
-      transition: $transition-default;
 
       &:hover {
-        color: $cyan;
+        color: map.get($magenta, default);
         text-decoration: none;
       }
     }
@@ -118,7 +124,7 @@
       list-style-type: disc;
 
       &::marker {
-        color: $black;
+        color: map.get($indigo, default);
       }
     }
   }
@@ -130,10 +136,9 @@
 
       &::marker {
         font-family: $font-secondary;
-        color: $black;
+        color: map.get($indigo, default);
         font-weight: 800;
       }
     }
   }
-
 }

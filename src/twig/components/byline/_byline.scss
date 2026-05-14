@@ -1,0 +1,26 @@
+@use "sass:map";
+
+.byline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+
+  @include breakpoint(medium) {
+    flex-direction: row;
+  }
+
+  &__item {
+    @include breakpoint(medium) {
+      min-width: 240px;
+    }
+  }
+
+  &__subheading {
+    color: map.get($magenta, default);
+  }
+
+  &__heading {
+    color: map.get($indigo, default);
+  }
+}

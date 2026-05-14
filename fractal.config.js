@@ -4,7 +4,7 @@
 const fractal = (module.exports = require('@frctl/fractal').create());
 
 /* Set the title of the project */
-fractal.set('project.title', 'Truth & Consequences Web Starter Pack');
+fractal.set('project.title', 'Reup Component Library');
 fractal.set('project.author', 'Greg Spraggins');
 
 /* Tell Fractal where the components will live */
@@ -34,8 +34,9 @@ const mandelbrot = require('@frctl/mandelbrot');
 const myCustomisedTheme = mandelbrot({
     skin: {
         name: 'black',
-        complement: '#66ffff',
-        links: '#000000',
+        accent: '#1b00a0',
+        complement: '#ffffff',
+        links: '#be17ac',
     },
     // any other theme configuration values here
 });
