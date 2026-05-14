@@ -1,5 +1,5 @@
 module.exports = {
-  title: "Hero",
+  title: "List Accordion",
   status: "wip",
   context: {
     image: {

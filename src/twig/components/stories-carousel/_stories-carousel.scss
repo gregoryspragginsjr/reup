@@ -1,0 +1,260 @@
+@use "sass:map";
+
+.stories-carousel {
+  position: relative;
+  background-color: map.get($cream, default);
+  overflow: hidden;
+
+  &__slide {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    background-color: map.get($cream, default);
+    transition: $transition-default;
+
+    @include breakpoint(medium) {
+      display: flex;
+    }
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1 1 auto;
+    padding: 40px;
+
+    @include breakpoint(medium) {
+      padding: 50px;
+    }
+
+    @include breakpoint(large) {
+      padding: 60px;
+    }
+  }
+
+  &__label,
+  &__subheading {
+    color: map.get($indigo, default);
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+ 
+    span {
+      font-family: $font-secondary;
+      font-size: rem-calc(22px);
+      font-weight: 400;
+      font-style: normal;
+      line-height: 125%;
+    }
+  }
+
+  &__label + &__content {
+    margin-top: 40px;
+
+    @include breakpoint(large) {
+      margin-top: 0;
+    }
+  }
+
+  .tag {
+    display: inline-flex;
+    padding: 8px 16px;
+    font-size: rem-calc(16px);
+    letter-spacing: 0;
+
+    svg {
+      width: 16px;
+    }
+  }
+
+  &__subheading {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-family: $font-tertiary;
+    font-size: rem-calc(12px);
+    font-weight: 500;
+    font-style: normal;
+    line-height: 120%;
+    text-transform: uppercase;
+
+    @include breakpoint(medium) {
+      align-items: center;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 12px;
+      margin-top: 1px;
+      background-color: map.get($magenta, default);
+
+      @include breakpoint(medium) {
+        margin-top: 0;
+      }
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      @include breakpoint(medium) {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+
+    span + span {
+
+      @include breakpoint(medium) {
+        padding-left: 15px;
+        border-left: 1px solid map.get($magenta, default);
+      }
+    }
+  }
+
+  &__subheading + &__heading {
+    margin-top: 20px;
+
+    @include breakpoint(large) {
+      margin-top: 30px;
+    }
+  }
+
+  &__heading {
+    color: map.get($indigo, default);
+  }
+
+  p {
+    @extend .paragraph-style-2;
+
+    color: map.get($indigo, default);
+  }
+
+  &__image {
+    position: relative;
+    flex-shrink: 0;
+    width: 300px;
+    border: 30px solid map.get($magenta, default);
+    margin: 0 auto;
+    font-size: 0;
+
+    @include breakpoint(medium) {
+      width: 330px;
+      margin: 0 0 auto;
+    }
+
+    @include breakpoint(large) {
+      width: 520px;
+      margin: 0;
+    }
+
+    .stories-carousel__slide--institutions & {
+      border-color: map.get($aqua, default);
+    }
+
+    .stories-carousel__slide--learners & {
+      border-color: map.get($honey, default);
+    }
+
+    .stories-carousel__slide--states & {
+      border-color: map.get($green, default);
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-color: map.get($indigo, default);
+    }
+
+    &::before {
+      top: -30px;
+      right: -30px;
+    }
+
+    &::after {
+      bottom: -30px;
+      left: -30px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__scaffold {
+    width: 100%;
+
+    @include breakpoint(medium) {
+      width: 330px;
+      padding-bottom: 110px;
+    }
+
+    @include breakpoint(large) {
+      width: 520px;
+      padding-bottom: 0;
+    }
+
+    span {
+      display: block;
+      padding-bottom: 314%;
+
+      @include breakpoint(medium) {
+        padding-bottom: 142.7%;
+      }
+
+      @include breakpoint(large) {
+        padding-bottom: 146.2%;
+      }
+    }
+  }
+
+  &__controls {
+    z-index: 10;
+    position: absolute;
+    right: 40px;
+    bottom: 50px;
+    display: flex;
+    gap: 12px;
+
+    @include breakpoint(large) {
+      top: 60px;
+      right: 580px;
+      bottom: auto;
+      left: auto;
+    }
+
+    li {
+      font-size: 0;
+    }
+
+    button {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      background-color: map.get($magenta, light);
+      border: 0;
+      appearance: none;
+      cursor: pointer;
+
+      &.active {
+        background-color: map.get($magenta, default);
+      }
+    }
+  }
+}

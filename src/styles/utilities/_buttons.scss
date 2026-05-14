@@ -48,6 +48,27 @@
     @include btn(map.get($indigo, default), $white, map.get($magenta, default), $white, map.get($indigo, default));
   }
 
+  &--hollow-green,
+  &--text-green {
+    @include btn($black, $white, map.get($green, dark), $white, map.get($green, default));
+  }
+
+  &--hollow-aqua,
+  &--text-aqua {
+    @include btn($black, $white, map.get($aqua, dark), $white, map.get($aqua, default));
+  }
+
+  &--hollow-honey,
+  &--text-honey {
+    @include btn($black, $white, map.get($honey, dark), $white, map.get($honey, default));
+  }
+
+  &--hollow-green,
+  &--hollow-aqua,
+  &--hollow-honey {
+    color: $black !important;
+  }
+
   &--text-indigo,
   &--text-magenta {
     padding: 0;

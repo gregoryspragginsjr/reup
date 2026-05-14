@@ -1,0 +1,82 @@
+{% import "macros.twig" as macros %}
+{% import "icons.twig" as icons %}
+
+{% if in_component_library %}
+  {% set buttonGroup = '@button-group' %}
+{% else %}
+  {% set buttonGroup = 'button-group.twig' %}
+{% endif %}
+
+<component is="stories-carousel" class="stories-carousel" v-slot="carousel">
+  {% if items.length > 0 %}
+    <ul class="stories-carousel__controls">
+      {% for item in items %}
+        <li>
+          <button 
+            :class="{ 'active' : carousel.activeSlide == {{ loop.index }} }"
+            @click="carousel.toggleActive({{ loop.index }})"
+          >
+            <span class="sr-only">Navigate to slide {{ loop.index }}</span>
+          </button>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% for item in items %}
+    <div
+      class="stories-carousel__slide stories-carousel__slide--{{ item.tag|default('default')|lower }}"
+      :class="{ 'stories-carousel__slide--active' : carousel.activeSlide == {{ loop.index }} }"
+    >
+      <div class="stories-carousel__main">
+        <div class="stories-carousel__label">
+          {% if item.tag and item.tag != 'default' %}
+            <div class="tag tag--{{ item.tag|lower }}">{{ icons.icon('temp', item.tag) }}{{ item.tag }}</div>
+          {% endif %}
+          <span>{{ item.label }}</span>
+        </div>
+        <div class="stories-carousel__content">
+          {% if item.name %}
+            <div class="stories-carousel__subheading">
+            <div>
+              <span>{{ item.name }}</span>
+              {% if item.title %}
+                <span>{{ item.title }}</span>
+              {% endif %}
+            </div>
+            </div>
+          {% endif %}
+          <h2 class="stories-carousel__heading heading-style-2">{{ item.heading }}</h2>
+          {{ item.paragraphs }}
+          {% if item.buttons %}
+            {% if item.tag|lower == 'institutions' %}
+              {% set btnType = 'hollow-aqua' %}
+            {% elseif item.tag|lower == 'learners' %}
+              {% set btnType = 'hollow-honey' %}
+            {% elseif item.tag|lower == 'states' %}
+              {% set btnType = 'hollow-green' %}
+            {% else %}
+              {% set btnType = 'hollow-indigo' %}
+            {% endif %}
+            {% include buttonGroup with {
+              size: 'default',
+              type: btnType,
+              items: item.buttons,
+            } %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="stories-carousel__image">
+        {{ macros.picture(
+          'w-full object-cover',
+          item.image.srcset,
+          item.image.src,
+          item.image.sizes.Hero,
+          item.image.sizes.Hero_mobile,
+          item.image.alt,
+          in_component_library
+        ) }}
+      </div>
+    </div>
+  {% endfor %}
+  <div class="stories-carousel__scaffold"><span></span></div>
+</component>
