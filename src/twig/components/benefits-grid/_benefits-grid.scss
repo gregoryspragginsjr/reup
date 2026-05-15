@@ -2,6 +2,16 @@
 
 .benefits-grid {
 
+  &--large-icons {
+    .benefits-grid__card .context__heading {
+      font-size: rem-calc(40px);
+
+      @include breakpoint(large) {
+        font-size: rem-calc(48px);
+      }
+    }
+  }
+
   &__inner {
     row-gap: 60px;
 
@@ -35,6 +45,15 @@
     p {
       font-weight: 400;
     }
+  }
+
+  &__icon {
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  &__icon + .context {
+    margin-top: 30px;
   }
 
   + div {

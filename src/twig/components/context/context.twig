@@ -8,9 +8,12 @@
   {% if subheading %}<div class="context__subheading">{{ subheading }}</div>{% endif %}
   {% if tags %}
     <div class="tag-group">
-      <div class="tag tag--institutions">{{ icons.icon('temp', '') }} Institutions</div>
+      {% for tag in tags %}
+        <div class="tag tag--{{ tag }}">{{ icons.icon('temp', '') }} {{ tag|capitalize }}</div>
+      {% endfor %}
+      {# <div class="tag tag--institutions">{{ icons.icon('temp', '') }} Institutions</div>
       <div class="tag tag--learners">{{ icons.icon('temp', '') }} Learners</div>
-      <div class="tag tag--states">{{ icons.icon('temp', '') }} States</div>
+      <div class="tag tag--states">{{ icons.icon('temp', '') }} States</div> #}
     </div>
   {% endif %}
   {% if heading %}<h2 class="context__heading">{{ heading }}</h2>{% endif %}

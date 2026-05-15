@@ -1,6 +1,8 @@
 @use "sass:map";
 
 .header {
+  z-index: 100;
+  position: relative;
   background-color: map.get($cream, default);
 
   &__inner {

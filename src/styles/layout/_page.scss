@@ -1,9 +1,9 @@
 @use "sass:map";
 
 .page {
-  > div + div:not(.context-section) {
-    margin-top: 100px;
-  }
+  // > div + div:not(.context-section) {
+  //   margin-top: 100px;
+  // }
 
   > .article-grid + .article-grid {
     margin-top: 0;
@@ -13,9 +13,9 @@
     margin-top: 0 !important;
   }
 
-  > div:last-child {
-    margin-bottom: 100px;
-  }
+  // > div:last-child {
+  //   margin-bottom: 100px;
+  // }
 
   > .video {
     width: 100%;

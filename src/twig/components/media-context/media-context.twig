@@ -18,7 +18,7 @@
     <div class="media-context__inner grid">
       {% if size != 'display' %}
         <div class="media-context__media">
-          {% if video %}
+          {% if video.id %}
             <component is="modal-btn">
               <div class="video__overlay">
                 <div class="video__btn">
@@ -43,12 +43,21 @@
               {% set firstBtn = buttons|first %}
               <a href="{{ firstBtn.button.url }}">
             {% endif %}
+              {% if size == 'medium' %}
+                {% set wp_image_desktop = image.sizes.Rectangle %}
+                {% set wp_image_mobile = image.sizes.Rectangle_mobile %}
+              {% elseif size == 'display' %}
+
+              {% else %}
+                {% set wp_image_desktop = image.sizes.Square %}
+                {% set wp_image_mobile = image.sizes.Square_mobile %}
+              {% endif %}
               {{ macros.picture(
                 'w-full',
                 image.srcset,
                 image.src,
-                image.sizes.Rectangle,
-                image.sizes.Rectangle_mobile,
+                wp_image_desktop,
+                wp_image_mobile,
                 image.alt,
                 in_component_library
               ) }}

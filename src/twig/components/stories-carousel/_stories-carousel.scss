@@ -1,6 +1,7 @@
 @use "sass:map";
 
 .stories-carousel {
+  z-index: 2;
   position: relative;
   background-color: map.get($cream, default);
   overflow: hidden;

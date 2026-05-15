@@ -74,5 +74,52 @@ module.exports = {
         ]
       },
     ]
-  }
+  },
+  variants: [
+    {
+      name: 'Large Icons Center Aligned',
+      context: {
+        type: 'large-icons',
+        align: 'center',
+        items: [
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+            heading: '1.38m+',
+            paragraphs: '<p>Adult learners reached</p>'
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+            heading: '8,000',
+            paragraphs: '<p>Graduates in the workforce</p>'
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+            heading: '$275m',
+            paragraphs: '<p>In tuition recaptured</p>'
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+            heading: '$0',
+            paragraphs: '<p>1:1 learner support at no cost</p>'
+          },
+        ]
+      }
+    }
+  ]
 }

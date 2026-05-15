@@ -4,7 +4,7 @@
   <div class="testimonials-carousel__window">
     {% for item in items %}
       <div
-        class="testimonials-carousel__slide"
+        class="testimonials-carousel__slide testimonials-carousel__slide--{{ item.tag|default('default') }}"
         :class="{ 'testimonials-carousel__slide--active' : carousel.activeSlide == {{ loop.index }} }"
       >
         {% if item.image %}
@@ -13,7 +13,7 @@
             item.image.srcset,
             item.image.src,
             item.image.sizes.Square,
-            item.image.sizes.Square_mobile,
+            item.image.sizes.Square,
             item.image.alt,
             in_component_library
           ) }}

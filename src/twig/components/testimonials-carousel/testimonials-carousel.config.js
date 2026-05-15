@@ -10,10 +10,11 @@ module.exports = {
           alt: 'Test alt',
         },
         quote: 'Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque non, hendrerit luctus lorem ipsum dolor sit.',
-        name: 'Jake A,',
+        name: 'Jake A',
         role: 'Role or Company Name'
       },
       {
+        tag: 'institutions',
         image: {
           srcset: 'https://placehold.co/40x40',
           src: 'https://placehold.co/40x40',

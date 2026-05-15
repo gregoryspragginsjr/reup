@@ -101,22 +101,44 @@ class StarterSite extends Timber\Site {
 			acf_register_block(array(
 				'name'				=> 'hero',
 				'title'				=> __('Hero'),
-				'description'		=> __('Leading component typically found above the fold, with dynamic text and HTML5 video loop.'),
+				'description'		=> __('Leading component typically found above the fold, with dynamic text and optional video.'),
 				'render_callback'	=> 'my_acf_block_render_callback',
 				'category'			=> 'layout',
 				'icon'				=> 'block-default',
 				'keywords'			=> array( 'layout', 'hero', 'loop', 'media', 'video', 'heading' ),
 			));
 
-			// register a context section block
+			// register a cta context section
 			acf_register_block(array(
-				'name'				=> 'context-section',
-				'title'				=> __('Context Section'),
-				'description'		=> __('Section dedicated to full bleed context featuring varying backgrounds and options.'),
+				'name'				=> 'cta-context-section',
+				'title'				=> __('CTA Context Section'),
+				'description'		=> __('Call to action focused, center-aligned component which supports an optional headshot image.'),
 				'render_callback'	=> 'my_acf_block_render_callback',
 				'category'			=> 'layout',
 				'icon'				=> 'block-default',
-				'keywords'			=> array( 'context', 'section', 'layout', 'full-bleed' ),
+				'keywords'			=> array( 'layout', 'cta', 'call', 'to', 'action', 'section' ),
+			));
+
+			// register grids section
+			acf_register_block(array(
+				'name'				=> 'grids-section',
+				'title'				=> __('Grids Section'),
+				'description'		=> __('Layout dedicated to displaying either article or benefits grid. Features several column layout styles and supports varying image sizes.'),
+				'render_callback'	=> 'my_acf_block_render_callback',
+				'category'			=> 'layout',
+				'icon'				=> 'block-default',
+				'keywords'        => array( 'layout', 'benefit', 'article', 'grid', 'image', 'section' ),
+			));
+
+			// register stories carousel
+			acf_register_block(array(
+				'name'				=> 'stories-carousel',
+				'title'				=> __('Stories Carousel'),
+				'description'		=> __('Carousel featuring portrait images with supplemental context.'),
+				'render_callback'	=> 'my_acf_block_render_callback',
+				'category'			=> 'layout',
+				'icon'				=> 'block-default',
+				'keywords'        => array( 'layout', 'stories', 'story', 'carousel', 'image', 'section', 'slider' ),
 			));
 
 			// register the article grid block
@@ -235,8 +257,10 @@ class StarterSite extends Timber\Site {
 		add_image_size( 'Square', 600, 600, true );
 		add_image_size( 'Hero', 1920, 1080, true );
 		add_image_size( 'Hero_mobile', 960, 540, true );
-		add_image_size( 'Rectangle', 990, 705, true );
-		add_image_size( 'Rectangle_mobile', 660, 470, true );
+		add_image_size( 'Rectangle', 800, 600, true );
+		add_image_size( 'Rectangle_mobile', 400, 300, true );
+		add_image_size( 'Large Icon', 600, 600, false );
+		add_image_size( 'Story Portrait', 460, 700, true );
 
 		if ( function_exists( 'acf_add_options_page' ) ) {
 			acf_add_options_page(

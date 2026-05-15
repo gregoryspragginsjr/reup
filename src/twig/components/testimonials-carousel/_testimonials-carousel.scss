@@ -34,8 +34,21 @@
 
   &__image {
     flex-shrink: 0;
+    width: 40px;
     border-radius: 50%;
     border: 1.5px solid map.get($magenta, default);
+
+    .testimonials-carousel__slide--institutions & {
+      border-color: map.get($aqua, default);
+    }
+
+    .testimonials-carousel__slide--learners & {
+      border-color: map.get($honey, default);
+    }
+
+    .testimonials-carousel__slide--states & {
+      border-color: map.get($green, default);
+    }
   }
 
   p,

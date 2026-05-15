@@ -7,8 +7,9 @@
   {% set buttonGroup = 'button-group.twig' %}
 {% endif %}
 
+
 <component is="stories-carousel" class="stories-carousel" v-slot="carousel">
-  {% if items.length > 0 %}
+  {% if items|length > 0 %}
     <ul class="stories-carousel__controls">
       {% for item in items %}
         <li>
@@ -30,7 +31,7 @@
       <div class="stories-carousel__main">
         <div class="stories-carousel__label">
           {% if item.tag and item.tag != 'default' %}
-            <div class="tag tag--{{ item.tag|lower }}">{{ icons.icon('temp', item.tag) }}{{ item.tag }}</div>
+            <div class="tag tag--{{ item.tag|lower }}">{{ icons.icon('temp', item.tag) }}{{ item.tag|capitalize }}</div>
           {% endif %}
           <span>{{ item.label }}</span>
         </div>
@@ -70,8 +71,8 @@
           'w-full object-cover',
           item.image.srcset,
           item.image.src,
-          item.image.sizes.Hero,
-          item.image.sizes.Hero_mobile,
+          item.image.sizes['Story Portrait'],
+          item.image.sizes['Story Portrait'],
           item.image.alt,
           in_component_library
         ) }}
