@@ -30,11 +30,38 @@ if ( is_day() ) {
 } elseif ( is_category() ) {
 	$context['title'] = single_cat_title( '', false );
 	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
+} elseif ( is_tax() ) {
+	$context['title'] = single_cat_title( '', false );
+	$context['description'] = term_description();
+	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
 } elseif ( is_post_type_archive() ) {
 	$context['title'] = post_type_archive_title( '', false );
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
 }
 
-$context['posts'] = new Timber\PostQuery();
+// Additional querying needed to
+// exclude PAGES that are also tagged
+// for a particular audience. So in 
+// this line, we are explicitly telling
+// Wordpress to query posts ONLY that
+// that match the current queried object
+// 1. Get the current page from the URL
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+if (is_tax()) {
+	$context['posts'] = Timber::get_posts([
+			'post_type' => 'post',
+			'paged'     => $paged,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'audiences',
+					'field' => 'slug',
+					'terms' => get_queried_object()->slug,
+				)
+			)
+	]);
+} else {
+	$context['posts'] = Timber::get_posts();
+}
 
 Timber::render( $templates, $context );

@@ -9,7 +9,7 @@
 
 
 <component is="stories-carousel" class="stories-carousel" v-slot="carousel">
-  {% if items|length > 0 %}
+  {% if items|length > 1 %}
     <ul class="stories-carousel__controls">
       {% for item in items %}
         <li>
@@ -63,6 +63,16 @@
               type: btnType,
               items: item.buttons,
             } %}
+          {% endif %}
+          {% if prev or next %}
+            <div class="stories-carousel__pagination">
+              {% if prev %}
+                <a class="btn--hollow-indigo" href="{{ prev }}">Previous Bio</a>
+              {% endif %}
+              {% if next %}
+                <a class="btn--hollow-indigo" href="{{ next }}">Next Bio</a>
+              {% endif %}
+            </div>
           {% endif %}
         </div>
       </div>

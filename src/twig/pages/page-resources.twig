@@ -1,0 +1,150 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="page wysiwyg">
+	  {{ post.content }}
+
+    {% set institutions_posts = fn('Timber::get_posts', {
+      post_type: 'post',
+      post_per_page: 4,
+      tax_query: [
+        {
+          taxonomy: 'audiences',
+          field: 'slug',
+          terms: 'institutions'
+        }
+      ]
+    })|map(i => {
+      image: {
+        sizes: {
+          Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+          Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+        }
+      },
+      tags: null,
+      subheading: i.post_date|date("M d, Y"),
+      heading: i.post_title,
+      paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+      buttons: [
+        {
+          button: {
+            title: 'Read More',
+            url: function('get_permalink', i.ID),
+          }
+        }
+      ]
+    }) %}
+
+    {% set learners_posts = fn('Timber::get_posts', {
+      post_type: 'post',
+      post_per_page: 4,
+      tax_query: [
+        {
+          taxonomy: 'audiences',
+          field: 'slug',
+          terms: 'learners'
+        }
+      ]
+    })|map(i => {
+      image: {
+        sizes: {
+          Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+          Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+        }
+      },
+      tags: null,
+      subheading: i.post_date|date("M d, Y"),
+      heading: i.post_title,
+      paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+      buttons: [
+        {
+          button: {
+            title: 'Read More',
+            url: function('get_permalink', i.ID),
+          }
+        }
+      ]
+    }) %}
+
+    {% set states_posts = fn('Timber::get_posts', {
+      post_type: 'post',
+      post_per_page: 4,
+      tax_query: [
+        {
+          taxonomy: 'audiences',
+          field: 'slug',
+          terms: 'states'
+        }
+      ]
+    })|map(i => {
+      image: {
+        sizes: {
+          Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+          Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+        }
+      },
+      tags: null,
+      subheading: i.post_date|date("M d, Y"),
+      heading: i.post_title,
+      paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+      buttons: [
+        {
+          button: {
+            title: 'Read More',
+            url: function('get_permalink', i.ID),
+          }
+        }
+      ]
+    }) %}
+
+    {% include 'grids-section.twig' with {
+      items: [
+        {
+          acf_fc_layout: 'article-grid',
+          tags: ['institutions'],
+          heading: 'Featured Resources for Institutions',
+          paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor.</p>',
+          buttons: [
+            {
+              button: {
+                title: 'More Resources for Institutions',
+                url: '/audiences/institutions/'
+              }
+            }
+          ],
+          items: institutions_posts,
+        },
+        {
+          acf_fc_layout: 'article-grid',
+          tags: ['learners'],
+          heading: 'Featured Resources for Learners',
+          paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor.</p>',
+          buttons: [
+            {
+              button: {
+                title: 'More Resources for Learners',
+                url: '/audiences/learners/'
+              }
+            }
+          ],
+          items: learners_posts,
+        },
+        {
+          acf_fc_layout: 'article-grid',
+          tags: ['states'],
+          heading: 'Featured Resources for States',
+          paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor.</p>',
+          buttons: [
+            {
+              button: {
+                title: 'More Resources for States',
+                url: '/audiences/states/'
+              }
+            }
+          ],
+          items: states_posts,
+        },
+      ]
+    } %}
+  </div>
+{% endblock %}

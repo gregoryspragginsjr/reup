@@ -18,6 +18,7 @@
             type: 'default',
             size: 'large',
             align: 'left',
+            tags: tags,
             subheading: subheading,
             heading: heading,
             paragraphs: paragraphs,
@@ -42,7 +43,7 @@
               {{ icons.icon('faux-corner', 'hero__faux-corner') }}
             </div>
           {% endif %}
-          {% if video %}
+          {% if video.id %}
             {% include videoComponent with video %}
           {% elseif image %}
             {{ macros.picture(

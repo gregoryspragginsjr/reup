@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  {% include 'hero.twig' with {
+    type: 'parallel',
+    subheading: 'Our Team',
+    heading: 'Our Team Headline Lorem Ipsum Dolor Sit Amet.',
+    paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec neque.</p>',
+    image: {
+        sizes: {
+          Hero: '/wp-content/uploads/2026/05/Image.jpg',
+          Hero_mobile: '/wp-content/uploads/2026/05/Image-960x540.jpg',
+        }
+      }
+  } %}
+  {% set mapped_posts = posts|map(i => {
+    image: {
+      sizes: {
+        Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Story Portrait' ),
+        Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Story Portrait' ),
+      }
+    },
+    subheading: i.meta('title'),
+    heading: i.post_title,
+    paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+    buttons: [
+      {
+        button: {
+          title: 'Read More',
+          url: function('get_permalink', i.ID),
+        }
+      }
+    ]
+  }) %}
+  {% include 'grids-section.twig' with {
+    heading: 'Our Leadership Team',
+    items: [
+      {
+        acf_fc_layout: 'article-grid',
+        items: mapped_posts,
+      }
+    ]
+  } %}
+{% endblock %}

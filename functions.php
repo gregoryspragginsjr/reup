@@ -85,11 +85,57 @@ class StarterSite extends Timber\Site {
 	}
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
-
+		register_post_type(
+			'our-team',
+			array(
+				'labels'            => array(
+					'name'               => __( 'Our Team' ),
+					'singular_name'      => __( 'Team Member' ),
+					'add_new_item'       => __( 'Add Team Member' ),
+					'edit_item'          => __( 'Edit Team Member' ),
+					'new_item'           => __( 'New Team Member' ),
+					'view_item'          => __( 'View Team Member' ),
+					'search_items'       => __( 'Search Team Members' ),
+					'not_found'          => __( 'Team Member not found.' ),
+					'not_found_in_trash' => __( 'No Team Member found in trash.' ),
+				),
+				'rewrite'           => array( 'slug' => 'company/our-team' ),
+				'public'            => true,
+				'has_archive'       => true,
+				'show_in_rest'      => true,
+				'menu_icon'         => 'dashicons-groups',
+				'show_in_nav_menus' => true,
+				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
+			)
+		);
 	}
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
-
+		register_taxonomy(
+			'audiences',
+			array('page', 'post'),
+			array(
+				'hierarchical'      => true,
+				'show_ui'           => true,
+				'show_in_rest'      => true,
+				'show_admin_column' => true,
+				'query_var'         => true,
+				'public'            => true,
+				'show_tagcloud'     => false,
+				'capabilities'      => array(
+					'manage_terms' => 'manage_options',
+					'edit_terms'   => 'manage_options',
+					'delete_terms' => 'manage_options',
+					'assign_terms' => 'manage_options',
+				),
+				'labels'            => array(
+					'name'          => __( 'Audiences' ),
+					'singular_name' => __( 'Audience' ),
+					'add_new_item'  => __( 'Add New Audience' ),
+					'menu_name'     => __( 'Audiences' ),
+				),
+			)
+		);
 	}
 
 	public function my_acf_init() {
@@ -163,6 +209,17 @@ class StarterSite extends Timber\Site {
 				'keywords'        => array( 'media', 'image', 'context', 'layout' ),
 			));
 
+			// register the blog media context block
+			acf_register_block(array(
+				'name'				=> 'blog-media-context',
+				'title'				=> __('Blog Media Context'),
+				'description'		=> __('Traditional side-by-side layout for any style of media with cooresponding context. This variant is only accessible in blog posts.'),
+				'render_callback'	=> 'my_acf_block_render_callback',
+				'category'			=> 'layout',
+				'icon'				=> 'block-default',
+				'keywords'        => array( 'media', 'image', 'context', 'layout' ),
+			));
+
 			// register the video block
 			acf_register_block(array(
 				'name'				=> 'video',
@@ -184,6 +241,17 @@ class StarterSite extends Timber\Site {
 				'icon'				=> 'block-default',
 				'keywords'			=> array( 'accordion', 'panels', 'WYSIWYG' ),
 			));
+
+			// register the list accordion block
+			acf_register_block(array(
+				'name'				=> 'list-accordion',
+				'title'				=> __('List Accordion'),
+				'description'		=> __('A section dedicated to either an accordion, unordered list, or both. Each accordion comes with toggleable panels housing individual WYSIWYG.'),
+				'render_callback'	=> 'my_acf_block_render_callback',
+				'category'			=> 'layout',
+				'icon'				=> 'block-default',
+				'keywords'			=> array( 'list', 'unordered', 'accordion', 'panels', 'WYSIWYG' ),
+			));
 		}
 	}
 
@@ -192,11 +260,115 @@ class StarterSite extends Timber\Site {
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
 	 */
 	public function add_to_context( $context ) {
+		$context['post'] = Timber::get_post();
+		$context['term'] = Timber::get_term();
+		global $wp;
+	
+		if ( ! is_404() ) {
+			if ( is_tax() ) {
+				$crumbs = null;
+			} else {
+				$crumbs = get_post_ancestors( $context['post']->ID );
+			}
+
+			$breadcrumbs_menu = array();
+
+			if ( is_tax('audiences') ) {
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'id'    => $context['term']->ID,
+						'title' => single_cat_title( '', false ),
+						'url'   => get_permalink($context['term']->ID),
+					)
+				);
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Resources',
+						'url'   => '/resources',
+					)
+				);
+			} elseif ( is_archive('our-team') ) {
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Our Team',
+						'url'   => '/company/our-team',
+					)
+				);
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Company',
+						'url'   => '/company',
+					)
+				);
+			} elseif ( 'our-team' == get_post_type() ) {
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'id'    => $context['post']->ID,
+						'title' => get_the_title($context['post']->ID),
+						'url'   => get_permalink($context['post']->ID),
+					)
+				);
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Our Team',
+						'url'   => '/company/our-team',
+					)
+				);
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Company',
+						'url'   => '/company',
+					)
+				);
+			} else {
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'id'    => $context['post']->ID,
+						'title' => get_the_title($context['post']->ID),
+						'url'   => get_permalink($context['post']->ID),
+					)
+				);
+			}
+
+			if ( $crumbs ) {
+
+				foreach ( $crumbs as $ancestor ) {
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'id'    => $ancestor,
+							'title' => get_the_title( $ancestor ),
+							'url'   => get_permalink( $ancestor ),
+						)
+					);
+				}
+			}
+
+			if ( isset( $breadcrumbs_menu ) ) {
+				$context['breadcrumbs_menu'] = array_reverse( $breadcrumbs_menu );
+			}
+		}
+
 		$context['foo']   = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		// $context['menu']  = new Timber\Menu(); OLD WAY FOR TIMBER
 		// $context['main_menu'] = Timber::get_menu('Main Menu'); NEW WAY
+		$context['footer_menu'] = Timber::get_menu('Footer Menu');
+		$context['copyright_menu'] = Timber::get_menu('Copyright Menu');
+		$context['global_address'] = get_field( 'address', 'options' );
 		$context['site']  = $this;
 		return $context;
 	}
@@ -254,11 +426,13 @@ class StarterSite extends Timber\Site {
 
 		add_theme_support( 'menus' );
 
-		add_image_size( 'Square', 600, 600, true );
+		add_image_size( 'Square', 800, 800, true );
 		add_image_size( 'Hero', 1920, 1080, true );
 		add_image_size( 'Hero_mobile', 960, 540, true );
 		add_image_size( 'Rectangle', 800, 600, true );
 		add_image_size( 'Rectangle_mobile', 400, 300, true );
+		add_image_size( 'Portrait', 1280, 1440, true );
+		add_image_size( 'Portrait_mobile', 640, 720, true );
 		add_image_size( 'Large Icon', 600, 600, false );
 		add_image_size( 'Story Portrait', 460, 700, true );
 

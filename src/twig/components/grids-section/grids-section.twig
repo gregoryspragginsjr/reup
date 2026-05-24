@@ -7,7 +7,12 @@
 {% endif %}
 
 <section class="grids-section background--{{ background|default('white') }}">
-  {% include contextSection %}
+  {% if heading or paragraphs or buttons %}
+    {% include contextSection %}
+  {% endif %}
+  {% set size = null %}
+  {% set align = null %}
+  {% set tags = null %}
   {% set subheading = null %}
   {% set heading = null %}
   {% set paragraphs = null %}
@@ -19,4 +24,7 @@
       {% include item.acf_fc_layout ~ '.twig' with item|merge({ background: background }) %}
     {% endif %}
   {% endfor %}
+  {% if pagination %}
+    {% include 'pagination.twig' with pagination %}
+  {% endif %}
 </section>

@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  {% set prev = fn('get_previous_post').ID %}
+  {% set next = fn('get_next_post').ID %}
+  {% include 'stories-carousel.twig' with {
+    items: [
+      {
+        label: 'Our Team',
+        title: post.meta('title'),
+        name: post.post_title,
+        heading: post.post_excerpt,
+        paragraphs: post.content,
+        image: {
+          sizes: {
+            ('Story Portrait'): fn( 'get_the_post_thumbnail_url', post.ID, ('Story Portrait') ),
+          }
+        },
+      }
+    ],
+    prev: prev ? fn('get_permalink', prev) : null,
+    next: next ? fn('get_permalink', next) : null,
+  } %}
+{% endblock %}

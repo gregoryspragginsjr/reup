@@ -2,13 +2,18 @@
 
 .media-context {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   padding: 80px 0;
   font-size: 0;
   background-color: map.get($cream, default);
   border-top: 2px solid map.get($cream, dark);
   overflow-x: clip;
   overflow-y: visible;
+
+  .post & {
+    border-top: 0;
+    background-color: transparent;
+  }
 
   &--display {
     padding: 60px 0 0;
@@ -70,7 +75,7 @@
   }
 
   &--medium {
-    background-color: $white;
+    background-color: transparent;
 
     &::after {
       content: '';
@@ -83,6 +88,10 @@
       height: 490px;
       background-color: #FBF9F9;
       transform: rotate(-172deg);
+
+      .post & {
+        display: none;
+      }
 
       @include breakpoint(large) {
         display: block;
@@ -140,6 +149,12 @@
   &__media,
   &__context {
     grid-column: span 12 / span 12;
+
+    @include breakpoint(medium) {
+      .post & {
+        grid-column: span 6 / span 6;
+      }
+    }
   }
 
   &__media {
@@ -148,6 +163,21 @@
     flex-direction: column;
     font-size: 0;
     margin-top: 40px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      background-color: map.get($magenta, default);
+
+      .media-context--reversed & {
+        right: 0;
+        left: auto;
+      }
+    }
 
     @include breakpoint(medium) {
       grid-column: span 5 / span 5;
@@ -160,6 +190,10 @@
 
       .media-context--medium & {
         grid-column: span 5 / span 5;
+
+        .post & {
+          grid-column: span 6 / span 6;
+        }
       }
 
       .media-context--display & {
@@ -170,21 +204,6 @@
     a {
       position: relative;
       display: block;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 30px;
-        height: 30px;
-        background-color: map.get($magenta, default);
-
-        .media-context--reversed & {
-          right: 0;
-          left: auto;
-        }
-      }
     }
 
     .testimonials-carousel {
@@ -230,6 +249,10 @@
 
       .media-context--medium & {
         grid-column: span 7 / span 7;
+
+        .post & {
+          grid-column: span 6 / span 6;
+        }
       }
 
       .media-context--display & {
@@ -324,4 +347,12 @@
       margin-bottom: 20px;
     }
   }
+}
+
+.media-context + .media-context {
+  // border-top: 0;
+
+  // &::after {
+  //   display: none;
+  // }
 }

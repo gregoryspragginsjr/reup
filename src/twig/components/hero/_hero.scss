@@ -48,6 +48,7 @@
         padding-bottom: 20px;
         margin-right: -140px;
         border-bottom-right-radius: 30px;
+        max-width: 75%;
       }
     }
   }
@@ -237,5 +238,10 @@
         }
       }
     }
+  }
+
+  + .grids-section.background--cream {
+    padding-top: 40px;
+    border-radius: 0;
   }
 }

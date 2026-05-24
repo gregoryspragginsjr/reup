@@ -6,7 +6,7 @@
   {% set context = 'context.twig' %}
 {% endif %}
 
-<article class="article">
+<article class="article article--{{ type|default('default') }}">
   {% if image %}
     <div class="article__image">
       {% if buttons %}
@@ -25,15 +25,26 @@
       {% if buttons %}</a>{% endif %}
     </div>
   {% endif %}
+    {% if tags|length == 1 %}
+      {% if tags[0] == 'institutions' %}
+        {% set btnType = 'text-aqua' %}
+      {% elseif tags[0] == 'learners' %}
+        {% set btnType = 'text-honey' %}
+      {% elseif tags[0] == 'states' %}
+        {% set btnType = 'text-green' %}
+      {% endif %}
+    {% else %}
+      {% set btnType = 'text-indigo' %}
+    {% endif %}
     {% include context with {
       size: 'xsmall',
-      tags: null,
+      tags: tags,
       heading: heading,
       subheading: subheading,
       paragraphs: paragraphs,
       buttons: {
         size: 'default',
-        type: 'text-indigo',
+        type: btnType,
         items: buttons,
       }
     } %}

@@ -1,0 +1,106 @@
+@use "sass:map";
+
+.pagination {
+  margin-top: 80px;
+
+  &__main {
+    grid-column: span 12 / span 12;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  &__arrow-btn {
+    display: flex;
+    gap: 8px;
+    font-family: $font-tertiary;
+    font-size: rem-calc(16px);
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: 5%;
+    text-transform: uppercase;
+    color: map.get($magenta, default);
+
+    &:hover {
+      color: map.get($indigo, default);
+
+      svg {
+        fill: map.get($indigo, default);
+      }
+    }
+
+    svg {
+      width: 12px;
+      fill: map.get($magenta, default);
+      transform: rotate(90deg);
+    }
+
+    &--next {
+      svg {
+        transform: rotate(-90deg);
+        order: 2;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include breakpoint(medium) {
+      flex-wrap: nowrap;
+      width: auto;
+    }
+  }
+
+  ul {
+    order: -1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+
+    @include breakpoint(medium) {
+      order: 0;
+      justify-content: flex-start;
+      width: auto;
+    }
+  }
+
+  &__item {
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border: 2px solid map.get($magenta, default);
+      border-radius: 50%;
+
+      font-family: $font-primary;
+      font-size: rem-calc(16px);
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: map.get($magenta, default);
+      text-decoration: none;
+
+      &:hover {
+        color: $white;
+        background-color: map.get($indigo, default);
+        border-color: map.get($indigo, default);
+      }
+    }
+
+    &--active a {
+      color: $white;
+      background-color: map.get($indigo, default);
+      border-color: map.get($indigo, default);
+    }
+  }
+}

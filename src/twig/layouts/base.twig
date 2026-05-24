@@ -8,13 +8,20 @@
 
   <body>
     <div id="app">
-      {% include 'header.twig' %}
+      {% include 'header.twig' with {
+        type: post.terms('audiences')|length == 1 ? post.terms('audiences')[0].slug : null,
+        breadcrumbs: fn('is_front_page') ? null : breadcrumbs_menu,
+      } %}
       <main id="main" class="page">
         {% block content %}
           Sorry, no content
         {% endblock %}
       </main>
-      {% include 'footer.twig' %}
+      {% include 'footer.twig' with {
+        primary: footer_menu.items,
+        copyright: copyright_menu.items,
+        address: global_address
+      } %}
       {% block footer %}
         {{ function('wp_footer') }}
       {% endblock %}

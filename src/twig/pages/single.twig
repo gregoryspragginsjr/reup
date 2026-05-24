@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="page post">
+    {% include 'hero.twig' with {
+      type: 'parallel',
+      tags: post.terms('audiences')|length == 1 ?
+        [post.terms('audiences')[0].slug] : null,
+      heading: post.post_title,
+      paragraphs: '<p>' ~ post.post_excerpt ~ '</p>',
+      image: {
+        sizes: {
+          Hero: fn( 'get_the_post_thumbnail_url', post.ID, 'Hero' ),
+          Hero_mobile: fn( 'get_the_post_thumbnail_url', post.ID, 'Hero_mobile' ),
+        }
+      }
+    } %}
+    <div class="post__blog">
+      <div class="post__inner grid">
+        <div class="post__main">
+          {% include 'byline.twig' with {
+            author: post.author.name,
+            date: post.post_date|date("M d, Y"),
+            for:  post.terms('audiences')|length == 1 ? post.terms('audiences')[0].name : 'Anybody',
+          } %}
+          {% include 'wysiwyg.twig' with {
+            text: post.content,
+          } %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

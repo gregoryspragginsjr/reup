@@ -141,4 +141,25 @@
       }
     }
   }
+
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: $font-tertiary;
+    font-size: rem-calc(14px);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+
+    &::before {
+      display: block;
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: map.get($magenta, default);
+    }
+  }
 }

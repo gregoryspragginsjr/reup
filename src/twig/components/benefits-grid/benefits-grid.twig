@@ -8,7 +8,7 @@
   {% set contextSection = 'context-section.twig' %}
 {% endif %}
 
-<div class="benefits-grid benefits-grid--{{ type|default('default') }}">
+<div class="benefits-grid benefits-grid--{{ type|default('default') }} benefits-grid--{{ columns|default('4') }}-columns">
   {% if heading or paragraphs or buttons %}
     {% include contextSection with {
       align: 'left',
@@ -42,7 +42,7 @@
             size: 'xsmall',
             align: align,
             subheading: item.subheading,
-            tags: false,
+            tags: item.tags,
             heading: item.heading,
             paragraphs: item.paragraphs,
             buttons: {

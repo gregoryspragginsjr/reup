@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .article {
 
   @include breakpoint(medium) {
@@ -9,6 +11,32 @@
     display: block;
   }
 
+  &--parallel {
+    @include breakpoint(medium) {
+      align-items: flex-start;
+    }
+
+    @include breakpoint(large) {
+      display: flex;
+      column-gap: 40px;
+    }
+
+    .context {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tag-group {
+      order: -1;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .context__subheading {
+      margin-bottom: 20px;
+    }
+  }
+
   &__image {
     @include breakpoint(medium) {
       width: 200px;
@@ -18,14 +46,38 @@
     @include breakpoint(large) {
       width: auto;
     }
+
+    .article--parallel & {
+      width: 80px;
+      border-radius: 0 !important;
+
+      @include breakpoint(medium) {
+        width: 80px;
+      }
+
+      @include breakpoint(large) {
+        width: 80px;
+      }
+    }
+
+    .background--indigo & {
+      border-radius: 20px;
+      overflow: hidden;
+    }
   }
 
   &__image + .context {
     margin-top: 16px;
+
+    .article--parallel & {
+      @include breakpoint(medium) {
+        margin-top: 0;
+      }
+    }
   }
 
   .background--indigo & {
     padding: 30px;
-    background-color: $white;
+    background-color: map.get($cream, light);
   }
 }

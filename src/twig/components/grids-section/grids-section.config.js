@@ -28,7 +28,11 @@ module.exports = {
           {
             acf_fc_layout: 'benefits-grid',
             subheading: 'Optional heading',
-            tags: true,
+            tags: [
+              'institutions',
+              'learners',
+              'states,'
+            ],
             heading: 'Optional H2 Lorem Ipsum Dolor',
             paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
             buttons: [
@@ -168,7 +172,11 @@ module.exports = {
           {
             acf_fc_layout: 'benefits-grid',
             subheading: 'Optional heading',
-            tags: true,
+            tags: [
+              'institutions',
+              'learners',
+              'states,'
+            ],
             heading: 'Optional H2 Lorem Ipsum Dolor',
             paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
             buttons: [
@@ -307,7 +315,11 @@ module.exports = {
           {
             acf_fc_layout: 'article-grid',
             subheading: 'Optional heading',
-            tags: true,
+            tags: [
+              'institutions',
+              'learners',
+              'states'
+            ],
             heading: 'Optional H2 Lorem Ipsum Dolor',
             paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
             buttons: [
@@ -446,7 +458,11 @@ module.exports = {
           {
             acf_fc_layout: 'article-grid',
             subheading: 'Optional heading',
-            tags: true,
+            tags: [
+              'institutions',
+              'learners',
+              'states'
+            ],
             heading: 'Optional H2 Lorem Ipsum Dolor',
             paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
             buttons: [
@@ -585,7 +601,11 @@ module.exports = {
           {
             acf_fc_layout: 'article-grid',
             subheading: 'Optional heading',
-            tags: true,
+            tags: [
+              'institutions',
+              'learners',
+              'states'
+            ],
             heading: 'Optional H2 Lorem Ipsum Dolor',
             paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
             buttons: [

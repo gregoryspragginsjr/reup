@@ -47,10 +47,11 @@
                 {% set wp_image_desktop = image.sizes.Rectangle %}
                 {% set wp_image_mobile = image.sizes.Rectangle_mobile %}
               {% elseif size == 'display' %}
-
+                {% set wp_image_desktop = image.sizes.Portrait %}
+                {% set wp_image_mobile = image.sizes.Portrait_mobile %}
               {% else %}
                 {% set wp_image_desktop = image.sizes.Square %}
-                {% set wp_image_mobile = image.sizes.Square_mobile %}
+                {% set wp_image_mobile = image.sizes.Square %}
               {% endif %}
               {{ macros.picture(
                 'w-full',
@@ -71,6 +72,17 @@
         </div>
       {% endif %}
       <div class="media-context__context">
+        {% if tags|length == 1 %}
+          {% if tags[0] == 'institutions' %}
+            {% set btnType = 'aqua' %}
+          {% elseif tags[0] == 'learners' %}
+            {% set btnType = 'honey' %}
+          {% elseif tags[0] == 'states' %}
+            {% set btnType = 'green' %}
+          {% endif %}
+        {% else %}
+          {% set btnType = 'indigo' %}
+        {% endif %}
         {% include context with {
           size: size|default('large'),
           subheading: subheading,
@@ -78,7 +90,7 @@
           paragraphs: paragraphs,
           buttons: {
             size: 'default',
-            type: size == 'medium' ? 'hollow-indigo' : 'indigo',
+            type: size == 'medium' ? 'hollow-indigo' : btnType,
             items: buttons,
           }
         } %}
@@ -105,8 +117,8 @@
       'media-context__big-image w-full object-cover',
       image.srcset,
       image.src,
-      image.sizes.Rectangle,
-      image.sizes.Rectangle_mobile,
+      image.sizes.Portrait,
+      image.sizes.Portrait_mobile,
       image.alt,
       in_component_library
     ) }}
@@ -127,7 +139,7 @@
             ) }}
             {% include context with {
               size: 'xsmall',
-              tags: true,
+              tags: item.tags,
               subheading: item.subheading,
               heading: item.heading,
               paragraphs: item.paragraphs,

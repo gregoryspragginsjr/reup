@@ -6,19 +6,25 @@
   {% set contextSection = 'context-section.twig' %}
 {% endif %}
 
-<div class="article-grid article-grid--{{ columns|default('4') }}-columns">
-  {% include contextSection with {
-    size: 'medium',
-    subheading: subheading,
-    heading: heading,
-    paragraphs: paragraphs,
-    btnType: 'hollow-indigo',
-    buttons: buttons
-  } %}
+<div class="article-grid {% if type == 'parallel' and items|length == 1 %}article-grid--1-columns{% elseif type == 'parallel' %}article-grid--2-columns{% else %}article-grid--{{ columns|default('4') }}-columns{% endif %}">
+  {% if heading or paragraphs or buttons %}
+    {% include contextSection with {
+      size: 'medium',
+      subheading: subheading,
+      heading: heading,
+      paragraphs: paragraphs,
+      btnType: 'hollow-indigo',
+      buttons: buttons
+    } %}
+    {% set subheading = null %}
+    {% set tags = null %}
+    {% set paragraphs = null %}
+    {% set buttons = null %}
+  {% endif %}
   <div class="article-grid__inner grid">
     {% for item in items %}
       <div class="article-grid__item">
-        {% include article with item %}
+        {% include article with item|merge({ type: type, }) %}
       </div>
     {% endfor %}
   </div>

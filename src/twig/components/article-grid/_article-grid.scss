@@ -12,8 +12,20 @@
     position: relative;
     grid-column: span 12 / span 12;
 
+    @include breakpoint(medium) {
+      .article-grid--1-columns & {
+        grid-column: span 8 / span 8;
+        grid-column-start: 3;
+      }
+    }
+
     @include breakpoint(large) {
       grid-column: span 3 / span 3;
+
+      .article-grid--1-columns & {
+        grid-column: span 8 / span 8;
+        grid-column-start: 3;
+      }
 
       .article-grid--2-columns & {
         grid-column: span 6 / span 6;

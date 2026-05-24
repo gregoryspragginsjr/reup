@@ -15,13 +15,17 @@
 
   > .context-section {
     padding-top: 0;
+    padding-bottom: 0;
   }
 
-  .benefits-grid,
-  .article-grid {
-    .context-section {
-      padding: 0;
+  > .context-section + * {
+    padding-bottom: 80px;
+  }
 
+  > .context-section + .benefits-grid,
+  .benefits-grid + .benefits-grid,
+  .article-grid + .article-grid {
+    .context-section {
       &__inner {
         position: relative;
 
@@ -32,6 +36,26 @@
           border-top: 2px solid map.get($cream, default);
         }
       }
+    }
+  }
+
+  > .context-section + .benefits-grid,
+  > .context-section + .article-grid {
+    margin-top: 80px;
+  }
+
+  .benefits-grid,
+  .article-grid {
+
+    &:first-child {
+      .context-section .button-group {
+        top: 0;
+      }
+    }
+
+    .context-section {
+      padding-top: 0;
+      padding-bottom: 0;
 
       &__main {
         @include breakpoint(large) {
@@ -43,6 +67,7 @@
         @include breakpoint(large) {
           position: absolute;
           top: 80px;
+          // top: 0;
           right: 50px;
           margin-top: 0;
         }
@@ -52,5 +77,30 @@
     .context-section + .grid {
       margin-top: 40px;
     }
+  }
+
+  // .article-grid + .article-grid {
+  //   padding-top: 80px;
+  //   margin-top: 80px;
+  // }
+
+  .media-context {
+    padding: 0;
+    background-color: transparent;
+    border-top: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .media-context + .article-grid,
+  .media-context + .benefits-grid,
+  .article-grid + .article-grid {
+    margin-top: 80px;
+  }
+
+  .benefits-grid + .benefits-grid {
+    margin-top: 0;
   }
 }

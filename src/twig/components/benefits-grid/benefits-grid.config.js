@@ -3,7 +3,6 @@ module.exports = {
   status: 'wip',
   context: {
     subheading: 'Optional heading',
-    tags: true,
     heading: 'Optional H2 Lorem Ipsum Dolor',
     paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor pretium interdum.</p>',
     buttons: [
@@ -22,6 +21,16 @@ module.exports = {
     ],
     items: [
       {
+        image: {
+          srcset: 'https://placehold.co/80x80',
+          src: 'https://placehold.co/80x80',
+          alt: 'Test alt',
+        },
+        tags: [
+          'institutions',
+          'learners',
+          'states'
+        ],
         subheading: 'Eyebrow text',
         heading: 'Feature/Benefit Heading',
         paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit nunc efficitur, turpis ut tincidunt.</p>',
@@ -35,6 +44,16 @@ module.exports = {
         ]
       },
       {
+        image: {
+          srcset: 'https://placehold.co/80x80',
+          src: 'https://placehold.co/80x80',
+          alt: 'Test alt',
+        },
+        tags: [
+          'institutions',
+          'learners',
+          'states'
+        ],
         subheading: 'Eyebrow text',
         heading: 'Feature/Benefit Heading',
         paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit nunc efficitur, turpis ut tincidunt.</p>',
@@ -48,6 +67,16 @@ module.exports = {
         ]
       },
       {
+        image: {
+          srcset: 'https://placehold.co/80x80',
+          src: 'https://placehold.co/80x80',
+          alt: 'Test alt',
+        },
+        tags: [
+          'institutions',
+          'learners',
+          'states'
+        ],
         subheading: 'Eyebrow text',
         heading: 'Feature/Benefit Heading',
         paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit nunc efficitur, turpis ut tincidunt.</p>',
@@ -61,6 +90,16 @@ module.exports = {
         ]
       },
       {
+        image: {
+          srcset: 'https://placehold.co/80x80',
+          src: 'https://placehold.co/80x80',
+          alt: 'Test alt',
+        },
+        tags: [
+          'institutions',
+          'learners',
+          'states'
+        ],
         subheading: 'Eyebrow text',
         heading: 'Feature/Benefit Heading',
         paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit nunc efficitur, turpis ut tincidunt.</p>',
@@ -117,6 +156,60 @@ module.exports = {
             },
             heading: '$0',
             paragraphs: '<p>1:1 learner support at no cost</p>'
+          },
+        ]
+      }
+    },
+    {
+      name: 'Logo Wall',
+      context: {
+        type: 'logo-wall',
+        subheading: null,
+        heading: 'Trusted By:',
+        paragraphs: null,
+        buttons: null,
+        items: [
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
+          },
+          {
+            image: {
+              srcset: 'https://placehold.co/600x600',
+              src: 'https://placehold.co/600x600',
+              alt: 'Test alt',
+            },
           },
         ]
       }

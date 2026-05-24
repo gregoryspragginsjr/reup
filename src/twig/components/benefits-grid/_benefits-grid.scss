@@ -3,6 +3,7 @@
 .benefits-grid {
 
   &--large-icons {
+
     .benefits-grid__card .context__heading {
       font-size: rem-calc(40px);
 
@@ -30,16 +31,49 @@
     @include breakpoint(large) {
       grid-column: span 3 / span 3;
     }
+
+    .benefits-grid--3-columns & {
+      grid-column: span 4 / span 4;
+    }
+
+    .benefits-grid--logo-wall & {
+      @include breakpoint(large) {
+        grid-column: span 2 / span 2;
+      }
+    }
   }
 
   &__card {
     .background--indigo & {
       padding: 30px;
-      background-color: $white;
+      background-color: map.get($cream, light);
 
       @include breakpoint(large) {
         padding: 40px;
       }
+    }
+
+    .benefits-grid--large-icons & {
+      text-align: center;
+    }
+
+    .context {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tag-group {
+      order: -1;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .context__subheading {
+      margin-bottom: 20px;
+    }
+
+    .context__subheading + .tag-group {
+      margin-top: 0;
     }
 
     p {
@@ -48,8 +82,16 @@
   }
 
   &__icon {
-    width: 200px;
-    margin: 0 auto;
+    width: 60px;
+
+    .benefits-grid--large-icons & {
+      width: 200px;
+      margin: 0 auto;
+    }
+
+    .benefits-grid--logo-wall & {
+      width: 100%;
+    }
   }
 
   &__icon + .context {

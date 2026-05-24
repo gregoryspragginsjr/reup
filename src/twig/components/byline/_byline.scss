@@ -23,4 +23,8 @@
   &__heading {
     color: map.get($indigo, default);
   }
+
+  + .wysiwyg {
+    margin-top: 100px;
+  }
 }

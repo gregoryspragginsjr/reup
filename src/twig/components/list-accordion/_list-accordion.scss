@@ -64,6 +64,10 @@
     }
   }
 
+  &__image + &__heading {
+    margin-top: 20px;
+  }
+
   &__heading {
     font-family: $font-primary;
     font-size: rem-calc(40px);
