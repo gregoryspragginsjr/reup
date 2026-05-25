@@ -10,6 +10,10 @@
   overflow-x: clip;
   overflow-y: visible;
 
+  &.background--white {
+    background-color: $white;
+  }
+
   .post & {
     border-top: 0;
     background-color: transparent;
@@ -76,6 +80,10 @@
 
   &--medium {
     background-color: transparent;
+
+    &.background--cream {
+      background-color: map.get($cream, default);
+    }
 
     &::after {
       content: '';

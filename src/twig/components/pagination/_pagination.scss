@@ -19,7 +19,8 @@
     font-style: normal;
     letter-spacing: 5%;
     text-transform: uppercase;
-    color: map.get($magenta, default);
+    color: map.get($magenta, light);
+    pointer-events: none;
 
     &:hover {
       color: map.get($indigo, default);
@@ -31,8 +32,17 @@
 
     svg {
       width: 12px;
-      fill: map.get($magenta, default);
+      fill: map.get($magenta, light);
       transform: rotate(90deg);
+    }
+
+    &--active {
+      color: map.get($magenta, default);
+      pointer-events: all;
+
+      svg {
+        fill: map.get($magenta, default);
+      }
     }
 
     &--next {

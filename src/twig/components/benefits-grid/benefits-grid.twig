@@ -37,20 +37,22 @@
               ) }}
             </div>
           {% endif %}
-          {% include context with {
-            type: 'default',
-            size: 'xsmall',
-            align: align,
-            subheading: item.subheading,
-            tags: item.tags,
-            heading: item.heading,
-            paragraphs: item.paragraphs,
-            buttons: {
-              size: 'default',
-              type: 'text-indigo',
-              items: item.buttons,
-            }
-          } %}
+          {% if item.subheading or item.heading or item.paragraphs or item.buttons %}
+            {% include context with {
+              type: 'default',
+              size: 'xsmall',
+              align: align,
+              subheading: item.subheading,
+              tags: item.tags,
+              heading: item.heading,
+              paragraphs: item.paragraphs,
+              buttons: {
+                size: 'default',
+                type: 'text-indigo',
+                items: item.buttons,
+              }
+            } %}
+          {% endif %}
         </div>
       </div>
     {% endfor %}

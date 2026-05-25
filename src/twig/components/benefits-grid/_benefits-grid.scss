@@ -2,7 +2,8 @@
 
 .benefits-grid {
 
-  &--large-icons {
+  &--large-icons,
+  &--stats {
 
     .benefits-grid__card .context__heading {
       font-size: rem-calc(40px);
@@ -55,6 +56,31 @@
 
     .benefits-grid--large-icons & {
       text-align: center;
+    }
+
+    .benefits-grid--stats & {
+      padding: 40px;
+      background-color: map.get($cream, light);
+      border: 1.5px solid map.get($cream, default);
+
+      .context__heading {
+        order: -1;
+      }
+
+      .context__subheading {
+        @extend .heading-style-4;
+
+        font-weight: 600;
+        line-height: 120%;
+        text-transform: none;
+        letter-spacing: 0.5px;
+        color: map.get($indigo, default);
+        margin-bottom: 0;
+      }
+
+      .context__subheading + .context__heading {
+        margin-top: 0;
+      }
     }
 
     .context {

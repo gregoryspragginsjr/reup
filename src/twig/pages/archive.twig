@@ -4,8 +4,6 @@
 <div class="page page--archive">
   {% include 'hero.twig' with {
     type: 'parallel',
-    tags: post.terms('audiences')|length == 1 ?
-      [post.terms('audiences')[0].slug] : null,
     heading: title,
     paragraphs: '<p>' ~ description ~ '</p>'
   } %}

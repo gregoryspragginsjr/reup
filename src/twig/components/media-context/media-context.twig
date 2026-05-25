@@ -11,7 +11,7 @@
   {% set testimonialsCarousel = 'testimonials-carousel.twig' %}
 {% endif %}
 
-<div class="media-context media-context--{{ size|default('large') }}{% if reverse %} media-context--reversed{% endif %}{% if testimonials %} media-context--with-testimonials{% endif %}">
+<div class="media-context media-context--{{ size|default('large') }}{% if reverse %} media-context--reversed{% endif %}{% if testimonials %} media-context--with-testimonials{% endif %} background--{{ background|default('default') }}">
   {% if size == 'display' %}
     <div class="media-context__overlay">
   {% endif %}

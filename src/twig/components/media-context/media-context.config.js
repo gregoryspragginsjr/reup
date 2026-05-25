@@ -141,6 +141,19 @@ module.exports = {
       }
     },
     {
+      name: 'Medium Cream Background',
+      context: {
+        background: 'cream',
+        size: 'medium',
+        image: {
+          srcset: 'https://placehold.co/400x300',
+          src: 'https://placehold.co/400x300',
+          alt: 'Test alt',
+        },
+        heading: 'Headline Lorem Ipsum Dolor Sit'
+      }
+    },
+    {
       name: 'Medium Reverse',
       context: {
         size: 'medium',

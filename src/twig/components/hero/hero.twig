@@ -9,7 +9,7 @@
   {% set videoComponent = 'video.twig' %}
 {% endif %}
 
-<div class="hero hero--{{ type|default('default') }}{% if reverse %} hero--reverse{% endif %}">
+<div class="hero hero--{{ type|default('default') }}{% if reverse %} hero--reverse{% endif %}{% if image is null %} hero--no-image{% endif %}">
   <div class="hero__inner grid">
     <div class="hero__main">
       <div class="hero__context">

@@ -103,4 +103,8 @@
   .benefits-grid + .benefits-grid {
     margin-top: 0;
   }
+
+  > div:last-child {
+    padding-bottom: 0;
+  }
 }

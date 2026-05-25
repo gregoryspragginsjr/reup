@@ -5,7 +5,7 @@
 	  {{ post.content }}
 
     {% set institutions_posts = fn('Timber::get_posts', {
-      post_type: 'post',
+      post_type: 'resources',
       post_per_page: 4,
       tax_query: [
         {
@@ -36,7 +36,7 @@
     }) %}
 
     {% set learners_posts = fn('Timber::get_posts', {
-      post_type: 'post',
+      post_type: 'resources',
       post_per_page: 4,
       tax_query: [
         {
@@ -67,7 +67,7 @@
     }) %}
 
     {% set states_posts = fn('Timber::get_posts', {
-      post_type: 'post',
+      post_type: 'resources',
       post_per_page: 4,
       tax_query: [
         {

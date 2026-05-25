@@ -67,6 +67,10 @@ Timber::$dirname = array_merge( $static_timber_dirs, $component_dirs );
  */
 Timber::$autoescape = false;
 
+function my_register_query_vars( $vars ) {
+    $vars[] = 'audience';
+    return $vars;
+}
 
 /**
  * We're going to configure our theme inside of a subclass of Timber\Site
@@ -81,8 +85,10 @@ class StarterSite extends Timber\Site {
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'acf/init', array( $this, 'my_acf_init') );
+		add_filter( 'query_vars', 'my_register_query_vars' );
 		parent::__construct();
 	}
+	
 	/** This is where you can register custom post types. */
 	public function register_post_types() {
 		register_post_type(
@@ -108,12 +114,35 @@ class StarterSite extends Timber\Site {
 				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
 			)
 		);
+
+		register_post_type(
+			'Resources',
+			array(
+				'labels'            => array(
+					'name'               => __( 'Resources' ),
+					'singular_name'      => __( 'Resource' ),
+					'add_new_item'       => __( 'Add Resource' ),
+					'edit_item'          => __( 'Edit Resource' ),
+					'new_item'           => __( 'New Resource' ),
+					'view_item'          => __( 'View Resource' ),
+					'search_items'       => __( 'Search Resources' ),
+					'not_found'          => __( 'Resource not found.' ),
+					'not_found_in_trash' => __( 'No Resource found in trash.' ),
+				),
+				'public'            => true,
+				'has_archive'       => true,
+				'show_in_rest'      => true,
+				'menu_icon'         => 'dashicons-book-alt',
+				'show_in_nav_menus' => true,
+				'supports'          => array( 'title', 'editor', 'revisions', 'excerpt', 'thumbnail' ),
+			)
+		);
 	}
 	/** This is where you can register custom taxonomies. */
 	public function register_taxonomies() {
 		register_taxonomy(
 			'audiences',
-			array('page', 'post'),
+			array('page', 'post', 'resources'),
 			array(
 				'hierarchical'      => true,
 				'show_ui'           => true,
@@ -282,6 +311,70 @@ class StarterSite extends Timber\Site {
 						'url'   => get_permalink($context['term']->ID),
 					)
 				);
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Resources',
+						'url'   => '/resources',
+					)
+				);
+			} elseif (is_category()) {
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'id'    => $context['term']->ID,
+						'title' => single_cat_title( '', false ),
+						'url'   => get_permalink($context['term']->ID),
+					)
+				);
+
+				if (is_category('press')) {
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'title' => 'Company',
+							'url'   => '/company',
+						)
+					);
+				}
+			} elseif (is_post_type_archive('resources')) {
+				if (get_query_var('audience')) {
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'title' => ucfirst(get_query_var('audience')),
+							'url'   => '/resources?audience=' . get_query_var('audience'),
+						)
+					);
+				}
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'title' => 'Resources',
+						'url'   => '/resources',
+					)
+				);
+			} elseif ( 'resources' == get_post_type() ) {
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'id'    => $context['post']->ID,
+						'title' => get_the_title($context['post']->ID),
+						'url'   => get_permalink($context['post']->ID),
+					)
+				);
+
+				if ( get_the_terms($context['post']->ID, 'audiences') ) {
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'title' => get_the_terms($context['post']->ID, 'audiences')[0]->name,
+							'url'   => '/audiences/' . get_the_terms($context['post']->ID, 'audiences')[0]->name,
+						)
+					);
+				}
 
 				array_push(
 					$breadcrumbs_menu,

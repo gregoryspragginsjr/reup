@@ -29,6 +29,7 @@ if ( is_day() ) {
 	$context['title'] = single_tag_title( '', false );
 } elseif ( is_category() ) {
 	$context['title'] = single_cat_title( '', false );
+	$context['description'] = term_description();
 	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
 } elseif ( is_tax() ) {
 	$context['title'] = single_cat_title( '', false );
@@ -45,7 +46,7 @@ if ( is_day() ) {
 // this line, we are explicitly telling
 // Wordpress to query posts ONLY that
 // that match the current queried object
-// 1. Get the current page from the URL
+
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 if (is_tax()) {
@@ -57,6 +58,19 @@ if (is_tax()) {
 					'taxonomy' => 'audiences',
 					'field' => 'slug',
 					'terms' => get_queried_object()->slug,
+				)
+			)
+	]);
+} elseif (is_post_type_archive('resources')) {
+	$context['post'] = Timber::get_post(333);
+	$context['posts'] = Timber::get_posts([
+			'post_type' => 'resources',
+			'paged'     => $paged,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'audiences',
+					'field' => 'slug',
+					'terms' => get_query_var('audience'),
 				)
 			)
 	]);

@@ -4,23 +4,19 @@
   <div class="pagination__inner grid">
     <div class="pagination__main">
       <div class="pagination__controls">
-        {% if prev %}
-          <a class="pagination__arrow-btn pagination__arrow-btn--prev" href="{{ prev }}">
-            {{ icons.icon('chevron', '') }}
-            Previous
-          </a>
-        {% endif %}
+        <a class="pagination__arrow-btn pagination__arrow-btn--prev{% if prev %} pagination__arrow-btn--active{% endif %}" href="{{ prev }}">
+          {{ icons.icon('chevron', '') }}
+          Previous
+        </a>
         <ul>
           {% for page in pages %}
             <li class="pagination__item{% if page.active %} pagination__item--active{% endif %}"><a href="{{ page.url }}">{{ loop.index }}</a></li>
           {% endfor %}
         </ul>
-        {% if next %}
-          <a class="pagination__arrow-btn pagination__arrow-btn--next" href="{{ next }}">
-            {{ icons.icon('chevron', '') }}
-            Next
-          </a>
-        {% endif %}
+        <a class="pagination__arrow-btn pagination__arrow-btn--next{% if next %} pagination__arrow-btn--active{% endif %}" href="{{ next }}">
+          {{ icons.icon('chevron', '') }}
+          Next
+        </a>
       </div>
     </div>
   </div>

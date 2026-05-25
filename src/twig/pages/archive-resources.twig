@@ -1,0 +1,229 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="page page--archive">
+    {% if fn('get_query_var', 'audience') %}
+      {% set audience = fn('get_query_var', 'audience') %}
+      {% set term = fn('get_term_by', 'slug', audience, 'audiences') %}
+
+      {% include 'hero.twig' with {
+        type: 'parallel',
+        tags: [audience],
+        heading: 'Resources for ' ~ audience|capitalize,
+        paragraphs: '<p>' ~ term.description ~ '</p>'
+      } %}
+
+      {% set mapped_posts = posts|map(i => {
+        image: {
+          sizes: {
+            Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+            Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+          }
+        },
+        subheading: i.post_date|date("M d, Y"),
+        heading: i.post_title,
+        paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Read More',
+              url: function('get_permalink', i.ID),
+            }
+          }
+        ]
+      }) %}
+
+      {% if posts.pagination.current == 1 %}
+        {% include 'grids-section.twig' with {
+          background: 'cream',
+          items: [
+            {
+              acf_fc_layout: 'media-context',
+              size: 'medium',
+              image: mapped_posts[0].image,
+              subheading: mapped_posts[0].subheading,
+              heading: mapped_posts[0].heading,
+              paragraphs: mapped_posts[0].paragraphs,
+              buttons: mapped_posts[0].buttons
+            },
+            {
+              acf_fc_layout: 'article-grid',
+              items: mapped_posts|slice(1)
+            }
+          ],
+          pagination: {
+            pages: posts.pagination.pages|map(p => {
+              active: p.current,
+              url: p.link
+            }),
+            prev: posts.pagination.prev.link,
+            next: posts.pagination.next.link
+          }
+        } %}
+      {% else %}
+        {% include 'grids-section.twig' with {
+          background: 'cream',
+          items: [
+            {
+              acf_fc_layout: 'article-grid',
+              items: mapped_posts
+            }
+          ],
+          pagination: {
+            pages: posts.pagination.pages|map(p => {
+              active: p.current,
+              url: p.link,
+            }),
+            prev: posts.pagination.prev.link,
+            next: posts.pagination.next.link
+          }
+        } %}
+      {% endif %}
+    {% else %}
+	    {{ post.content }}
+
+      {% set institutions_posts = fn('Timber::get_posts', {
+        post_type: 'resources',
+        post_per_page: 4,
+        tax_query: [
+          {
+            taxonomy: 'audiences',
+            field: 'slug',
+            terms: 'institutions'
+          }
+        ]
+      })|map(i => {
+        image: {
+          sizes: {
+            Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+            Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+          }
+        },
+        tags: null,
+        subheading: i.post_date|date("M d, Y"),
+        heading: i.post_title,
+        paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Read More',
+              url: function('get_permalink', i.ID),
+            }
+          }
+        ]
+      }) %}
+
+      {% set learners_posts = fn('Timber::get_posts', {
+        post_type: 'resources',
+        post_per_page: 4,
+        tax_query: [
+          {
+            taxonomy: 'audiences',
+            field: 'slug',
+            terms: 'learners'
+          }
+        ]
+      })|map(i => {
+        image: {
+          sizes: {
+            Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+            Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+          }
+        },
+        tags: null,
+        subheading: i.post_date|date("M d, Y"),
+        heading: i.post_title,
+        paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Read More',
+              url: function('get_permalink', i.ID),
+            }
+          }
+        ]
+      }) %}
+
+      {% set states_posts = fn('Timber::get_posts', {
+        post_type: 'resources',
+        post_per_page: 4,
+        tax_query: [
+          {
+            taxonomy: 'audiences',
+            field: 'slug',
+            terms: 'states'
+          }
+        ]
+      })|map(i => {
+        image: {
+          sizes: {
+            Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+            Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+          }
+        },
+        tags: null,
+        subheading: i.post_date|date("M d, Y"),
+        heading: i.post_title,
+        paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Read More',
+              url: function('get_permalink', i.ID),
+            }
+          }
+        ]
+      }) %}
+
+      {% include 'grids-section.twig' with {
+        items: [
+          {
+            acf_fc_layout: 'article-grid',
+            tags: ['institutions'],
+            heading: 'Featured Resources for Institutions',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'More Resources for Institutions',
+                  url: '/resources/?audience=institutions'
+                }
+              }
+            ],
+            items: institutions_posts,
+          },
+          {
+            acf_fc_layout: 'article-grid',
+            tags: ['learners'],
+            heading: 'Featured Resources for Learners',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'More Resources for Learners',
+                  url: '/resources/?audience=learners'
+                }
+              }
+            ],
+            items: learners_posts,
+          },
+          {
+            acf_fc_layout: 'article-grid',
+            tags: ['states'],
+            heading: 'Featured Resources for States',
+            paragraphs: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum mauris orci, sed tincidunt mauris porta convallis. Proin id nunc porttitor tortor.</p>',
+            buttons: [
+              {
+                button: {
+                  title: 'More Resources for States',
+                  url: '/resources/?audience=states'
+                }
+              }
+            ],
+            items: states_posts,
+          },
+        ]
+      } %}
+    {% endif %}
+  </div>
+{% endblock %}
