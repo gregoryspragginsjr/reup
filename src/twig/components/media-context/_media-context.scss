@@ -181,6 +181,14 @@
       height: 30px;
       background-color: map.get($magenta, default);
 
+      .media-context--with-testimonials & {
+        display: none;
+
+        @include breakpoint(medium) {
+          display: block;
+        }
+      }
+
       .media-context--reversed & {
         right: 0;
         left: auto;

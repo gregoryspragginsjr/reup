@@ -38,7 +38,7 @@
   }
 
   &__left + &__right {
-    margin-top: 80px;
+    margin-top: 60px;
 
     @include breakpoint(large) {
       margin-top: 0;
@@ -111,9 +111,12 @@
       position: relative;
       padding-top: 40px;
       padding-left: 35px;
-      margin-left: 9px;
       border-left: 3px solid map.get($indigo, default);
       color: map.get($indigo, default);
+
+      @include breakpoint(large) {
+        margin-left: 9px;
+      }
 
       h3,
       h4 {

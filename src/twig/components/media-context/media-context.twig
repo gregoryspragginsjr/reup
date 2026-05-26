@@ -91,15 +91,14 @@
           buttons: {
             size: 'default',
             type: size == 'medium' ? 'hollow-indigo' : btnType,
-            items: buttons,
+            items: size == 'display' ? null : buttons,
           }
         } %}
-        {% if size == 'display' %}
+        {% if size == 'display' and buttons %}
           <div class="media-context__special-button-group button-group">
-            <a class="btn--aqua" href="/">For Institutions</a>
-            <a class="btn--honey" href="/">For Learners</a>
-            <a class="btn--green" href="/">For States</a>
-            <a class="btn--magenta" href="/">General Inquiries</a>
+            {% for button in buttons %}
+              <a class="btn--{{ button.type }}" href="{{ button.button.url }}">{{ button.button.title }}</a>
+            {% endfor %}
           </div>
         {% endif %}
         {% if testimonials %}

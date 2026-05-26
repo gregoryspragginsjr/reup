@@ -1,5 +1,9 @@
 <template>
-  <div ref="carousel">
+  <div
+    ref="carousel"
+    @mouseenter="hovered = true"
+    @mouseleave="hovered = false"
+    >
     <slot
       :activeSlide="activeSlide"
       :toggleActive="toggleActive"
@@ -10,22 +14,32 @@
 <script setup lang="ts">
 const carousel = ref<HTMLElement | null>(null);
 const activeSlide = ref<Number>(1);
+const hovered = ref<Boolean>(false);
 // let carouselWindow: HTMLElement;
+let slides: HTMLElement[];
 
 const toggleActive = (i: number) => {
   activeSlide.value = i;
 
   // setTimeout(() => {
-  //   carouselWindow.style.height = carousel.value.querySelector('.testimonials-carousel__slide--active').offsetHeight + 'px';
+  //   carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
   // }, 50);
 };
 
-// onMounted(() => {
-//   // carouselWindow = carousel.value.querySelector('.testimonials-carousel__window');
-//   // carouselWindow.style.height = carousel.value.querySelector('.testimonials-carousel__slide--active').offsetHeight + 'px';
+onMounted(() => {
+  // carouselWindow = carousel.value.querySelector('.testimonials-carousel__window');
+  // carouselWindow.style.height = carousel.value.querySelector('.testimonials-carousel__slide--active').offsetHeight + 'px';
 
-//   window.addEventListener('resize', () => {
-//     toggleActive(1);
-//   });
-// });
+  // window.addEventListener('resize', () => {
+  //   toggleActive(1);
+  // });
+
+  slides = carousel.value.querySelectorAll('.stories-carousel__slide');
+
+  setInterval(() => {
+    if (hovered.value == false && window.innerWidth > 639) {
+      activeSlide.value == slides.length ? toggleActive(1) : toggleActive(activeSlide.value += 1);
+    }
+  }, 5000)
+});
 </script>

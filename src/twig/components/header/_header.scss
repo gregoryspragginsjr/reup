@@ -628,8 +628,11 @@
       padding: 30px 16px;
       margin-top: 0;
       opacity: 1;
-      visibility: visible;
       transform: none;
+
+      .header--active & {
+        visibility: visible;
+      }
 
       @include breakpoint(medium) {
         grid-column: span 6 / span 6;

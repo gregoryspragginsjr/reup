@@ -1,5 +1,6 @@
 {% import "icons.twig" as icons %}
 
+<a class="skip-to-content-btn btn--indigo" href="#main">Skip to Main Content</a>
 <component is="header" v-slot="header" class="header header--{{ type|default('default') }}">
   <div class="header__inner">
     <div class="header__main">
@@ -10,7 +11,11 @@
       <ul class="header__nav">
         {% for item in primary %}
           <li>
-            <a href="{{ item.url }}">{{ item.title }}{{ icons.icon('chevron', '') }}</a>
+            <a
+              href="{{ item.url }}"
+              @keyup.left="header.keyboardLeft($event)"
+              @keyup.right="header.keyboardRight($event)"
+            >{{ item.title }}{{ icons.icon('chevron', '') }}</a>
             <div class="header__dropdown header__dropdown--{{ item.title|lower|replace({' ': '-'}) }}">
               <ul>
                 {% for child in item.children %}
