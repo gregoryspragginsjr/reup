@@ -1,0 +1,149 @@
+{% block html_head_container %}
+
+{% include 'html-header.twig' %}
+  {% block head %}
+  {% endblock %}
+  </head>
+{% endblock %}
+
+  <body>
+    <div>
+      <div id="app">
+        {% if fn('is_post_type_archive', 'resources') %}
+          {% set breadcrumbs_type = fn('get_query_var', 'audience') %}
+        {% elseif fn('is_category') %}
+          {% set breadcrumbs_type = null %}
+        {% else %}
+          {% set breadcrumbs_type = post.terms('audiences')|length == 1 ? post.terms('audiences')[0].slug : null %}
+        {% endif %}
+        {% include 'header.twig' with {
+          type: breadcrumbs_type,
+          breadcrumbs: fn('is_front_page') ? null : breadcrumbs_menu,
+          primary: [
+            {
+              url: '/solutions',
+              title: 'Collective Solutions',
+              children: [
+                {
+                  url: '/solutions/outreach-and-re-engagement/',
+                  title: 'Outreach and Re-Engagement',
+                  excerpt: 'Connect and inspire'
+                },
+                {
+                  url: '/solutions/data/',
+                  title: 'Data',
+                  excerpt: 'Insights that drive action'
+                },
+                {
+                  url: '/solutions/technology/',
+                  title: 'Technology',
+                  excerpt: 'Custom tools adapted to you'
+                },
+                {
+                  url: '/solutions/coaching-and-learner-support/',
+                  title: 'Coaching & Learner Support',
+                  excerpt: 'Guidance for every step'
+                },
+              ],
+            },
+            {
+              url: '/who-can-benefit/',
+              title: 'Who Can Benefit',
+              children: [
+                {
+                  url: '/who-can-benefit/institutions/',
+                  title: 'Re-enroll stop outs',
+                  tag: 'Institutions',
+                },
+                {
+                  url: '/who-can-benefit/learners/',
+                  title: 'Complete your degree',
+                  tag: 'Learners',
+                },
+                {
+                  url: '/who-can-benefit/states',
+                  title: 'Grow your workforce',
+                  tag: 'States',
+                },
+              ],
+            },
+            {
+              url: '/resources/',
+              title: 'Resources',
+              children: [
+                {
+                  url: '/resources/?audience=institutions',
+                  title: 'Resources',
+                  tag: 'Institutions',
+                },
+                {
+                  url: '/resources/?audience=learners',
+                  title: 'Resources',
+                  tag: 'Learners',
+                },
+                {
+                  url: '/resources/?audience=states',
+                  title: 'Resources',
+                  tag: 'States',
+                },
+              ],
+            },
+            {
+              url: '/company',
+              title: 'Company',
+              children: [
+                {
+                  url: '/company/our-team',
+                  title: 'Our Team',
+                },
+                {
+                  url: '/company/careers',
+                  title: 'Careers',
+                },
+                {
+                  url: '/category/press/',
+                  title: 'Press',
+                },
+              ],
+            },
+          ],
+          utility: [
+            {
+              url: '/',
+              title: 'Get insights',
+              tag: 'Institutions',
+            },
+            {
+              url: '/',
+              title: 'Meet coach',
+              tag: 'Learners',
+            },
+            {
+              url: '/',
+              title: 'Drive growth',
+              tag: 'States',
+            },
+            {
+              url: '/',
+              title: "Let's chat",
+              tag: 'Anybody',
+            },
+          ],
+        } %}
+      </div>
+      <main id="main" class="page">
+        {% block content %}
+          Sorry, no content
+        {% endblock %}
+      </main>
+      {% include 'footer.twig' with {
+        primary: footer_menu.items,
+        copyright: copyright_menu.items,
+        address: global_address
+      } %}
+      {% block footer %}
+        {{ function('wp_footer') }}
+      {% endblock %}
+    </div>
+  </body>
+</html>

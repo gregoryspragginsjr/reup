@@ -1,0 +1,16 @@
+{% extends "no-vue.twig" %}
+
+{% block content %}
+  <div class="page wysiwyg">
+	  {{ post.content }}
+
+    <div class="page__inner grid">
+      <div class="page__main">
+        <!-- Rippling Recruiting: Place this where you want your job board to appear. -->
+        <div id="rr-job-board" data-job-board-id="reup-education"></div>
+        <!-- Rippling Recruiting: Place this anywhere on your site. -->
+        <script src="https://static-assets.ripplingcdn.com/ats/embeds/job-board.v1.js" async></script>
+      </div>
+    </div>
+  </div>
+{% endblock %}

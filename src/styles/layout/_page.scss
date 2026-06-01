@@ -32,6 +32,10 @@
     margin-right: auto;
     margin-left: auto;
   }
+
+  &__main {
+    grid-column: span 12 / span 12;
+  }
 }
 
 .post {

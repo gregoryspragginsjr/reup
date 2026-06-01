@@ -31,7 +31,7 @@
       <div class="stories-carousel__main">
         <div class="stories-carousel__label">
           {% if item.tag and item.tag != 'default' %}
-            <div class="tag tag--{{ item.tag|lower }}">{{ icons.icon('temp', item.tag) }}{{ item.tag|capitalize }}</div>
+            <div class="tag tag--{{ item.tag|lower }}">{{ icons.icon(item.tag|lower, item.tag) }}{{ item.tag|capitalize }}</div>
           {% endif %}
           <span>{{ item.label }}</span>
         </div>

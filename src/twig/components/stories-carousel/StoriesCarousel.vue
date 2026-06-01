@@ -21,9 +21,9 @@ let slides: HTMLElement[];
 const toggleActive = (i: number) => {
   activeSlide.value = i;
 
-  // setTimeout(() => {
-  //   carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
-  // }, 50);
+  setTimeout(() => {
+    carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
+  }, 50);
 };
 
 onMounted(() => {

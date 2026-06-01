@@ -1,3 +1,5 @@
+{% import "icons.twig" as icons %}
+
 {% if in_component_library %}
   {% set buttonGroup = '@button-group' %}
 {% else %}
@@ -9,7 +11,7 @@
   {% if tags %}
     <div class="tag-group">
       {% for tag in tags %}
-        <div class="tag tag--{{ tag }}">{{ icons.icon('temp', '') }} {{ tag|capitalize }}</div>
+        <div class="tag tag--{{ tag }}">{{ icons.icon(tag|lower, '') }} {{ tag|capitalize }}</div>
       {% endfor %}
       {# <div class="tag tag--institutions">{{ icons.icon('temp', '') }} Institutions</div>
       <div class="tag tag--learners">{{ icons.icon('temp', '') }} Learners</div>

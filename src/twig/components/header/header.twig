@@ -27,11 +27,11 @@
                       href="{{ child.url }}"
                     >
                       {% if item.title == 'Collective Solutions' or item.title == 'Who Can Benefit' %}
-                        {{ icons.icon('temp', 'header__symbol') }}
+                        {{ icons.icon(child.tag|lower, 'header__symbol') }}
                       {% endif %}
                       {% if child.tag and item.title != 'Who Can Benefit' %}
                       <div class="tag tag--{{ child.tag|lower|replace({' ': '-'}) }}">
-                        {{ icons.icon('temp', '') }}
+                        {{ icons.icon(child.tag|lower, '') }}
                         {{ child.tag }}
                       </div>
                       {% endif %}
@@ -61,7 +61,7 @@
                 <li>
                   <a class="header__tagged-btn header__tagged-btn--{{ item.tag|lower }}" href="{{ item.url }}">
                     <div class="tag tag--{{ item.tag|lower|replace({' ': '-'}) }}">
-                      {{ icons.icon('temp', '') }}
+                      {{ icons.icon(item.tag|lower, '') }}
                       {{ item.tag }}
                     </div>
                     <span>
@@ -79,8 +79,8 @@
                 <a href="/solutions/technology/dragonfly-app/">
                   <span>Dragonfly App</span>
                   <div class="tag">
-                    {{ icons.icon('temp', 'institutions') }}
-                    {{ icons.icon('temp', 'states') }}
+                    {{ icons.icon('institutions', 'institutions') }}
+                    {{ icons.icon('states', 'states') }}
                   </div>
                   {{ icons.icon('newtab', 'header__newtab') }}
                 </a>
@@ -89,7 +89,7 @@
                 <a href="/solutions/technology/learners-app/">
                   <span>Learners App</span>
                   <div class="tag">
-                    {{ icons.icon('temp', 'learners') }}
+                    {{ icons.icon('learners', 'learners') }}
                   </div>
                   {{ icons.icon('newtab', 'header__newtab') }}
                 </a>
@@ -161,7 +161,7 @@
               <li>
                 <a class="header__tagged-btn header__tagged-btn--{{ item.tag|lower }}" href="{{ item.url }}">
                   <div class="tag tag--{{ item.tag|lower|replace({' ': '-'}) }}">
-                    {{ icons.icon('temp', '') }}
+                    {{ icons.icon(item.tag|lower, '') }}
                     {{ item.tag }}
                   </div>
                   <span>
@@ -179,8 +179,8 @@
               <a href="/solutions/technology/dragonfly-app/">
                 <span>Dragonfly App</span>
                 <div class="tag">
-                  {{ icons.icon('temp', 'institutions') }}
-                  {{ icons.icon('temp', 'states') }}
+                  {{ icons.icon('institutions', 'institutions') }}
+                  {{ icons.icon('states', 'states') }}
                 </div>
                 {{ icons.icon('newtab', 'header__newtab') }}
               </a>
@@ -189,7 +189,7 @@
               <a href="/solutions/technology/learners-app/">
                 <span>Learners App</span>
                 <div class="tag">
-                  {{ icons.icon('temp', 'learners') }}
+                  {{ icons.icon('learners', 'learners') }}
                 </div>
                 {{ icons.icon('newtab', 'header__newtab') }}
               </a>
