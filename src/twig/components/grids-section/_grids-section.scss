@@ -7,6 +7,11 @@
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 
+    &.background--default,
+    &.background--white {
+      background-color: $white;
+    }
+
     &.background--indigo {
       background-color: map.get($indigo, default);
     }
@@ -110,4 +115,18 @@
   // .benefits-grid + .benefits-grid {
   //   margin-top: 0;
   // }
+}
+
+// Edge cases for applying background color
+// from preceding sections.
+
+.list-accordion + .grids-section,
+.stories-carousel + .grids-section,
+.background--cream + .grids-section {
+  background-color: map.get($cream, default);
+}
+
+.cta-context-section + .grids-section,
+.background--indigo + .grids-section {
+  background-color: map.get($indigo, default);
 }
