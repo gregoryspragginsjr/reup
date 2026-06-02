@@ -1,5 +1,9 @@
 <template>
-  <div ref="carousel">
+  <div
+    ref="carousel"
+    @mouseenter="hovered = true"
+    @mouseleave="hovered = false"
+  >
     <slot
       :activeSlide="activeSlide"
       :toggleActive="toggleActive"
@@ -19,7 +23,7 @@ const toggleActive = (i: number) => {
 
   setTimeout(() => {
     carouselWindow.style.height = carousel.value.querySelector('.testimonials-carousel__slide--active').offsetHeight + 'px';
-  }, 50);
+  }, 100);
 };
 
 onMounted(() => {

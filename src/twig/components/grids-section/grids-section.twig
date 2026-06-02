@@ -6,25 +6,27 @@
   {% set benefitsGrid = 'benefits-grid.twig' %}
 {% endif %}
 
-<section class="grids-section background--{{ background|default('white') }}">
-  {% if heading or paragraphs or buttons %}
-    {% include contextSection %}
-  {% endif %}
-  {% set size = null %}
-  {% set align = null %}
-  {% set tags = null %}
-  {% set subheading = null %}
-  {% set heading = null %}
-  {% set paragraphs = null %}
-  {% set buttons = null %}
-  {% for item in items %}
-    {% if in_component_library %}
-      {% include '@' ~ item.acf_fc_layout with item|merge({ background: background }) %}
-    {% else %}
-      {% include item.acf_fc_layout ~ '.twig' with item|merge({ background: background }) %}
+<section class="grids-section">
+  <div class="grids-section__main background--{{ background|default('white') }}">
+    {% if heading or paragraphs or buttons %}
+      {% include contextSection %}
     {% endif %}
-  {% endfor %}
-  {% if pagination %}
-    {% include 'pagination.twig' with pagination %}
-  {% endif %}
+    {% set size = null %}
+    {% set align = null %}
+    {% set tags = null %}
+    {% set subheading = null %}
+    {% set heading = null %}
+    {% set paragraphs = null %}
+    {% set buttons = null %}
+    {% for item in items %}
+      {% if in_component_library %}
+        {% include '@' ~ item.acf_fc_layout with item|merge({ background: background }) %}
+      {% else %}
+        {% include item.acf_fc_layout ~ '.twig' with item|merge({ background: background }) %}
+      {% endif %}
+    {% endfor %}
+    {% if pagination %}
+      {% include 'pagination.twig' with pagination %}
+    {% endif %}
+  </div>
 </section>

@@ -26,7 +26,7 @@
                       {% endif %}
                       href="{{ child.url }}"
                     >
-                      {% if item.title == 'Collective Solutions' or item.title == 'Who Can Benefit' %}
+                      {% if item.title == 'Solutions' or item.title == 'Who Can Benefit' %}
                         {{ icons.icon(child.tag|lower, 'header__symbol') }}
                       {% endif %}
                       {% if child.tag and item.title != 'Who Can Benefit' %}
@@ -132,7 +132,7 @@
                     {% endif %}
                     href="{{ child.url }}"
                   >
-                    {% if item.title == 'Collective Solutions' or item.title == 'Who Can Benefit' %}
+                    {% if item.title == 'Solutions' or item.title == 'Who Can Benefit' %}
                       {{ icons.icon('temp', 'header__symbol') }}
                     {% endif %}
                     {% if child.tag and item.title != 'Who Can Benefit' %}

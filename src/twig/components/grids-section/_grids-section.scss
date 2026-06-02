@@ -1,47 +1,54 @@
 @use "sass:map";
 
 .grids-section {
-  padding: 130px 0 140px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
 
-  &.background--indigo {
-    background-color: map.get($indigo, default);
-  }
+  &__main {
+    padding: 130px 0 140px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 
-  &.background--cream {
-    background-color: map.get($cream, default);
-  }
+    &.background--indigo {
+      background-color: map.get($indigo, default);
+    }
 
-  > .context-section {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
+    &.background--cream {
+      background-color: map.get($cream, default);
+    }
 
-  > .context-section + * {
-    padding-bottom: 80px;
-  }
+    > div:last-child {
+      padding-bottom: 0;
+    }
 
-  > .context-section + .benefits-grid,
-  .benefits-grid + .benefits-grid,
-  .article-grid + .article-grid {
-    .context-section {
-      &__inner {
-        position: relative;
+    > .context-section {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
 
-        &::before {
-          content: '';
-          grid-column: span 12 / span 12;
-          padding-bottom: 80px;
-          border-top: 2px solid map.get($cream, default);
+    > .context-section + * {
+      // padding-bottom: 80px;
+    }
+
+    > .context-section + .benefits-grid,
+    .benefits-grid + .benefits-grid,
+    .article-grid + .article-grid {
+      .context-section {
+        &__inner {
+          position: relative;
+
+          &::before {
+            content: '';
+            grid-column: span 12 / span 12;
+            padding-bottom: 80px;
+            border-top: 2px solid map.get($cream, default);
+          }
         }
       }
     }
-  }
 
-  > .context-section + .benefits-grid,
-  > .context-section + .article-grid {
-    margin-top: 80px;
+    > .context-section + .benefits-grid,
+    > .context-section + .article-grid {
+      margin-top: 80px;
+    }
   }
 
   .benefits-grid,
@@ -100,11 +107,7 @@
     margin-top: 80px;
   }
 
-  .benefits-grid + .benefits-grid {
-    margin-top: 0;
-  }
-
-  > div:last-child {
-    padding-bottom: 0;
-  }
+  // .benefits-grid + .benefits-grid {
+  //   margin-top: 0;
+  // }
 }

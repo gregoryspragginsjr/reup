@@ -6,6 +6,10 @@
   background-color: map.get($cream, default);
   overflow: hidden;
 
+  @include breakpoint(medium) {
+    padding: 0;
+  }
+
   &__slide {
     position: absolute;
     visibility: hidden;
@@ -148,9 +152,9 @@
   &__image {
     position: relative;
     flex-shrink: 0;
-    width: 300px;
+    max-width: 100%;
     border: 30px solid map.get($magenta, default);
-    margin: 0 auto;
+    margin: 0 40px 120px 40px;
     font-size: 0;
 
     @include breakpoint(medium) {
@@ -254,7 +258,8 @@
       appearance: none;
       cursor: pointer;
 
-      &.active {
+      &.active,
+      &:hover {
         background-color: map.get($magenta, default);
       }
     }

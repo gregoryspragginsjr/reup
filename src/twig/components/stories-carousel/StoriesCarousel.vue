@@ -23,16 +23,17 @@ const toggleActive = (i: number) => {
 
   setTimeout(() => {
     carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
-  }, 50);
+  }, 100);
 };
 
 onMounted(() => {
-  // carouselWindow = carousel.value.querySelector('.testimonials-carousel__window');
-  // carouselWindow.style.height = carousel.value.querySelector('.testimonials-carousel__slide--active').offsetHeight + 'px';
+  window.addEventListener('resize', () => {
+    toggleActive(1);
+  });
 
-  // window.addEventListener('resize', () => {
-  //   toggleActive(1);
-  // });
+  if (window.innerWidth < 639) {
+    carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
+  }
 
   slides = carousel.value.querySelectorAll('.stories-carousel__slide');
 

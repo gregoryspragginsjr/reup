@@ -76,6 +76,7 @@
   &--text-honey {
     padding: 0;
     text-decoration: underline;
+    text-underline-offset: 20%;
     background-color: transparent;
     border: 0;
 
@@ -119,6 +120,7 @@
   font-size: rem-calc(13px);
   font-weight: 500;
   letter-spacing: 0.5px;
+  text-decoration: none;
   padding: 5px 10px;
   border-radius: 100px;
   background-color: map.get($cream, default);
@@ -148,6 +150,14 @@
     svg {
       fill: map.get($aqua, default);
     }
+
+    &:hover {
+      background-color: map.get($aqua, default);
+
+      svg {
+        fill: map.get($aqua, dark);
+      }
+    }
   }
 
   &--learners {
@@ -158,6 +168,14 @@
     svg {
       fill: map.get($honey, default);
     }
+
+    &:hover {
+      background-color: map.get($honey, default);
+
+      svg {
+        fill: map.get($honey, dark);
+      }
+    }
   }
 
   &--states {
@@ -167,6 +185,14 @@
 
     svg {
       fill: map.get($green, default);
+    }
+
+    &:hover {
+      background-color: map.get($green, default);
+
+      svg {
+        fill: map.get($green, dark);
+      }
     }
   }
 

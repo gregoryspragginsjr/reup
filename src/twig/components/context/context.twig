@@ -11,11 +11,8 @@
   {% if tags %}
     <div class="tag-group">
       {% for tag in tags %}
-        <div class="tag tag--{{ tag }}">{{ icons.icon(tag|lower, '') }} {{ tag|capitalize }}</div>
+        <a class="tag tag--{{ tag }}" href="/who-can-benefit/{{ tag|lower }}">{{ icons.icon(tag|lower, '') }} {{ tag|capitalize }}</a>
       {% endfor %}
-      {# <div class="tag tag--institutions">{{ icons.icon('temp', '') }} Institutions</div>
-      <div class="tag tag--learners">{{ icons.icon('temp', '') }} Learners</div>
-      <div class="tag tag--states">{{ icons.icon('temp', '') }} States</div> #}
     </div>
   {% endif %}
   {% if heading %}<h2 class="context__heading">{{ heading }}</h2>{% endif %}

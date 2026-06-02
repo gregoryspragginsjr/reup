@@ -29,7 +29,7 @@ const toggleDrawer = () => {
 }
 
 const breadcrumbsScrollRight = () => {
-  if (window.innerWidth < 639) {
+  if (window.innerWidth < 639 && breadcrumbs) {
     breadcrumbs.scrollLeft = breadcrumbs.scrollWidth - breadcrumbs.clientWidth;
   }
 }

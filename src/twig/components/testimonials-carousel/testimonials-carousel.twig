@@ -6,6 +6,7 @@
       <div
         class="testimonials-carousel__slide testimonials-carousel__slide--{{ item.tag|default('default') }}"
         :class="{ 'testimonials-carousel__slide--active' : carousel.activeSlide == {{ loop.index }} }"
+        @click="carousel.toggleActive({{ loop.index == items|length ? 1 : loop.index + 1 }})"
       >
         {% if item.image %}
           {{ macros.picture(

@@ -41,7 +41,7 @@
 @mixin subheading-style-1() {
   font-family: $font-tertiary;
   font-size: rem-calc(18px);
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -54,7 +54,7 @@
 @mixin subheading-style-2() {
   font-family: $font-tertiary;
   font-size: rem-calc(15px);
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   letter-spacing: 1px;
   text-transform: uppercase;

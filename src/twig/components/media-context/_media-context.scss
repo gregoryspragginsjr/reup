@@ -6,7 +6,7 @@
   padding: 80px 0;
   font-size: 0;
   background-color: map.get($cream, default);
-  border-top: 2px solid map.get($cream, dark);
+  border-top: 1.5px solid map.get($cream, dark);
   overflow-x: clip;
   overflow-y: visible;
 
@@ -80,6 +80,7 @@
 
   &--medium {
     background-color: transparent;
+    --after-transform: rotate(-172deg);
 
     &.background--cream {
       background-color: map.get($cream, default);
@@ -95,7 +96,7 @@
       width: 560px;
       height: 490px;
       background-color: #FBF9F9;
-      transform: rotate(-172deg);
+      transform: var(--after-transform);
 
       .post & {
         display: none;
@@ -107,11 +108,32 @@
     }
   }
 
+  &--large {
+    .tag {
+      display: inline-flex;
+      padding: 8px 16px;
+      font-size: rem-calc(16px);
+      letter-spacing: 0;
+
+      svg {
+        width: 16px;
+      }
+    }
+  }
+
   &--reversed {
+    --after-transform: rotate(172deg);
+
     &::after {
       right: auto;
       left: 0;
-      transform: rotate(172deg);
+      transform: var(--after-transform);
+    }
+
+    + .media-context--reversed:nth-child(even of .media-context) {
+      &::after {
+        display: none;
+      }
     }
   }
 
