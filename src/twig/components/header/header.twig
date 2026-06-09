@@ -4,7 +4,7 @@
 <component is="header" v-slot="header" class="header header--{{ type|default('default') }}">
   <div class="header__inner">
     <div class="header__main">
-      <a class="header__logo" href="/">
+      <a class="header__logo" href="/"{% if fn('is_front_page') %} disabled="true"{% endif %}>
         {{ icons.icon('logo', '') }}
         <span class="sr-only">Link to Home</span>
       </a>
@@ -26,8 +26,14 @@
                       {% endif %}
                       href="{{ child.url }}"
                     >
-                      {% if item.title == 'Solutions' or item.title == 'Who Can Benefit' %}
+                      {% if item.title == 'Solutions' %}
+                        <div class="header__symbol-wrap">
+                        {{ icons.icon(child.title|lower, 'header__symbol') }}
+                        </div>
+                      {% elseif item.title == 'Who Can Benefit' %}
+                        <div class="header__symbol-wrap">
                         {{ icons.icon(child.tag|lower, 'header__symbol') }}
+                        </div>
                       {% endif %}
                       {% if child.tag and item.title != 'Who Can Benefit' %}
                       <div class="tag tag--{{ child.tag|lower|replace({' ': '-'}) }}">
@@ -132,12 +138,18 @@
                     {% endif %}
                     href="{{ child.url }}"
                   >
-                    {% if item.title == 'Solutions' or item.title == 'Who Can Benefit' %}
-                      {{ icons.icon('temp', 'header__symbol') }}
+                    {% if item.title == 'Solutions' %}
+                      <div class="header__symbol-wrap">
+                      {{ icons.icon(child.title|lower, 'header__symbol') }}
+                      </div>
+                    {% elseif item.title == 'Who Can Benefit' %}
+                      <div class="header__symbol-wrap">
+                      {{ icons.icon(child.tag|lower, 'header__symbol') }}
+                      </div>
                     {% endif %}
                     {% if child.tag and item.title != 'Who Can Benefit' %}
                     <div class="tag tag--{{ child.tag|lower|replace({' ': '-'}) }}">
-                      {{ icons.icon('temp', '') }}
+                      {{ icons.icon(child.tag|lower, 'header__symbol') }}
                       {{ child.tag }}
                     </div>
                     {% endif %}

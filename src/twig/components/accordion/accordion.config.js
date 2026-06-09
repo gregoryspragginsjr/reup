@@ -1,6 +1,7 @@
 module.exports = {
   title: "Accordion",
   status: "wip",
+  hidden: true,
   context: {
     panels: [
       {

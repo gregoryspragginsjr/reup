@@ -12,6 +12,7 @@
 
   &.background--white {
     background-color: $white;
+    border-top: 1.5px solid map.get($cream, default);
   }
 
   .post & {
