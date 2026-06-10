@@ -17,7 +17,7 @@ let gsapTo;
 const animate = () => {
   if (!target.value) return;
 
-  gsapFrom = target.value.classList.contains('media-context--reversed') ? '160deg' : '-160deg';
+  gsapFrom = target.value.classList.contains('media-context--reversed') ? '140deg' : '-140deg';
   gsapTo = target.value.classList.contains('media-context--reversed') ? '170deg' : '-170deg';
 
   gsap.fromTo(

@@ -1,6 +1,7 @@
 module.exports = {
   title: "Context Section",
   status: "wip",
+  hidden: true,
   context: {
     heading: 'This is a Context Section',
     subheading: 'Sometimes interstitial. Always quick and easy.',
