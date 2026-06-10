@@ -28,7 +28,54 @@
     ]
   }) %}
 
-  {% if posts.pagination.current == 1 %}
+  {% set mapped_featured_posts = featured_posts|map(i => {
+    image: {
+      sizes: {
+        Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+        Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+      }
+    },
+    subheading: i.post_date|date("M d, Y"),
+    heading: i.post_title,
+    paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+    buttons: [
+      {
+        button: {
+          title: 'Read More',
+          url: function('get_permalink', i.ID),
+        }
+      }
+    ]
+  }) %}
+
+  {% if posts.pagination.current == 1 and mapped_featured_posts|length > 0 %}
+    {% include 'grids-section.twig' with {
+      background: 'cream',
+      items: [
+        {
+          acf_fc_layout: 'media-context',
+          size: 'medium',
+          image: mapped_featured_posts[0].image,
+          subheading: mapped_featured_posts[0].subheading,
+          heading: mapped_featured_posts[0].heading,
+          paragraphs: mapped_featured_posts[0].paragraphs,
+          buttons: mapped_featured_posts[0].buttons
+        },
+        {
+          acf_fc_layout: 'article-grid',
+          items: mapped_posts
+        }
+      ],
+      pagination: {
+        pages: posts.pagination.pages|map(p => {
+          active: p.current,
+          url: p.link
+        }),
+        prev: posts.pagination.prev.link,
+        next: posts.pagination.next.link
+      }
+    } %}
+  {% elseif posts.pagination.current == 1 %}
     {% include 'grids-section.twig' with {
       background: 'cream',
       items: [

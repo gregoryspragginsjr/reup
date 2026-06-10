@@ -51,31 +51,83 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 if (is_tax()) {
 	$context['posts'] = Timber::get_posts([
-			'post_type' => 'post',
-			'paged'     => $paged,
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'audiences',
-					'field' => 'slug',
-					'terms' => get_queried_object()->slug,
-				)
+		'post_type' => 'post',
+		'paged'     => $paged,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'audiences',
+				'field' => 'slug',
+				'terms' => get_queried_object()->slug,
 			)
+		)
+	]);
+
+	$context['featured_posts'] = Timber::get_posts([
+		'post_type' => 'post',
+		'paged'     => $paged,
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'audiences',
+				'field' => 'slug',
+				'terms' => get_queried_object()->slug,
+			),
+			array(
+				'taxonomy' => 'resource-categories',
+				'field' => 'slug',
+				'terms' => 'featured',
+			)
+		)
 	]);
 } elseif (is_post_type_archive('resources')) {
 	$context['post'] = Timber::get_post(333);
 	$context['posts'] = Timber::get_posts([
-			'post_type' => 'resources',
-			'paged'     => $paged,
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'audiences',
-					'field' => 'slug',
-					'terms' => get_query_var('audience'),
-				)
+		'post_type' => 'resources',
+		'paged'     => $paged,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'audiences',
+				'field' => 'slug',
+				'terms' => get_query_var('audience'),
+			),
+			array(
+				'taxonomy' => 'resource-categories',
+				'field' => 'slug',
+				'terms' => 'featured',
+				'operator' => 'NOT IN',
 			)
+		)
+	]);
+
+	$context['featured_posts'] = Timber::get_posts([
+		'post_type' => 'resources',
+		'paged'     => $paged,
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'audiences',
+				'field' => 'slug',
+				'terms' => get_query_var('audience'),
+			),
+			array(
+				'taxonomy' => 'resource-categories',
+				'field' => 'slug',
+				'terms' => 'featured',
+			)
+		)
 	]);
 } else {
-	$context['posts'] = Timber::get_posts();
+	$context['posts'] = Timber::get_posts(array_merge($wp_query->query_vars, [
+		'post_type' => 'post',
+		'paged'     => $paged,
+		'category__not_in' => 10,
+	]));
+
+	$context['featured_posts'] = Timber::get_posts(array_merge($wp_query->query_vars, [
+			'post_type' => 'post',
+			'paged'     => $paged,
+			'category_name'  => 'featured',
+	]));
 }
 
 Timber::render( $templates, $context );
