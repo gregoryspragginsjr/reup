@@ -29,5 +29,46 @@
         </div>
       </div>
     </div>
+    {% if post.meta('related_posts') %}
+      {% set mapped_related_posts = post.meta('related_posts')|map(i => {
+        image: {
+          sizes: {
+            Rectangle: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle' ),
+            Rectangle_mobile: fn( 'get_the_post_thumbnail_url', i.ID, 'Rectangle_mobile' ),
+          }
+        },
+        subheading: i.post_date|date("M d, Y"),
+        heading: i.post_title,
+        paragraphs: '<p>' ~ (i.preview ? i.preview.length(20).read_more('') : i.post_excerpt) ~ '</p>',
+        buttons: [
+          {
+            button: {
+              title: 'Read More',
+              url: function('get_permalink', i.ID),
+            }
+          }
+        ]
+      }) %}
+
+      {% include 'grids-section.twig' with {
+        background: 'indigo',
+        heading: 'Similar Resources for ' ~ (post.terms('audiences')|length == 1 ? post.terms('audiences')[0].name : 'Anybody'),
+        buttons: [
+          {
+            button: {
+              title: 'All ' ~ (post.terms('audiences')|length == 1 ? post.terms('audiences')[0].name : 'Anybody') ~ ' Resources',
+              url: '/resources/?audience=' ~ (post.terms('audiences')|length == 1 ? post.terms('audiences')[0].name : ''),
+            }
+          }
+        ],
+        items: [
+          {
+            acf_fc_layout: 'article-grid',
+            columns: 3,
+            items: mapped_related_posts,
+          }
+        ]
+      } %}
+    {% endif %}
   </div>
 {% endblock %}
