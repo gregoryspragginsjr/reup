@@ -40,6 +40,12 @@
     }
 
     .benefits-grid--logo-wall & {
+      grid-column: span 6 / span 6;
+
+      @include breakpoint(medium) {
+        grid-column: span 3 / span 3;
+      }
+
       @include breakpoint(large) {
         grid-column: span 2 / span 2;
       }

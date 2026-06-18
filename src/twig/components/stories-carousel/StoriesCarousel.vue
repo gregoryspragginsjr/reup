@@ -32,7 +32,9 @@ onMounted(() => {
   });
 
   if (window.innerWidth < 639) {
-    carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
+    setTimeout(() => {
+      carousel.value.style.height = carousel.value.querySelector('.stories-carousel__slide--active').offsetHeight + 'px';
+    }, 200);
   }
 
   slides = carousel.value.querySelectorAll('.stories-carousel__slide');

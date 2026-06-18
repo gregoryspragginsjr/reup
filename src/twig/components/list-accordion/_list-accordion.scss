@@ -169,4 +169,20 @@
       @extend .paragraph-style-3;
     }
   }
+
+  .accordion .accordion__panel:hover .accordion__button {
+    color: #7869c2;
+
+    svg {
+      fill: #7869c2;
+    }
+
+    &[aria-expanded='true'] {
+      color: #D965CC;
+
+      svg {
+        fill: #D965CC;
+      }
+    }
+  }
 }

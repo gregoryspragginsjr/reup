@@ -566,6 +566,10 @@ class StarterSite extends Timber\Site {
 				)
 			);
 		}
+
+		// add_theme_support('editor-styles');
+
+		add_editor_style(get_template_directory_uri() . '/dist/styles/scripts.css');
 	}
 
 	/** This Would return 'foo bar!'.

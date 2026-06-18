@@ -16,6 +16,8 @@
   }
 
   &__context {
+    display: flex;
+    justify-content: center;
     position: relative;
     padding: 50px 30px 60px;
     background-color: map.get($cream, default);
@@ -68,6 +70,10 @@
         }
       }
     }
+
+    .context {
+      max-width: 800px;
+    }
   }
 
   &__headshot {
@@ -81,5 +87,13 @@
   + .grids-section.background--indigo {
     border-radius: 0;
     padding: 80px 0 100px;
+  }
+
+  .context__heading {
+    font-size: rem-calc(26px);
+
+    @include breakpoint(medium) {
+      font-size: rem-calc(34px);
+    }
   }
 }

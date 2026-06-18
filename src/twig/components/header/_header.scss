@@ -103,6 +103,7 @@
 
     li:last-child a {
       font-weight: 900;
+      pointer-events: none;
     }
 
     .chevron {
@@ -273,6 +274,7 @@
     transform: translateX(-50%);
     visibility: hidden;
     opacity: 0;
+    transition: $transition-default;
 
     &--solutions,
     &--who-can-benefit {
@@ -304,7 +306,8 @@
       padding-left: 16px;
     }
 
-    h2 + ul {
+    h2 + ul,
+    h3 + ul {
       margin-top: 14px;
     }
 
@@ -345,6 +348,7 @@
 
         .tag {
           background-color: $white;
+          pointer-events: none;
         }
       }
 
@@ -352,6 +356,10 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
+
+        span:nth-child(1) {
+          white-space: nowrap;
+        }
 
         span:nth-child(2) {
           font-size: rem-calc(14px);
@@ -509,8 +517,12 @@
 
     &--resources {
       > ul li a {
-        padding: 10px 16px;
+        padding: 7px 16px;
         color: $gray;
+
+        @include breakpoint(large) {
+          padding: 10px 16px;
+        }
       }
 
       .tag {
@@ -658,6 +670,7 @@
     @include breakpoint(large) {
       visibility: hidden;
       opacity: 0;
+      display: none;
     }
 
     &::-webkit-scrollbar {
@@ -685,6 +698,7 @@
       padding-top: 60px;
       visibility: visible;
       opacity: 1;
+      padding-bottom: 120px;
     }
   
     .header__dropdown {

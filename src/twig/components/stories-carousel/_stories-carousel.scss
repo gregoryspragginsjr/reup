@@ -34,7 +34,7 @@
     justify-content: space-between;
     align-items: flex-start;
     flex: 1 1 auto;
-    padding: 40px;
+    padding: 40px 30px;
 
     @include breakpoint(medium) {
       padding: 50px;
@@ -154,7 +154,7 @@
     flex-shrink: 0;
     max-width: 100%;
     border: 30px solid map.get($magenta, default);
-    margin: 0 40px 120px 40px;
+    margin: 0 30px 120px 30px;
     font-size: 0;
 
     @include breakpoint(medium) {
@@ -233,7 +233,7 @@
   &__controls {
     z-index: 10;
     position: absolute;
-    right: 40px;
+    right: 30px;
     bottom: 50px;
     display: flex;
     gap: 12px;

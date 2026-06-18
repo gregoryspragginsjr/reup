@@ -16,11 +16,11 @@
     cursor: pointer;
     transition: $transition-default;
 
-    &:hover {
-      .video__btn svg {
-        fill: map.get($magenta, default);
-      }
-    }
+    // &:hover {
+    //   .video__btn svg {
+    //     fill: map.get($magenta, default);
+    //   }
+    // }
 
     &--active {
       visibility: hidden;
@@ -34,6 +34,12 @@
     svg {
       width: 67px;
       fill: map.get($indigo, default);
+    }
+
+    &:hover {
+      svg {
+        fill: map.get($magenta, default);
+      }
     }
   }
 
