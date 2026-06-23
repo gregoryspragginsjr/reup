@@ -23,6 +23,11 @@
     background-color: map.get($cream, default);
     border: 30px solid map.get($magenta, default);
 
+    .cta-context-section--small & {
+      flex-direction: column;
+      align-items: center;
+    }
+
     @include breakpoint(large) {
       padding: 50px 42px 60px;
 

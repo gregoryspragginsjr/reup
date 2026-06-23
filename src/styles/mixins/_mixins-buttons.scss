@@ -7,7 +7,7 @@
   padding: 12px 24px;
   color: $color;
   background-color: $background;
-  border: 1.5px solid;
+  border: 2px solid;
   border-radius: 50px;
 
   @if $border == '' {

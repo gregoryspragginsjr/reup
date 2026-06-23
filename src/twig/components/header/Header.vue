@@ -13,9 +13,12 @@
 </template>
 
 <script setup lang="ts">
+import gsap from 'gsap';
+
 const header = ref<HTMLElement | null>(null);
 const drawerActive = ref<Boolean>(false);
 let breadcrumbs: HTMLElement;
+let headerMain: HTMLElement;
 
 const toggleDrawer = () => {
   drawerActive.value = !drawerActive.value;
@@ -46,6 +49,46 @@ const keyboardLeft = (e) => {
   }
 }
 
+const animate = () => {
+  headerMain = header.value.querySelector('.header__main');
+
+  if (breadcrumbs) {
+    gsap.to(
+      breadcrumbs,
+      {
+        y: '-300%',
+        duration: 0,
+      },
+    )
+  }
+
+  gsap.fromTo(
+    headerMain,
+    {
+      y: '-20%',
+      opacity: 0,
+    },
+    {
+      y: '0%',
+      opacity: 1,
+      duration: 0.5,
+      ease: "expo.inOut",
+      onComplete: () => {
+        if (breadcrumbs) {
+          gsap.to(
+            breadcrumbs,
+            {
+              y: '0%',
+              duration: 0.25,
+              ease: "expo.inOut",
+            }
+          );
+        }
+      }
+    }
+  )
+}
+
 onMounted(() => {
   breadcrumbs = header.value.querySelector('.header__breadcrumbs');
 
@@ -54,5 +97,9 @@ onMounted(() => {
   window.addEventListener('resize', () => {
     breadcrumbsScrollRight();
   });
+
+  setTimeout(() => {
+    animate();
+  }, 50);
 })
 </script>

@@ -72,3 +72,13 @@
     justify-content: center;
   }
 }
+
+#app .context {
+  .context__subheading,
+  .context__heading,
+  .tag,
+  p,
+  .default-btn {
+    opacity: 0;
+  }
+}

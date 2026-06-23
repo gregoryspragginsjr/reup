@@ -8,6 +8,7 @@ import ModalBtn from './twig/components/modal/ModalBtn.vue';
 import TestimonialsCarousel from './twig/components/testimonials-carousel/TestimonialsCarousel.vue';
 import StoriesCarousel from './twig/components/stories-carousel/StoriesCarousel.vue';
 import MediaContext from './twig/components/media-context/MediaContext.vue';
+import Context from './twig/components/context/Context.vue';
 
 import './styles/styles.scss';
 
@@ -21,6 +22,7 @@ const app = createApp({
     TestimonialsCarousel,
     StoriesCarousel,
     MediaContext,
+    Context,
   },
 });
 

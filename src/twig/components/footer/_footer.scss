@@ -14,6 +14,12 @@
     padding: 70px 0 40px;
   }
 
+  &__inner {
+    @include breakpoint(medium) {
+      padding: 0 80px;
+    }
+  }
+
   &__main {
     grid-column: span 12 / span 12;
     display: flex;

@@ -6,7 +6,7 @@
   {% set buttonGroup = 'button-group.twig' %}
 {% endif %}
 
-<div class="context context--{{ size|default('medium') }} context--align-{{ align|default('left') }} context--{{ type|default('default') }}">
+<component is="context" class="context context--{{ size|default('medium') }} context--align-{{ align|default('left') }} context--{{ type|default('default') }}">
   {% if subheading %}<div class="context__subheading">{{ subheading }}</div>{% endif %}
   {% if tags %}
     <div class="tag-group">
@@ -20,4 +20,4 @@
   {% if buttons.items %}
     {% include buttonGroup with buttons %}
   {% endif %}
-</div>
+</component>

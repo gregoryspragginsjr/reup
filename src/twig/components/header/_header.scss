@@ -31,6 +31,7 @@
     background-color: $white;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+    transform: translateY(-100%);
 
     @include breakpoint(large) {
       padding: 0 40px;
@@ -47,6 +48,7 @@
     background-color: map.get($magenta, light);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+    transform: translateY(-300%);
 
     .header--active & {
       display: none;
@@ -272,6 +274,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 16px 0 rgba(74, 74, 74, 0.1);
     transform: translateX(-50%);
+    // overflow: hidden;
     visibility: hidden;
     opacity: 0;
     transition: $transition-default;
@@ -325,9 +328,11 @@
       padding: 14px 16px;
       border-radius: 4px;
       color: map.get($indigo, default);
+      letter-spacing: 0;
 
       @include breakpoint(medium) {
         white-space: nowrap;
+        letter-spacing: 0.5px;
       }
 
       &:hover {
@@ -344,6 +349,7 @@
 
         .header__arrow {
           fill: map.get($magenta, default);
+          transform: translateX(0);
         }
 
         .tag {
@@ -558,6 +564,11 @@
     margin-right: 0;
     margin-left: auto;
     fill: transparent;
+  }
+
+  &__arrow {
+    transform: translateX(-10px);
+    transition: 0.2s ease-in-out;
   }
 
   &__newtab {
