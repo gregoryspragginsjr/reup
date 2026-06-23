@@ -9,6 +9,7 @@ import TestimonialsCarousel from './twig/components/testimonials-carousel/Testim
 import StoriesCarousel from './twig/components/stories-carousel/StoriesCarousel.vue';
 import MediaContext from './twig/components/media-context/MediaContext.vue';
 import Context from './twig/components/context/Context.vue';
+import Footer from './twig/components/footer/Footer.vue';
 
 import './styles/styles.scss';
 
@@ -23,6 +24,7 @@ const app = createApp({
     StoriesCarousel,
     MediaContext,
     Context,
+    Footer,
   },
 });
 

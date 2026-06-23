@@ -42,7 +42,7 @@ const animate = () => {
   }
 
   // Tags
-  if (tags) {
+  if (tags.length > 0) {
     gsap.fromTo(
       tags,
       {
@@ -70,7 +70,7 @@ const animate = () => {
   }
 
   // Paragraphs
-  if (paragraphs) {
+  if (paragraphs.length > 0) {
     gsap.fromTo(
       paragraphs,
       {
@@ -87,7 +87,7 @@ const animate = () => {
   }
 
   // Buttons
-  if (buttons) {
+  if (buttons.length > 0) {
     gsap.fromTo(
       buttons,
       {
