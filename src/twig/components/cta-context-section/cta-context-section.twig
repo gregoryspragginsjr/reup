@@ -6,7 +6,7 @@
   {% set context = 'context.twig' %}
 {% endif %}
 
-<section class="cta-context-section cta-context-section--{{ size|default('medium') }}">
+<component is="cta-context-section" class="cta-context-section cta-context-section--{{ size|default('medium') }}">
   <div class="cta-context-section__inner grid">
     <div class="cta-context-section__main">
       <div class="cta-context-section__context">
@@ -37,4 +37,4 @@
       </div>
     </div>
   </div>
-</section>
+</component>

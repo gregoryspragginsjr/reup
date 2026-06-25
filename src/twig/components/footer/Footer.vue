@@ -8,13 +8,13 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const footer = ref<HTMLElement | null>(null);
 let bricks: HTMLElement[];
 
 const animate = () => {
   bricks = footer.value.querySelectorAll('.footer__brick');
-
-  console.log(bricks);
 
   gsap.fromTo(
     bricks[0],

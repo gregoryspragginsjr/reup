@@ -195,7 +195,7 @@
   }
 
   .video {
-    padding-bottom: 130%;
+    // padding-bottom: 130%;
 
     @include breakpoint(medium) {
       padding-bottom: 56.25%;
