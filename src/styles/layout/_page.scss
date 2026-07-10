@@ -33,8 +33,21 @@
     margin-left: auto;
   }
 
-  &__main {
+  &__main,
+  &__secondary {
     grid-column: span 12 / span 12;
+  }
+
+  &__secondary {
+    @include breakpoint(medium) {
+      grid-column: span 6 / span 6;
+    }
+  }
+  
+  &__form {
+    padding: 60px 0;
+    background-color: map.get($cream, default);
+    border-bottom: 1.5px solid map.get($cream, dark);
   }
 }
 

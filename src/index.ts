@@ -30,4 +30,12 @@ const app = createApp({
   },
 });
 
+const footerApp = createApp({
+  components: {
+    Footer,
+  },
+});
+
 app.mount('#app');
+
+document.querySelector('#footer_app') ? footerApp.mount('#footer_app') : null;

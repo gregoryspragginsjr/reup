@@ -136,11 +136,13 @@
           Sorry, no content
         {% endblock %}
       </main>
-      {% include 'footer.twig' with {
-        primary: footer_menu.items,
-        copyright: copyright_menu.items,
-        address: global_address
-      } %}
+      <div id="footer_app">
+        {% include 'footer.twig' with {
+          primary: footer_menu.items,
+          copyright: copyright_menu.items,
+          address: global_address
+        } %}
+      </div>
       {% block footer %}
         {{ function('wp_footer') }}
       {% endblock %}
