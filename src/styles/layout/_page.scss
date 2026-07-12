@@ -43,6 +43,14 @@
       grid-column: span 6 / span 6;
     }
   }
+
+  &__secondary + &__secondary {
+    margin-top: 40px;
+
+    @include breakpoint(medium) {
+      margin-top: 0;
+    }
+  }
   
   &__form {
     padding: 60px 0;

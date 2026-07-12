@@ -46,16 +46,25 @@ img {
 }
 
 .hbspt-form {
-  padding: 40px;
+  padding: 30px;
   background-color: $white;
   border-radius: 4px;
   border: 1.5px solid map.get($cream, dark);
 
+  @include breakpoint(medium) {
+    padding: 40px;
+  }
+
   fieldset {
     display: flex;
-    column-gap: 30px;
+    flex-direction: column;
+    gap: 30px;
     width: 100%;
     max-width: none !important;
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+    }
   }
 
   fieldset + fieldset {
@@ -135,11 +144,16 @@ img {
 
     label {
       display: flex !important;
-      align-items: center !important;
+      align-items: flex-start !important;
       column-gap: 8px !important;
+
+      @include breakpoint(medium) {
+        align-items: center !important;
+      }
     }
 
     input {
+      flex-shrink: 0;
       padding: 0 !important;
       width: 16px !important;
       height: 16px !important;
