@@ -71,16 +71,12 @@ img {
     margin-top: 30px;
   }
 
-  .hs-error-msg,
-  .hs-form-required {
-    color: map.get($magenta, default) !important;
-  }
-
   .hs-form-required {
     margin-left: 4px;
   }
 
-  label {
+  label,
+  &__label {
     font-family: $font-tertiary;
     font-size: rem-calc(16px);
     font-weight: 600;
@@ -89,6 +85,13 @@ img {
     text-transform: uppercase;
     letter-spacing: 5%;
     color: map.get($indigo, default);
+
+    &--special {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
   }
 
   label + .input {
@@ -175,7 +178,30 @@ img {
     @extend .btn--indigo;
   }
 
-  input[type="checkbox"]:checked {
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
     background-color: map.get($indigo, default) !important;
+  }
+}
+
+.hs-error-msg,
+.hs-form-required {
+  color: map.get($magenta, default) !important;
+}
+
+.hbspt-form .inputs-list label,
+.hs-richtext {
+  font-family: $font-secondary !important;
+  font-size: rem-calc(14px) !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  line-height: 120% !important;
+  letter-spacing: 5% !important;
+  text-transform: none !important;
+}
+
+.inputs-list {
+  li + li {
+    margin-top: 8px;
   }
 }

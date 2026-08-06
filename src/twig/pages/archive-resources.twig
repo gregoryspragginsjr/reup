@@ -130,8 +130,8 @@
 	    {{ post.content }}
 
       {% set institutions_posts = fn('Timber::get_posts', {
-        post_type: 'resources',
-        post_per_page: 4,
+        post_type: ['resources', 'post'],
+        posts_per_page: 4,
         tax_query: [
           {
             taxonomy: 'audiences',
@@ -161,8 +161,8 @@
       }) %}
 
       {% set learners_posts = fn('Timber::get_posts', {
-        post_type: 'resources',
-        post_per_page: 4,
+        post_type: ['resources', 'post'],
+        posts_per_page: 4,
         tax_query: [
           {
             taxonomy: 'audiences',
@@ -192,8 +192,8 @@
       }) %}
 
       {% set states_posts = fn('Timber::get_posts', {
-        post_type: 'resources',
-        post_per_page: 4,
+        post_type: ['resources', 'post'],
+        posts_per_page: 4,
         tax_query: [
           {
             taxonomy: 'audiences',

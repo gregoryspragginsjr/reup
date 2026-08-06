@@ -24,7 +24,7 @@ module.exports = {
       name: 'Parallel',
       context: {
         type: 'parallel',
-        tags: true,
+        tags: ['learners'],
         subheading: 'Optional Heading',
         heading: 'Headline Lorem Ipsum.',
         paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec.</p>',
@@ -49,7 +49,7 @@ module.exports = {
       context: {
         video: null,
         type: 'parallel',
-        tags: true,
+        tags: ['learners'],
         subheading: 'Optional Heading',
         heading: 'Headline Lorem Ipsum.',
         paragraphs: '<p>Lorem ipsum dolor sit amet, consecte adipiscing elit. Vestibulum orci est, auctor nec.</p>',

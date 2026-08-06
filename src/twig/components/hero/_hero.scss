@@ -49,6 +49,7 @@
         margin-right: -140px;
         border-bottom-right-radius: 30px;
         max-width: 75%;
+        width: 100%;
       }
     }
 
@@ -101,8 +102,16 @@
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    font-size: 0;
 
     .hero--parallel & {
+      .wrap {
+        padding-bottom: 59.375%;
+
+        img {
+          position: absolute;
+        }
+      }
 
       @include breakpoint(medium) {
         border-top-left-radius: 12px;

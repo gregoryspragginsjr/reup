@@ -44,12 +44,19 @@
     }
 
     @include breakpoint(large) {
+      position: relative;
       width: auto;
+      padding-bottom: 75%;
+
+      img {
+        position: absolute;
+      }
     }
 
     .article--parallel & {
       width: 80px;
       border-radius: 0 !important;
+      padding-bottom: 0 !important;
 
       @include breakpoint(medium) {
         width: 80px;
@@ -57,6 +64,10 @@
 
       @include breakpoint(large) {
         width: 80px;
+      }
+
+      img {
+        position: relative;
       }
     }
 

@@ -82,7 +82,7 @@ if (is_tax()) {
 } elseif (is_post_type_archive('resources')) {
 	$context['post'] = Timber::get_post(333);
 	$context['posts'] = Timber::get_posts([
-		'post_type' => 'resources',
+		'post_type' => array('resources', 'post'),
 		'paged'     => $paged,
 		'tax_query' => array(
 			array(
@@ -100,7 +100,7 @@ if (is_tax()) {
 	]);
 
 	$context['featured_posts'] = Timber::get_posts([
-		'post_type' => 'resources',
+		'post_type' => array('resources', 'post'),
 		'paged'     => $paged,
 		'tax_query' => array(
 			'relation' => 'AND',

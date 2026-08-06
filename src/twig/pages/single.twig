@@ -19,7 +19,7 @@
       <div class="post__inner grid">
         <div class="post__main">
           {% include 'byline.twig' with {
-            author: post.author.name,
+            author: post.author.meta('nickname') ? post.author.meta('nickname') : post.author.name,
             date: post.post_date|date("M d, Y"),
             for:  post.terms('audiences')|length == 1 ? post.terms('audiences')[0].name : 'Anybody',
           } %}

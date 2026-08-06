@@ -65,7 +65,8 @@
   > h2,
   > h3 {
     + figure,
-    + .wp-block-image {
+    + .wp-block-image,
+    + .video {
       margin-top: 30px;
 
       @include breakpoint(medium) {
@@ -78,7 +79,8 @@
   > h5,
   > h6 {
     + figure,
-    + .wp-block-image {
+    + .wp-block-image,
+    + .video {
       margin-top: 20px;
     }
   }
@@ -108,7 +110,8 @@
     }
 
     + figure,
-    + .wp-block-image {
+    + .wp-block-image,
+    + .video {
       margin-top: 30px;
 
       @include breakpoint(medium) {
@@ -160,6 +163,14 @@
       width: 8px;
       height: 8px;
       background-color: map.get($magenta, default);
+    }
+  }
+
+  .video {
+    margin-bottom: 30px;
+
+    @include breakpoint(medium) {
+      margin-bottom: 40px;
     }
   }
 }
