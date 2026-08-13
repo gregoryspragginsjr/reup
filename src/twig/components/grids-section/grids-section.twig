@@ -6,7 +6,7 @@
   {% set benefitsGrid = 'benefits-grid.twig' %}
 {% endif %}
 
-<section class="grids-section">
+<section class="grids-section{% if portrait %} grids-section--portrait{% endif %}">
   <div class="grids-section__main background--{{ background|default('white') }}">
     {% if heading or paragraphs or buttons %}
       {% include contextSection %}

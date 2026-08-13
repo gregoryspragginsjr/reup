@@ -117,7 +117,9 @@ if (is_tax()) {
 		)
 	]);
 } elseif (is_post_type_archive('our-team')) {
-	$context['posts'] = Timber::get_posts();
+	$context['posts'] = Timber::get_posts(array_merge($wp_query->query_vars, [
+		'posts_per_page' => 24
+	]));
 } else {
 	$context['posts'] = Timber::get_posts(array_merge($wp_query->query_vars, [
 		'post_type' => 'post',

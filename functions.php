@@ -450,6 +450,60 @@ class StarterSite extends Timber\Site {
 						'url'   => '/company',
 					)
 				);
+			} elseif (has_category()) {
+				// array_push(
+				// 	$breadcrumbs_menu,
+				// 	array(
+				// 		'id'    => $context['term']->ID,
+				// 		'title' => single_cat_title( '', false ),
+				// 		'url'   => get_permalink($context['term']->ID),
+				// 	)
+				// );
+
+				array_push(
+					$breadcrumbs_menu,
+					array(
+						'id'    => $context['post']->ID,
+						'title' => get_the_title($context['post']->ID),
+						'url'   => get_permalink($context['post']->ID),
+					)
+				);
+
+				if (has_category('press')) {
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'title' => 'Press',
+							'url'   => '/category/press/',
+						)
+					);
+
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'title' => 'Company',
+							'url'   => '/company',
+						)
+					);
+				} elseif (has_category('blog')) {
+					if ( get_the_terms($context['post']->ID, 'audiences') ) {
+						array_push(
+							$breadcrumbs_menu,
+							array(
+								'title' => get_the_terms($context['post']->ID, 'audiences')[0]->name,
+								'url'   => '/audiences/' . get_the_terms($context['post']->ID, 'audiences')[0]->name,
+							)
+						);
+					}
+
+					array_push(
+						$breadcrumbs_menu,
+						array(
+							'title' => 'Resources',
+							'url'   => '/resources',
+						)
+					);
+				}
 			} else {
 				array_push(
 					$breadcrumbs_menu,
