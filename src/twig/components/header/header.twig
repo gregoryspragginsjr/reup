@@ -16,7 +16,7 @@
               @keyup.left="header.keyboardLeft($event)"
               @keyup.right="header.keyboardRight($event)"
             >{{ item.title }}{{ icons.icon('chevron', '') }}</a>
-            <div class="header__dropdown header__dropdown--{{ item.title|lower|replace({' ': '-'}) }}">
+            <div class="header__dropdown header__dropdown--{{ item.title|lower|replace({' ': '-'})|replace({"'": ''}) }}">
               <ul>
                 {% for child in item.children %}
                   <li>
@@ -26,7 +26,7 @@
                       {% endif %}
                       href="{{ child.url }}"
                     >
-                      {% if item.title == 'Solutions' %}
+                      {% if item.title == "What's Included" %}
                         <div class="header__symbol-wrap">
                         {{ icons.icon(child.title|lower, 'header__symbol') }}
                         </div>
@@ -78,7 +78,7 @@
                 </li>
               {% endfor %}
             </ul>
-            <hr>
+            {# <hr>
             <h2 class="subheading-style-2">Log In</h2>
             <ul class="header__utility-nav">
               <li>
@@ -100,7 +100,7 @@
                   {{ icons.icon('newtab', 'header__newtab') }}
                 </a>
               </li>
-            </ul>
+            </ul> #}
           </div>
         </button>
       </div>
@@ -184,7 +184,7 @@
               </li>
             {% endfor %}
           </ul>
-          <hr>
+          {# <hr>
           <h3 class="subheading-style-2">Log In</h3>
           <ul class="header__utility-nav">
             <li>
@@ -206,7 +206,7 @@
                 {{ icons.icon('newtab', 'header__newtab') }}
               </a>
             </li>
-          </ul>
+          </ul> #}
         </div>
       </div>
     </div>

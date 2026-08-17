@@ -279,7 +279,7 @@
     opacity: 0;
     transition: $transition-default;
 
-    &--solutions,
+    &--whats-included,
     &--who-can-benefit {
       @include breakpoint(large) {
         width: 380px;

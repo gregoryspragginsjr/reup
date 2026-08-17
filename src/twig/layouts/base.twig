@@ -7,6 +7,11 @@
 {% endblock %}
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL47ZZB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) --> 
+
     <div id="app">
       {% if fn('is_post_type_archive', 'resources') %}
         {% set breadcrumbs_type = fn('get_query_var', 'audience') %}
@@ -21,27 +26,27 @@
         primary: [
           {
             url: '/whats-included/',
-            title: 'Solutions',
+            title: "What's Included",
             children: [
               {
                 url: '/whats-included/outreach-and-re-engagement/',
                 title: 'Outreach and Re-Engagement',
-                excerpt: 'Connect and inspire'
+                excerpt: 'Reconnection that works'
               },
               {
                 url: '/whats-included/intelligence/',
-                title: 'Data',
-                excerpt: 'Insights that drive action'
+                title: 'Intellegence',
+                excerpt: 'Data that acts'
               },
               {
                 url: '/whats-included/technology/',
                 title: 'Technology',
-                excerpt: 'Custom tools adapted to you'
+                excerpt: 'Built for one goal'
               },
               {
                 url: '/whats-included/coaching-and-learner-support/',
                 title: 'Coaching & Learner Support',
-                excerpt: 'Guidance for every step'
+                excerpt: 'Support that shows up'
               },
             ],
           },
@@ -93,7 +98,7 @@
             children: [
               {
                 url: '/company/our-team',
-                title: 'Our Team',
+                title: 'Leadership Team',
               },
               {
                 url: '/company/careers',
