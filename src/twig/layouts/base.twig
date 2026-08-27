@@ -14,7 +14,7 @@
 
     <div id="app">
       {% if fn('is_post_type_archive', 'resources') %}
-        {% set breadcrumbs_type = fn('get_query_var', 'audience') %}
+        {% set breadcrumbs_type = fn('get_query_var', 'audience')|lower %}
       {% elseif fn('is_category') %}
         {% set breadcrumbs_type = null %}
       {% else %}
@@ -35,7 +35,7 @@
               },
               {
                 url: '/whats-included/intelligence/',
-                title: 'Intellegence',
+                title: 'Intelligence',
                 excerpt: 'Data that acts'
               },
               {
@@ -61,7 +61,7 @@
               },
               {
                 url: '/who-can-benefit/institutions/',
-                title: 'Re-enroll stop outs',
+                title: 'Re-enroll your learners',
                 tag: 'Institutions',
               },
               {
@@ -113,23 +113,23 @@
         ],
         utility: [
           {
-            url: '/',
-            title: 'Drive growth',
+            url: '/try-reup/states-inquiry/',
+            title: 'Talk to our team',
             tag: 'States',
           },
           {
-            url: '/',
-            title: 'Get insights',
+            url: '/try-reup/institutions-inquiry/',
+            title: 'See if we’re a fit',
             tag: 'Institutions',
           },
           {
-            url: '/',
-            title: 'Meet coach',
+            url: '/try-reup/learners-inquiry/',
+            title: 'Start your journey',
             tag: 'Learners',
           },
           {
-            url: '/',
-            title: "Let's chat",
+            url: '/try-reup/general-inquiry/',
+            title: "Get in touch",
             tag: 'Anybody',
           },
         ],

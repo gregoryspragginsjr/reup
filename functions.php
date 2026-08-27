@@ -397,7 +397,7 @@ class StarterSite extends Timber\Site {
 						$breadcrumbs_menu,
 						array(
 							'title' => get_the_terms($context['post']->ID, 'audiences')[0]->name,
-							'url'   => '/audiences/' . get_the_terms($context['post']->ID, 'audiences')[0]->name,
+							'url'   => '/resources/?audience=' . get_the_terms($context['post']->ID, 'audiences')[0]->name,
 						)
 					);
 				}
@@ -682,3 +682,19 @@ function my_acf_block_render_callback( $block, $content = '', $is_preview = fals
 	// Render the block.
 	Timber::render( 'src/twig/components/'. $context['block_name'] . '/' . $context['block_name'] . '.twig', $context['fields'] );
 }
+
+// in functions.php
+function my_custom_resources_query( $query ) {
+    // Exit if in admin panel or if it's not the main query
+    if ( is_admin() || !$query->is_main_query() ) {
+        return;
+    }
+
+    // Target the archive page for the 'resources' custom post type
+    if ( $query->is_post_type_archive( 'resources' ) ) {
+        // Tells custom query that resource archives include both resources and posts
+				// which inevitably get filtered down by audience via url query
+        $query->set( 'post_type', array('resources', 'post') ); 
+    }
+}
+add_action( 'pre_get_posts', 'my_custom_resources_query' );

@@ -8,7 +8,7 @@
 
       {% include 'hero.twig' with {
         type: 'parallel',
-        tags: [audience],
+        tags: [audience|lower],
         heading: 'Resources for ' ~ audience|capitalize,
         paragraphs: '<p>' ~ term.description ~ '</p>'
       } %}

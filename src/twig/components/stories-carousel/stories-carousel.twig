@@ -66,11 +66,11 @@
           {% endif %}
           {% if prev or next %}
             <div class="stories-carousel__pagination">
-              {% if prev %}
-                <a class="btn--hollow-indigo" href="{{ prev }}">Previous Bio</a>
-              {% endif %}
               {% if next %}
                 <a class="btn--hollow-indigo" href="{{ next }}">Next Bio</a>
+              {% endif %}
+              {% if prev %}
+                <a class="btn--hollow-indigo" href="{{ prev }}">Previous Bio</a>
               {% endif %}
             </div>
           {% endif %}
