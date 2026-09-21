@@ -36,6 +36,8 @@ const footerApp = createApp({
   },
 });
 
+app.config.warnHandler = () => null; // Silences all warnings
+
 app.mount('#app');
 
 document.querySelector('#footer_app') ? footerApp.mount('#footer_app') : null;

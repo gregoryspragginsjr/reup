@@ -1,4 +1,4 @@
-{% macro picture(class, srcset, src, sizeDesktop, sizeMobile, alt, in_component_library) %}
+{% macro picture(class, srcset, src, sizeDesktop, sizeMobile, alt, in_component_library, fetchpriority) %}
   {% if in_component_library %}
     <picture>
       <source media="(min-width:768px)" srcset="{{ srcset }}">
@@ -15,6 +15,7 @@
         class="{{ class }}"
         src="{{ sizeMobile }}"
         alt="{{ alt }}"
+        fetchpriority="{{ fetchpriority }}"
       />
     </picture>
   {% endif %}

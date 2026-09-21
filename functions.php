@@ -600,11 +600,14 @@ class StarterSite extends Timber\Site {
 		add_theme_support( 'menus' );
 
 		add_image_size( 'Square', 800, 800, true );
-		add_image_size( 'Hero', 1920, 1080, true );
-		add_image_size( 'Hero_mobile', 960, 540, true );
-		add_image_size( 'Rectangle', 800, 600, true );
+		add_image_size( 'Square_mobile', 400, 400, true );
+		add_image_size( 'Square_avatar', 60, 60, true );
+		add_image_size( 'Square_logo', 240, 240, true );
+		add_image_size( 'Hero', 960, 540, true );
+		add_image_size( 'Hero_mobile', 480, 270, true );
+		add_image_size( 'Rectangle', 600, 450, true );
 		add_image_size( 'Rectangle_mobile', 400, 300, true );
-		add_image_size( 'Portrait', 1280, 1440, true );
+		add_image_size( 'Portrait', 960, 1080, true );
 		add_image_size( 'Portrait_mobile', 640, 720, true );
 		add_image_size( 'Large Icon', 600, 600, false );
 		add_image_size( 'Story Portrait', 460, 700, true );

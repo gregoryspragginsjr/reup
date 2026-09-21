@@ -51,7 +51,7 @@
                 {% set wp_image_mobile = image.sizes.Portrait_mobile %}
               {% else %}
                 {% set wp_image_desktop = image.sizes.Square %}
-                {% set wp_image_mobile = image.sizes.Square %}
+                {% set wp_image_mobile = image.sizes.Square_mobile %}
               {% endif %}
               {{ macros.picture(
                 'w-full',

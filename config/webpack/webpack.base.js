@@ -13,8 +13,17 @@ const __dirname = path.dirname(__filename);
 
 const projectRoot = path.resolve(__dirname, '../..');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default {
   mode: 'development',
+
+  // 'eval-source-map' in dev: fast rebuilds, full original source in devtools.
+  // 'source-map' in prod: separate .map files, doesn't bloat the JS bundle
+  // itself, and works with error-tracking tools (Sentry etc). Terser and
+  // css-minimizer both pick this up automatically and preserve mappings
+  // through minification — no extra config needed on those.
+  devtool: isProd ? 'source-map' : 'eval-source-map',
 
   context: projectRoot,
 
@@ -56,6 +65,9 @@ export default {
             options: {
               appendTsSuffixTo: [/\.vue$/],
               transpileOnly: true,
+              compilerOptions: {
+                sourceMap: true,
+              },
             },
           },
         ],
@@ -68,6 +80,7 @@ export default {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+              sourceMaps: true,
             },
           },
         ],
@@ -131,7 +144,9 @@ export default {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
+      // Content-hashed filename in prod for long-term caching; plain
+      // name in dev so filenames stay stable across rebuilds.
+      filename: isProd ? 'styles/[name].[contenthash:8].css' : 'styles/[name].css',
     }),
     new WebpackNotifierPlugin({
       title: 'Theme',
@@ -142,6 +157,11 @@ export default {
       ref: ['vue', 'ref'],
       computed: ['vue', 'computed'],
       onMounted: ['vue', 'onMounted'],
-    })
+    }),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: JSON.stringify(true),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
+    }),
   ],
 };

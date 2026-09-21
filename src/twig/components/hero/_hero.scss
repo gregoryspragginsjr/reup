@@ -6,6 +6,10 @@
   padding: 30px 0 40px;
   background-color: map.get($cream, default);
 
+  &--default {
+    min-height: 450px;
+  }
+
   &--parallel {
     padding: 40px 0;
 
